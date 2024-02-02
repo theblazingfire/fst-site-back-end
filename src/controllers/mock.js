@@ -1,7 +1,6 @@
 const mockky = require("../models/mock");
 
 const getMocks =  (req, res,next) => {
-    console.log("base get mock request");
     mockky.find({}).then(data=>{
       res.status(200).send(JSON.stringify(data));
     })

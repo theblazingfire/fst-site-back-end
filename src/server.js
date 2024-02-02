@@ -11,13 +11,14 @@ const mockRoute =  require("./routes/mock")
 let port = process.env.PORT;
 let runningEnvironment = process.env.NODE_ENV;
 let DB =
-  runningEnvironment == "production" ? process.env.PROD_DB : process.env.DEV_DB;
+  runningEnvironment == "production" ? process.env.PROD_DB : process.env.DEV_DB || "mongodb://localhost:27017/test"
+
 console.log({ port, runningEnvironment, DB });
 
 //connect to database
 connectDB(DB)
   .then(() => console.log("Sucess : connected to database"))
-  .catch((err) => console.error("error in connecting to database", err));
+  .catch((err) => console.error("Error in connecting to database : ", err));
 
 // create express app
 const app = express();

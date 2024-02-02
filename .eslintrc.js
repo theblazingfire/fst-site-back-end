@@ -7,7 +7,9 @@ let config = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  rules: {},
+  rules: {
+    "no-unused-vars": "warn"
+  },
   plugins: ["prettier"],
 };
 module.exports = config;
