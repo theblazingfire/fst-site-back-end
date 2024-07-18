@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
-
+const logger = require("./logger");
 async function connectDB(DB) {
-  return await mongoose.connect(DB);
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+  try {
+    await mongoose.connect(DB);
+  } catch (err) {
+    logger.errorLogger(err);
+    throw err;
+  }
 }
-
 module.exports = connectDB;

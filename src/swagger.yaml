@@ -1,0 +1,564 @@
+openapi: 3.0.0
+info:
+  title: Five and six technologies Apis Docs
+  version: 1.0.0
+  description: API documentation for FST Apis
+
+tags:
+  - name: Ping
+    description: Endpoints for health check and logs management
+  - name: Auth
+    description: Endpoints for Authentications
+
+components:
+  schemas:
+    Auth:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: User's email address
+        recoveryEmail:
+          type: string
+          format: email
+          description: User's recovery email address
+        hash:
+          type: string
+          description: Password hash
+        disabled:
+          type: boolean
+          description: Is the account disabled
+        deleted:
+          type: boolean
+          description: Is the account deleted
+        created:
+          type: string
+          format: date-time
+          description: Account creation date
+        otp:
+          type: string
+          description: One-time password
+        verified:
+          type: boolean
+          description: Is the account verified
+        verifyTokenString:
+          type: string
+          description: Token string for account verification
+        resetTokenString:
+          type: string
+          description: Token string for password reset
+    Profile:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "507f191e810c19729de860ea"
+        username:
+          type: string
+          example: "user90249"
+        profileImage:
+          type: string
+          example: "https://example.com/image.jpg"
+        email:
+          type: string
+          example: "user@example.com"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2023-07-18T12:34:56Z"
+        updatedAt:
+          type: string
+          format: date-time
+          example: "2023-07-18T12:34:56Z"
+        
+paths:
+  /profile:
+    post:
+      tags:
+        - Profile
+      summary: Create a new profile
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+      responses:
+        201:
+          description: Profile created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        400:
+          description: Bad request
+        500:
+          description: Error creating profile
+
+    get:
+      tags:
+        - Profile
+      summary: Get profiles with pagination
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+          description: Page number for pagination
+      responses:
+        200:
+          description: Profiles fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profiles:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Profile'
+                  currentPage:
+                    type: integer
+                  totalPages:
+                    type: integer
+        500:
+          description: Error fetching profiles
+
+  /profile/search:
+    get:
+      tags:
+        - Profile
+      summary: Search profiles based on queries
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: username
+          required: false
+          schema:
+            type: string
+          description: Username to search for
+        - in: query
+          name: email
+          required: false
+          schema:
+            type: string
+          description: Email to search for
+        # Add other query parameters as needed
+      responses:
+        200:
+          description: Profiles fetched successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Profile'
+        500:
+          description: Error searching profiles
+
+  /profile/{userId}:
+    get:
+      tags:
+        - Profile
+      summary: Get profile by user ID
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+          description: User ID of the profile to fetch
+      responses:
+        200:
+          description: Profile fetched successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        404:
+          description: Profile not found
+        500:
+          description: Error fetching profile
+
+    put:
+      tags:
+        - Profile
+      summary: Update profile
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+          description: User ID of the profile to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                profileImage:
+                  type: string
+                # Add other fields as needed
+      responses:
+        200:
+          description: Profile updated successfully
+        400:
+          description: Bad request
+        404:
+          description: Profile not found
+        500:
+          description: Error updating profile
+
+    delete:
+      tags:
+        - Profile
+      summary: Delete profile
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+          description: User ID of the profile to delete
+      responses:
+        200:
+          description: Profile deleted successfully
+        404:
+          description: Profile not found
+        500:
+          description: Error deleting profile
+
+  /profile/{userId}/upload:
+    post:
+      tags:
+        - Profile
+      summary: Upload profile image
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+          description: User ID of the profile to update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        200:
+          description: Profile image uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  urls:
+                    type: array
+                    items:
+                      type: string
+        400:
+          description: Bad request
+        500:
+          description: Error uploading profile image
+
+  /auth/signup/emailandpassword:
+    post:
+      tags:
+        - Auth
+      summary: User Signup
+      description: Signup a new user with email and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        "201":
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        "400":
+          description: Invalid input
+        "409":
+          description: Email already registered
+
+  /auth/signup/admin:
+    post:
+      tags:
+        - Auth
+      summary: Admin Signup
+      description: Signup a new admin user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        "201":
+          description: Admin created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        "400":
+          description: Invalid input
+        "409":
+          description: Email already registered
+
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: User Login
+      description: Login a user with email and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        "200":
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        "400":
+          description: Invalid input
+        "401":
+          description: Unauthorized
+
+  /auth/forgot-password:
+    post:
+      tags:
+        - Auth
+      summary: Forgot Password
+      description: Request a password reset link
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+              required:
+                - email
+      responses:
+        "200":
+          description: Reset link sent
+        "400":
+          description: Invalid input
+        "404":
+          description: Email not found
+
+  /auth/reset-password:
+    post:
+      tags:
+        - Auth
+      summary: Reset Password
+      description: Reset the password using a reset token
+      parameters:
+        - name: resetToken
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newPassword:
+                  type: string
+              required:
+                - newPassword
+      responses:
+        "200":
+          description: Password reset successful
+        "400":
+          description: Invalid input
+        "401":
+          description: Invalid or expired reset token
+
+  /auth/update:
+    put:
+      tags:
+        - Auth
+      summary: Update User Details
+      description: Update email, password, and recovery email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                recoveryEmail:
+                  type: string
+                  format: email
+      responses:
+        "200":
+          description: User details updated
+        "400":
+          description: Invalid input
+        "401":
+          description: Unauthorized
+
+  /auth/disable:
+    put:
+      tags:
+        - Auth
+      summary: Disable Account
+      description: Disable a user account
+      responses:
+        "200":
+          description: Account disabled
+        "401":
+          description: Unauthorized
+
+  /auth/delete:
+    delete:
+      tags:
+        - Auth
+      summary: Delete Account
+      description: Delete a user account
+      responses:
+        "200":
+          description: Account deleted
+        "401":
+          description: Unauthorized
+
+  /:
+    get:
+      summary: Performs a ping request
+      tags: [Ping]
+      responses:
+        200:
+          description: Returns pong
+
+  /status:
+    get:
+      summary: Get server status
+      tags: [Ping]
+      responses:
+        200:
+          description: Returns server status
+
+  /request-logs:
+    get:
+      summary: Get request logs
+      tags: [Ping]
+      responses:
+        200:
+          description: Returns request logs
+        500:
+          description: Error reading request logs
+
+  /app-logs:
+    get:
+      summary: Get application logs
+      tags: [Ping]
+      responses:
+        200:
+          description: Returns application logs
+        500:
+          description: Error reading application logs
+
+  /clear-request-logs:
+    get:
+      summary: Clear request logs
+      tags: [Ping]
+      responses:
+        200:
+          description: Request logs cleared
+        500:
+          description: Error clearing request logs
+
+  /clear-app-logs:
+    get:
+      summary: Clear application logs
+      tags: [Ping]
+      responses:
+        200:
+          description: Application logs cleared
+        500:
+          description: Error clearing application logs
