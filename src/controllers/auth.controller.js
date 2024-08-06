@@ -54,7 +54,7 @@ const signupWithEmailAndPassword = async (req, res) => {
 
     // Generate JWT token for session
     const token = jwt.sign(
-      { id: newUser._id, email: newUser.email },
+      { id: newUser._id, email: newUser.email, role: newUser.role },
       config.JWT_SECRET,
       { expiresIn: "24h" },
     );
@@ -112,6 +112,12 @@ const signupAdmin = async (req, res) => {
 
     // Generate verification token
     const verifyTokenString = generateRandomString(16);
+    const verifyToken = jwt.sign(
+      { email, verifyTokenString },
+      config.JWT_SECRET,
+      { expiresIn: "24h" },
+    );
+
     const token = jwt.sign({ email, role: "admin" }, config.JWT_SECRET, {
       expiresIn: "24h",
     });
@@ -136,14 +142,63 @@ const signupAdmin = async (req, res) => {
 
     // Send verification email
     mailOptions.subject = "Please Verify Your Email";
-    mailOptions.html = emailTemplates.verify("Admin", newAdmin._id, token);
+    mailOptions.html = emailTemplates.verify("Admin", newAdmin._id, verifyToken);
 
-    await transporter.sendMail(mailOptions);
+    let mailSent = await transporter.sendMail(mailOptions);
+    logger.infoLogger(mailSent)
 
     res.status(201).json({ token });
   } catch (error) {
     logger.errorLogger(error);
     res.status(500).send("Error creating admin user.");
+  }
+};
+
+const resendVerificationEmail = async (req, res) => {
+  const { email } = req.body;
+
+  // Validate email
+  if (!validator.isEmail(email)) {
+    return res.status(400).json({ message: "Invalid email format" });
+  }
+
+  try {
+    // Check if user exists
+    const existingUser = await Auth.findOne({ email });
+    if (!existingUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Check if user is already verified
+    if (existingUser.isVerified) {
+      return res.status(400).json({ message: "Email is already verified" });
+    }
+
+    // Generate new verification token string
+    const verifyTokenString = generateRandomString(32);
+    const verifyToken = jwt.sign(
+      { email, verifyTokenString },
+      config.JWT_SECRET,
+      { expiresIn: "24h" }
+    );
+
+    // Update user's verifyTokenString
+    existingUser.verifyTokenString = verifyTokenString;
+    await existingUser.save();
+
+    // Send verification email
+    const verifyEmailOptions = {
+      ...mailOptions,
+      to: email,
+      subject: "Verify your email",
+      html: emailTemplates.verify(email, existingUser._id, verifyToken),
+    };
+    await transporter.sendMail(verifyEmailOptions);
+
+    return res.status(200).json({ message: "Verification email sent" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -155,8 +210,10 @@ const verifyEmail = async (req, res) => {
 
     const authUser = await Auth.findById(user);
     if (!authUser) {
-      return res.status(400).json({ message: "Invalid user" });
+      return res.status(400).json({ message: "Invalid user"});
     }
+    logger.infoLogger(decoded)
+    logger.infoLogger(authUser)
 
     if (authUser.verifyTokenString !== decoded.verifyTokenString) {
       return res.status(400).json({ message: "Invalid token" });
@@ -176,6 +233,7 @@ const verifyEmail = async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+
 const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -206,7 +264,7 @@ const login = async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { userId: authUser._id, email: authUser.email },
+      { userId: authUser._id, email: authUser.email,role : authUser.role },
       config.JWT_SECRET,
       { expiresIn: "24h" }, // Token expires in 1 hour
     );
@@ -321,18 +379,19 @@ const forgotPassword = async (req, res) => {
       logger.errorLogger("Email not registered");
       return res.status(404).json({ message: "Email not registered" });
     }
-
-    const resetToken = jwt.sign({ userId: user._id }, config.JWT_SECRET, {
+    let resetTokenString = generateRandomString(10);
+    const resetToken = jwt.sign({ userId: user._id, resetTokenString}, config.JWT_SECRET, {
       expiresIn: "24h",
     });
-    user.resetTokenString = generateRandomString();
+
+    user.resetTokenString = resetTokenString
     await user.save();
 
     const mailOptionsWithReset = {
       ...mailOptions,
       to: user.email,
       subject: "Password Reset",
-      html: emailTemplates.passwordReset(user.email, resetToken),
+      html: emailTemplates.passwordReset(user.email, resetToken, user.role),
     };
 
     transporter.sendMail(mailOptionsWithReset, (error, info) => {
@@ -360,15 +419,30 @@ const resetPassword = async (req, res) => {
       logger.errorLogger("Invalid or expired token");
       return res.status(400).json({ message: "Invalid or expired token" });
     }
-
     user.hash = await bcrypt.hash(newPassword, 10); // Ensure to import bcrypt
     user.resetTokenString = "";
     await user.save();
-
     res.status(200).json({ message: "Password reset successful" });
   } catch (error) {
     logger.errorLogger(error.message);
     return res.status(500).json({ message: "Server error" });
+  }
+};
+
+const tokenIsValid = async (req, res) => {
+  const token = req.headers["authorization"].split(" ")[1];
+  try {
+    jwt.verify(token, config.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        return res.status(403).json({ message: 'Token is not valid'});
+      }
+      res.status(200).json({ isValid: true });
+    });
+  } catch (error) {
+    console.error({error})
+    logger.errorLogger('Error: Is invalid')
+    logger.errorLogger(error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 };
 
@@ -382,4 +456,6 @@ module.exports = {
   disableAccount,
   forgotPassword,
   resetPassword,
+  tokenIsValid,
+  resendVerificationEmail
 };
