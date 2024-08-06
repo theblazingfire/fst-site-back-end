@@ -1809,3 +1809,288 @@ Server running on http://localhost:8080
 ## Info
 *2024-07-19T09:20:33.664Z*
 Success : connected to database
+## Info
+*2024-08-06T09:38:38.016Z*
+Success: connected to database
+## Info
+*2024-08-06T09:38:38.093Z*
+Server running on http://localhost:8080
+## Error
+*2024-08-06T09:38:54.073Z*
+undefined
+## Error
+*2024-08-06T09:39:08.016Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Error
+*2024-08-06T09:39:08.034Z*
+Error in connecting to database
+## Error
+*2024-08-06T09:39:08.082Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Info
+*2024-08-06T09:40:17.153Z*
+Success: connected to database
+## Info
+*2024-08-06T09:40:17.192Z*
+Server running on http://localhost:8080
+## Error
+*2024-08-06T09:40:47.147Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Error
+*2024-08-06T09:40:47.157Z*
+Error in connecting to database
+## Error
+*2024-08-06T09:40:47.172Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Info
+*2024-08-06T09:41:39.409Z*
+Success: connected to database
+## Info
+*2024-08-06T09:41:39.507Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:41:49.040Z*
+Success: connected to database
+## Info
+*2024-08-06T09:41:49.106Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:42:10.517Z*
+Success: connected to database
+## Info
+*2024-08-06T09:42:10.663Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:42:28.444Z*
+Success: connected to database
+## Info
+*2024-08-06T09:42:28.512Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:42:40.058Z*
+Success: connected to database
+## Info
+*2024-08-06T09:42:40.191Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:42:52.452Z*
+Success: connected to database
+## Info
+*2024-08-06T09:42:52.508Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:43:17.490Z*
+Success: connected to database
+## Info
+*2024-08-06T09:43:17.586Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:43:34.881Z*
+Success: connected to database
+## Info
+*2024-08-06T09:43:34.958Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:43:59.710Z*
+Success: connected to database
+## Info
+*2024-08-06T09:43:59.731Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:44:13.215Z*
+Success: connected to database
+## Info
+*2024-08-06T09:44:13.263Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:44:21.370Z*
+Success: connected to database
+## Info
+*2024-08-06T09:44:21.506Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:44:34.784Z*
+Success: connected to database
+## Info
+*2024-08-06T09:44:34.853Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T09:44:45.428Z*
+Success: connected to database
+## Info
+*2024-08-06T09:44:45.480Z*
+Server running on http://localhost:8080
+## Error
+*2024-08-06T09:45:15.429Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Error
+*2024-08-06T09:45:15.449Z*
+Error in connecting to database
+## Error
+*2024-08-06T09:45:15.456Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Info
+*2024-08-06T09:53:05.126Z*
+Success: connected to database
+## Info
+*2024-08-06T09:53:05.172Z*
+Server running on http://localhost:8080
+## Error
+*2024-08-06T09:53:35.131Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Error
+*2024-08-06T09:53:35.146Z*
+Error in connecting to database
+## Error
+*2024-08-06T09:53:35.152Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Error
+*2024-08-06T09:54:53.545Z*
+Operation `auths.findOne()` buffering timed out after 10000ms
+## Error
+*2024-08-06T09:54:53.548Z*
+```javascript
+{}
+```
+## Info
+*2024-08-06T10:04:02.169Z*
+Request logs cleared
+## Info
+*2024-08-06T10:04:29.744Z*
+App logs cleared
