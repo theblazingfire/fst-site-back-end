@@ -309,9 +309,12 @@ paths:
                   format: email
                 password:
                   type: string
+                role:
+                  type: string
               required:
                 - email
                 - password
+                - role
       responses:
         "201":
           description: User created successfully

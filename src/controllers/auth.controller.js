@@ -9,11 +9,17 @@ const generateRandomString = require("../utils/randomString");
 const logger = require("../utils/logger");
 
 const signupWithEmailAndPassword = async (req, res) => {
-  const { email, password, recoveryEmail } = req.body;
-
+  const { email, password, recoveryEmail, role } = req.body;
+  let acceptableRole = ['user','admin']
+  let roleValid = acceptableRole.includes(role)
   // Validate email
   if (!validator.isEmail(email)) {
     return res.status(400).json({ message: "Invalid email format" });
+  }
+
+  // Validate email
+  if (!roleValid) {
+    return res.status(400).json({ message: "Invalid role" });
   }
 
   // Validate password length
@@ -28,6 +34,10 @@ const signupWithEmailAndPassword = async (req, res) => {
     const existingUser = await Auth.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already registered" });
+    }
+    
+    else if(role == 'admin' && !config.adminMails.includes(email)){
+      return res.status(403).json({ error:'Forbidden', message: "You are not allowed to signup as an admin"})
     }
 
     // Hash the password
@@ -47,7 +57,7 @@ const signupWithEmailAndPassword = async (req, res) => {
       recoveryEmail,
       hash,
       verifyTokenString,
-      role: "user",
+      role,
     });
 
     await newUser.save();
@@ -235,7 +245,18 @@ const verifyEmail = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, role } = req.body;
+  let acceptableRole = ['user','admin']
+  let roleValid = acceptableRole.includes(role)
+  // Validate email
+  if (!validator.isEmail(email)) {
+    return res.status(400).json({ message: "Invalid email format" });
+  }
+
+  // Validate email
+  if (!roleValid) {
+    return res.status(400).json({ message: "Invalid role" });
+  }
 
   try {
     // Check if the user exists
@@ -255,6 +276,12 @@ const login = async (req, res) => {
       logger.errorLogger("Account is disabled");
       return res.status(403).json({ message: "Account has been disabled" });
     }
+
+    if(authUser.role !== role){
+        logger.errorLogger("Role Mismatch. Forbidden Login");
+        return res.status(403).json({ message: "Role Missmatch. You should sign up with the appropriate role." });
+    }
+
     // Verify the password
     const isMatch = await bcrypt.compare(password, authUser.hash);
     if (!isMatch) {
@@ -264,11 +291,10 @@ const login = async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { userId: authUser._id, email: authUser.email,role : authUser.role },
+      { userId: authUser._id, email: authUser.email, role : authUser.role },
       config.JWT_SECRET,
       { expiresIn: "24h" }, // Token expires in 1 hour
-    );
-
+    )
     return res.status(200).json({ token });
   } catch (error) {
     logger.errorLogger(error.message);

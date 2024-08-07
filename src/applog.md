@@ -2094,3 +2094,424 @@ Request logs cleared
 ## Info
 *2024-08-06T10:04:29.744Z*
 App logs cleared
+## Info
+*2024-08-06T13:08:58.426Z*
+Success: connected to database
+## Info
+*2024-08-06T13:08:58.546Z*
+Server running on http://localhost:8080
+## Error
+*2024-08-06T13:09:28.353Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Error
+*2024-08-06T13:09:28.364Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:09:28.369Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Info
+*2024-08-06T13:10:41.955Z*
+Success: connected to database
+## Info
+*2024-08-06T13:10:42.159Z*
+Server running on http://localhost:8080
+## Error
+*2024-08-06T13:11:11.832Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Error
+*2024-08-06T13:11:11.843Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:11:11.849Z*
+```javascript
+{
+  "message": "connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017",
+  "reason": {
+    "type": "Unknown",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": null,
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": null
+  }
+}
+```
+## Error
+*2024-08-06T13:11:19.174Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:18:27.572Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:18:27.581Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:18:27.585Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:18:27.587Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:18:27.625Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:18:27.652Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:19:46.206Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:19:46.211Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:19:46.215Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:19:46.275Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:19:46.331Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:19:46.334Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:19:54.646Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:19:54.652Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:19:54.657Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:19:54.659Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:19:54.663Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:19:54.666Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:20:25.398Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:20:25.407Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:20:25.410Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:20:25.413Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:20:25.416Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:20:25.419Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:20:31.066Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:20:31.075Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:20:31.078Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:20:31.081Z*
+```javascript
+{}
+```
+## Error
+*2024-08-06T13:20:31.102Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:20:31.130Z*
+```javascript
+{}
+```
+## Info
+*2024-08-06T13:21:05.293Z*
+Success: connected to database
+## Info
+*2024-08-06T13:21:05.355Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-06T13:21:10.436Z*
+Success : connected to database
+## Info
+*2024-08-06T13:21:21.922Z*
+```javascript
+{
+  "accepted": [
+    "user@example.com"
+  ],
+  "rejected": [],
+  "ehlo": [
+    "PIPELINING",
+    "8BITMIME",
+    "ENHANCEDSTATUSCODES",
+    "CHUNKING",
+    "AUTH PLAIN LOGIN CRAM-MD5",
+    "SIZE 20971520"
+  ],
+  "envelopeTime": 699,
+  "messageTime": 302,
+  "messageSize": 2276,
+  "response": "250 2.0.0 OK: queued as <3e153e29-6bf7-c4c4-ff6a-a4e221713a8b@gmail.com>",
+  "envelope": {
+    "from": "adefuyeabayomi16@gmail.com",
+    "to": [
+      "user@example.com"
+    ]
+  },
+  "messageId": "<3e153e29-6bf7-c4c4-ff6a-a4e221713a8b@gmail.com>"
+}
+```
+## Info
+*2024-08-06T13:22:08.010Z*
+Success: connected to database
+## Info
+*2024-08-06T13:22:08.089Z*
+Server running on http://localhost:8080
+## Error
+*2024-08-06T13:22:32.177Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-08-06T13:22:32.182Z*
+Error in connecting to database
+## Error
+*2024-08-06T13:22:32.185Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-08-07T01:50:54.735Z*
+Success: connected to database
+## Info
+*2024-08-07T01:50:54.853Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T01:50:58.280Z*
+Success : connected to database
+## Info
+*2024-08-07T01:57:58.538Z*
+Success: connected to database
+## Info
+*2024-08-07T01:57:58.687Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T01:58:01.545Z*
+Success : connected to database
+## Info
+*2024-08-07T02:06:06.831Z*
+Success: connected to database
+## Info
+*2024-08-07T02:06:06.980Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:06:13.536Z*
+Success : connected to database
+## Info
+*2024-08-07T02:07:25.094Z*
+Success: connected to database
+## Info
+*2024-08-07T02:07:25.222Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:08:51.045Z*
+Success: connected to database
+## Info
+*2024-08-07T02:08:51.175Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:08:56.768Z*
+Success : connected to database
+## Info
+*2024-08-07T02:11:57.656Z*
+Success: connected to database
+## Info
+*2024-08-07T02:11:57.931Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:12:02.300Z*
+Success : connected to database
+## Info
+*2024-08-07T02:18:04.106Z*
+Success: connected to database
+## Info
+*2024-08-07T02:18:04.182Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:18:07.240Z*
+Success : connected to database
+## Info
+*2024-08-07T02:18:23.133Z*
+Success: connected to database
+## Info
+*2024-08-07T02:18:23.389Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:18:33.533Z*
+Success: connected to database
+## Info
+*2024-08-07T02:18:33.617Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:18:38.352Z*
+Success : connected to database
+## Info
+*2024-08-07T02:19:25.911Z*
+Success: connected to database
+## Info
+*2024-08-07T02:19:26.057Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:19:29.158Z*
+Success : connected to database
+## Info
+*2024-08-07T02:20:42.565Z*
+Success: connected to database
+## Info
+*2024-08-07T02:20:42.713Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:20:49.181Z*
+Success : connected to database
+## Info
+*2024-08-07T02:21:23.283Z*
+Success: connected to database
+## Info
+*2024-08-07T02:21:23.729Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:21:37.042Z*
+Success: connected to database
+## Info
+*2024-08-07T02:21:37.189Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:21:57.018Z*
+Success: connected to database
+## Info
+*2024-08-07T02:21:57.184Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:22:03.552Z*
+Success : connected to database
+## Info
+*2024-08-07T02:22:16.547Z*
+Success: connected to database
+## Info
+*2024-08-07T02:22:16.722Z*
+Server running on http://localhost:8080
+## Info
+*2024-08-07T02:22:19.482Z*
+Success : connected to database

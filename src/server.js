@@ -23,9 +23,9 @@ const connectDB = require("./utils/dbConnect");
 
 let database;
 if (config.NODE_ENV == "production") {
-  database = process.env.PROD_DB;
+  database = config.PROD_DB;
 } else if (config.NODE_ENV == "development") {
-  database = "mongodb://localhost:27017/development";
+  database = config.PROD_DB;
 } else {
   database = "mongodb://localhost:27017/test";
 }

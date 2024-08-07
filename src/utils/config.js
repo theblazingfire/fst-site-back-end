@@ -17,6 +17,7 @@ const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY;
 const cloudingaryApiSecret = process.env.CLOUDINARY_API_SECRET;
 const companyCallLine = ''
 const companySupportMail = ''
+const adminMails = process.env.ADMIN_MAILS.split(',')
 
 module.exports = {
   port,
@@ -35,5 +36,6 @@ module.exports = {
   cloudingaryApiSecret,
   cloudinaryName,
   companyCallLine,
-  companySupportMail
+  companySupportMail,
+  adminMails
 };
