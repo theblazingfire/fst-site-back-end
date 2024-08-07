@@ -330,42 +330,6 @@ paths:
         "409":
           description: Email already registered
 
-  /auth/signup/admin:
-    post:
-      tags:
-        - Auth
-      summary: Admin Signup
-      description: Signup a new admin user
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                password:
-                  type: string
-              required:
-                - email
-                - password
-      responses:
-        "201":
-          description: Admin created successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-        "400":
-          description: Invalid input
-        "409":
-          description: Email already registered
-
   /auth/login:
     post:
       tags:
@@ -384,9 +348,12 @@ paths:
                   format: email
                 password:
                   type: string
+                role:
+                  type: string
               required:
                 - email
                 - password
+                - role
       responses:
         "200":
           description: Login successful
