@@ -12,6 +12,7 @@ const helmet = require("helmet");
 const pingRoute = require("./routes/ping.route");
 const authRoute = require("./routes/auth.route");
 const profileRoutes = require('./routes/profile.route');
+const customerSupportRoute = require('./routes/customer_messages.route')
 
 const YAML = require("yamljs");
 const path = require("path");
@@ -54,6 +55,7 @@ app.use(express.json()); // body parsing middleware
 app.use("/", pingRoute);
 app.use("/auth", authRoute);
 app.use('/profile', profileRoutes);
+app.use('/',customerSupportRoute)
 //setup complete
 app.use(errorHandler);
 

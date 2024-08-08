@@ -95,74 +95,6 @@ const signupWithEmailAndPassword = async (req, res) => {
   }
 };
 
-const signupAdmin = async (req, res) => {
-  const { email, password, recoveryEmail } = req.body;
-
-  // Validate email and password
-  if (!email || !password) {
-    logger.errorLogger("Email and password are required");
-    return res.status(400).send("Email and password are required.");
-  }
-
-  if (password.length < 8) {
-    logger.errorLogger("Password must be at least 8 characters long");
-    return res.status(400).send("Password must be at least 8 characters long.");
-  }
-
-  try {
-    // Check if email is already registered
-    const existingUser = await Auth.findOne({ email });
-    if (existingUser) {
-      logger.errorLogger("Email is already registered");
-      return res.status(409).send("Email is already registered.");
-    }
-
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Generate verification token
-    const verifyTokenString = generateRandomString(16);
-    const verifyToken = jwt.sign(
-      { email, verifyTokenString },
-      config.JWT_SECRET,
-      { expiresIn: "24h" },
-    );
-
-    const token = jwt.sign({ email, role: "admin" }, config.JWT_SECRET, {
-      expiresIn: "24h",
-    });
-
-    // Create new admin user
-    const newAdmin = new Auth({
-      email,
-      hash: hashedPassword,
-      recoveryEmail,
-      role: "admin",
-      verifyTokenString,
-    });
-
-    await newAdmin.save();
-
-    // Send welcome email
-    mailOptions.to = email;
-    mailOptions.subject = "Welcome to the Admin Team";
-    mailOptions.html = emailTemplates.welcome("Admin");
-
-    await transporter.sendMail(mailOptions);
-
-    // Send verification email
-    mailOptions.subject = "Please Verify Your Email";
-    mailOptions.html = emailTemplates.verify("Admin", newAdmin._id, verifyToken);
-
-    let mailSent = await transporter.sendMail(mailOptions);
-    logger.infoLogger(mailSent)
-
-    res.status(201).json({ token });
-  } catch (error) {
-    logger.errorLogger(error);
-    res.status(500).send("Error creating admin user.");
-  }
-};
 
 const resendVerificationEmail = async (req, res) => {
   const { email } = req.body;
@@ -474,7 +406,6 @@ const tokenIsValid = async (req, res) => {
 
 module.exports = {
   signupWithEmailAndPassword,
-  signupAdmin,
   verifyEmail,
   login,
   updateUserDetails,

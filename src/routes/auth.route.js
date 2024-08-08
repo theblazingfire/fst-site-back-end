@@ -7,7 +7,6 @@ router.post(
   "/signup/emailandpassword",
   authController.signupWithEmailAndPassword,
 );
-router.post("/signup/admin", authController.signupAdmin);
 router.get("/verify", authController.verifyEmail);
 router.post("/login", authController.login);
 router.put("/update", verifyToken, authController.updateUserDetails);
