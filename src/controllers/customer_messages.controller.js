@@ -78,6 +78,7 @@ const getCustomerMessages = async (req, res) => {
 const replyToCustomerMessage = async (req, res) => {
   const { messageId } = req.params;
   const { replyMessage } = req.body;
+  console.log('replying',replyMessage)
 
   try {
     // Find the customer message by ID
@@ -93,6 +94,7 @@ const replyToCustomerMessage = async (req, res) => {
       subject: "Your message has been replied",
       html: emailTemplates.reply(customerMessage.email, replyMessage)
     };
+    
     await transporter.sendMail(replyEmailOptions);
 
     // Update the message as replied

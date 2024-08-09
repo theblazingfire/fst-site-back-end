@@ -183,8 +183,22 @@ function passwordReset(name, resetToken, role) {
   `;
 }
 
+const reply = (email, replyMessage) => `
+  <html>
+  <body>
+    <p>Dear User,</p>
+    <p>Thank you for reaching out to us. Here is our reply to your message:</p>
+    <blockquote>${replyMessage}</blockquote>
+    <p>Best regards,<br>Joegreen Cafeteria</p>
+    <div style="height: 20px;"></div>
+    <small><i>For support, contact us via</i> <br>Company Mail: joegreencafeteriaservice@gmail.com <br> Call: 0916478 0187, 07043536861 </small>
+  </body>
+  </html>
+`;
+
 module.exports = {
   welcome,
   verify,
   passwordReset,
+  reply
 };

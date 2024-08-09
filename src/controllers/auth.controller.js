@@ -10,8 +10,8 @@ const logger = require("../utils/logger");
 
 const signupWithEmailAndPassword = async (req, res) => {
   const { email, password, recoveryEmail, role } = req.body;
-  let acceptableRole = ['user','admin']
-  let roleValid = acceptableRole.includes(role)
+  let acceptableRole = ["user", "admin"];
+  let roleValid = acceptableRole.includes(role);
   // Validate email
   if (!validator.isEmail(email)) {
     return res.status(400).json({ message: "Invalid email format" });
@@ -34,10 +34,13 @@ const signupWithEmailAndPassword = async (req, res) => {
     const existingUser = await Auth.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already registered" });
-    }
-    
-    else if(role == 'admin' && !config.adminMails.includes(email)){
-      return res.status(403).json({ error:'Forbidden', message: "You are not allowed to signup as an admin"})
+    } else if (role == "admin" && !config.adminMails.includes(email)) {
+      return res
+        .status(403)
+        .json({
+          error: "Forbidden",
+          message: "You are not allowed to signup as an admin",
+        });
     }
 
     // Hash the password
@@ -64,7 +67,7 @@ const signupWithEmailAndPassword = async (req, res) => {
 
     // Generate JWT token for session
     const token = jwt.sign(
-      { id: newUser._id, email: newUser.email, role: newUser.role },
+      { userId: newUser._id, email: newUser.email, role: newUser.role },
       config.JWT_SECRET,
       { expiresIn: "24h" },
     );
@@ -95,6 +98,69 @@ const signupWithEmailAndPassword = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
+  const { email, password, role } = req.body;
+  let acceptableRole = ["user", "admin"];
+  let roleValid = acceptableRole.includes(role);
+  // Validate email
+  if (!validator.isEmail(email)) {
+    return res.status(400).json({ message: "Invalid email format" });
+  }
+
+  // Validate email
+  if (!roleValid) {
+    return res.status(400).json({ message: "Invalid role" });
+  }
+
+  try {
+    // Check if the user exists
+    const authUser = await Auth.findOne({ email });
+    if (!authUser) {
+      logger.errorLogger("Invalid email or password");
+      return res.status(400).json({ message: "Invalid email or password" });
+    }
+
+    // Check if the account is disabled or deleted
+    if (authUser.deleted) {
+      logger.errorLogger("Account is deleted");
+      return res.status(403).json({ message: "Account has been deleted" });
+    }
+    // Check if the account is disabled or deleted
+    if (authUser.disabled || authUser.deleted) {
+      logger.errorLogger("Account is disabled");
+      return res.status(403).json({ message: "Account has been disabled" });
+    }
+
+    if (authUser.role !== role) {
+      logger.errorLogger("Role Mismatch. Forbidden Login");
+      return res
+        .status(403)
+        .json({
+          message:
+            "Role Missmatch. You should sign up with the appropriate role.",
+        });
+    }
+
+    // Verify the password
+    const isMatch = await bcrypt.compare(password, authUser.hash);
+    if (!isMatch) {
+      logger.errorLogger("Invalid email or password");
+      return res.status(400).json({ message: "Invalid email or password" });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign(
+      { userId: authUser._id, email: authUser.email, role: authUser.role },
+      config.JWT_SECRET,
+      { expiresIn: "24h" }, // Token expires in 1 hour
+    );
+    return res.status(200).json({ token });
+  } catch (error) {
+    logger.errorLogger(error.message);
+    logger.errorLogger(error);
+    return res.status(500).json({ message: "Server error" });
+  }
+}
 
 const resendVerificationEmail = async (req, res) => {
   const { email } = req.body;
@@ -121,7 +187,7 @@ const resendVerificationEmail = async (req, res) => {
     const verifyToken = jwt.sign(
       { email, verifyTokenString },
       config.JWT_SECRET,
-      { expiresIn: "24h" }
+      { expiresIn: "24h" },
     );
 
     // Update user's verifyTokenString
@@ -152,10 +218,10 @@ const verifyEmail = async (req, res) => {
 
     const authUser = await Auth.findById(user);
     if (!authUser) {
-      return res.status(400).json({ message: "Invalid user"});
+      return res.status(400).json({ message: "Invalid user" });
     }
-    logger.infoLogger(decoded)
-    logger.infoLogger(authUser)
+    logger.infoLogger(decoded);
+    logger.infoLogger(authUser);
 
     if (authUser.verifyTokenString !== decoded.verifyTokenString) {
       return res.status(400).json({ message: "Invalid token" });
@@ -176,65 +242,6 @@ const verifyEmail = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
-  const { email, password, role } = req.body;
-  let acceptableRole = ['user','admin']
-  let roleValid = acceptableRole.includes(role)
-  // Validate email
-  if (!validator.isEmail(email)) {
-    return res.status(400).json({ message: "Invalid email format" });
-  }
-
-  // Validate email
-  if (!roleValid) {
-    return res.status(400).json({ message: "Invalid role" });
-  }
-
-  try {
-    // Check if the user exists
-    const authUser = await Auth.findOne({ email });
-    if (!authUser) {
-      logger.errorLogger("Invalid email or password");
-      return res.status(400).json({ message: "Invalid email or password" });
-    }
-
-    // Check if the account is disabled or deleted
-    if (authUser.deleted) {
-      logger.errorLogger("Account is deleted");
-      return res.status(403).json({ message: "Account has been deleted" });
-    }
-    // Check if the account is disabled or deleted
-    if (authUser.disabled || authUser.deleted) {
-      logger.errorLogger("Account is disabled");
-      return res.status(403).json({ message: "Account has been disabled" });
-    }
-
-    if(authUser.role !== role){
-        logger.errorLogger("Role Mismatch. Forbidden Login");
-        return res.status(403).json({ message: "Role Missmatch. You should sign up with the appropriate role." });
-    }
-
-    // Verify the password
-    const isMatch = await bcrypt.compare(password, authUser.hash);
-    if (!isMatch) {
-      logger.errorLogger("Invalid email or password");
-      return res.status(400).json({ message: "Invalid email or password" });
-    }
-
-    // Generate JWT token
-    const token = jwt.sign(
-      { userId: authUser._id, email: authUser.email, role : authUser.role },
-      config.JWT_SECRET,
-      { expiresIn: "24h" }, // Token expires in 1 hour
-    )
-    return res.status(200).json({ token });
-  } catch (error) {
-    logger.errorLogger(error.message);
-    logger.errorLogger(error);
-    return res.status(500).json({ message: "Server error" });
-  }
-};
-
 const updateUserDetails = async (req, res) => {
   const { email, password, recoveryEmail } = req.body;
   const userId = req.user.userId;
@@ -249,6 +256,9 @@ const updateUserDetails = async (req, res) => {
 
     // Update email if provided
     if (email) {
+      if(!validator.isEmail(email)){
+        return res.status(400).json("Invalid email format")
+      }
       // Check if the new email is already registered
       const existingUser = await Auth.findOne({ email });
       if (existingUser && existingUser._id.toString() !== userId) {
@@ -272,6 +282,9 @@ const updateUserDetails = async (req, res) => {
 
     // Update recovery email if provided
     if (recoveryEmail) {
+      if(!validator.isEmail(recoveryEmail)){
+        return res.status(400).json("Invalid email format")
+      }
       authUser.recoveryEmail = recoveryEmail;
     }
 
@@ -288,15 +301,23 @@ const updateUserDetails = async (req, res) => {
 };
 
 const deleteAccount = async (req, res) => {
-  const userId = req.user.userId;
+  let { email }= req.query
+
+  if(!(req.user.email == email || req.user.role == 'admin')){
+    return res.status(403).json({message: 'you are not permitted to delete this account.'})
+  }
 
   try {
     // Find and delete the user account
-    const deletedUser = await Auth.findByIdAndDelete(userId);
+    const deletedUser = await Auth.find({email});
+    
     if (!deletedUser) {
       logger.errorLogger("User not found");
       return res.status(404).json({ message: "User not found" });
     }
+
+    deletedUser.deleted = true
+    await deletedUser.save()
 
     return res.status(200).json({ message: "Account deleted successfully" });
   } catch (error) {
@@ -307,20 +328,23 @@ const deleteAccount = async (req, res) => {
 
 // Disable user account
 const disableAccount = async (req, res) => {
-  const userId = req.user.userId;
+  let {email}=req.body
+
+  if(!(req.user.email == email || req.user.role == 'admin')){
+    return res.status(403).json({message: 'You are not permitted to disable this account.'})
+  }
 
   try {
     // Find the user account and update the disabled flag
-    const user = await Auth.findByIdAndUpdate(
-      userId,
-      { disabled: true },
-      { new: true },
-    );
+    let user = await Auth.find({email})
+
     if (!user) {
       logger.errorLogger("User not found");
       return res.status(404).json({ message: "User not found" });
     }
-
+    
+    user.disabled = true;
+    await user.save()
     return res.status(200).json({ message: "Account disabled successfully" });
   } catch (error) {
     logger.errorLogger(error.message);
@@ -338,11 +362,15 @@ const forgotPassword = async (req, res) => {
       return res.status(404).json({ message: "Email not registered" });
     }
     let resetTokenString = generateRandomString(10);
-    const resetToken = jwt.sign({ userId: user._id, resetTokenString}, config.JWT_SECRET, {
-      expiresIn: "24h",
-    });
+    const resetToken = jwt.sign(
+      { userId: user._id, resetTokenString },
+      config.JWT_SECRET,
+      {
+        expiresIn: "24h",
+      },
+    );
 
-    user.resetTokenString = resetTokenString
+    user.resetTokenString = resetTokenString;
     await user.save();
 
     const mailOptionsWithReset = {
@@ -392,15 +420,15 @@ const tokenIsValid = async (req, res) => {
   try {
     jwt.verify(token, config.JWT_SECRET, (err, decoded) => {
       if (err) {
-        return res.status(403).json({ message: 'Token is not valid'});
+        return res.status(403).json({ message: "Token is not valid" });
       }
       res.status(200).json({ isValid: true });
     });
   } catch (error) {
-    console.error({error})
-    logger.errorLogger('Error: Is invalid')
+    console.error({ error });
+    logger.errorLogger("Error: Is invalid");
     logger.errorLogger(error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -414,5 +442,5 @@ module.exports = {
   forgotPassword,
   resetPassword,
   tokenIsValid,
-  resendVerificationEmail
+  resendVerificationEmail,
 };

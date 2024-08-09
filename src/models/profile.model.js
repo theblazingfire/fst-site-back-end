@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Function to generate a random username
 const generateRandomUsername = () => {
@@ -8,7 +8,7 @@ const generateRandomUsername = () => {
 const profileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Auth',
+    ref: "Auth",
     required: true,
   },
   username: {
@@ -17,20 +17,20 @@ const profileSchema = new mongoose.Schema({
   },
   profileImage: {
     type: String,
-    default: '',
+    default: "",
   },
   firstName: {
     type: String,
-    default: '',
+    default: "",
   },
   lastName: {
     type: String,
-    default: '',
+    default: "",
   },
   gender: {
     type: String,
-    enum: ['Male', 'Female', 'Other'],
-    default: 'Other',
+    enum: ["Male", "Female", "Other"],
+    default: "Other",
   },
   dateOfBirth: {
     type: Date,
@@ -38,22 +38,26 @@ const profileSchema = new mongoose.Schema({
   },
   bio: {
     type: String,
-    default: '',
+    default: "",
   },
   location: {
     type: String,
-    default: '',
+    default: "",
   },
   website: {
     type: String,
-    default: '',
+    default: "",
   },
   created: {
     type: Date,
     default: Date.now,
   },
+  deleted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-const Profile = mongoose.model('Profile', profileSchema);
+const Profile = mongoose.model("Profile", profileSchema);
 
 module.exports = Profile;
