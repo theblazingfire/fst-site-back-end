@@ -73,7 +73,7 @@ components:
           type: string
           format: date-time
           example: "2023-07-18T12:34:56Z"
-        
+
 paths:
   /profile:
     post:
@@ -87,14 +87,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Profile'
+              $ref: "#/components/schemas/Profile"
       responses:
         201:
           description: Profile created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Profile'
+                $ref: "#/components/schemas/Profile"
         400:
           description: Bad request
         500:
@@ -124,7 +124,7 @@ paths:
                   profiles:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Profile'
+                      $ref: "#/components/schemas/Profile"
                   currentPage:
                     type: integer
                   totalPages:
@@ -161,7 +161,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Profile'
+                  $ref: "#/components/schemas/Profile"
         500:
           description: Error searching profiles
 
@@ -185,7 +185,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Profile'
+                $ref: "#/components/schemas/Profile"
         404:
           description: Profile not found
         500:
@@ -530,7 +530,7 @@ paths:
                   example: user@example.com
                   description: The email address of the user to whom the verification email will be sent.
       responses:
-        '200':
+        "200":
           description: Verification email sent successfully
           content:
             application/json:
@@ -541,7 +541,7 @@ paths:
                     type: string
                     example: Verification email sent
                     description: Success message indicating the verification email was sent.
-        '400':
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -552,7 +552,7 @@ paths:
                     type: string
                     example: Invalid email format
                     description: Error message for invalid email or already verified email.
-        '404':
+        "404":
           description: User Not Found
           content:
             application/json:
@@ -563,7 +563,7 @@ paths:
                     type: string
                     example: User not found
                     description: Error message when the user is not found in the database.
-        '500':
+        "500":
           description: Internal Server Error
           content:
             application/json:
@@ -630,3 +630,176 @@ paths:
           description: Application logs cleared
         500:
           description: Error clearing application logs
+  /messages:
+    post:
+      summary: Post a new customer message
+      tags: [CustomerSupport]
+      description: Receive a new message from a customer and save it to the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: customer@example.com
+                message:
+                  type: string
+                  example: I have an issue with my order.
+              required:
+                - email
+                - message
+      responses:
+        '201':
+          description: Message received successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Message received successfully
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid email format
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Server error
+
+    get:
+      summary: Retrieve customer messages
+      tags: [CustomerSupport]
+      description: Retrieve a list of customer messages with optional filtering.
+      parameters:
+        - name: replied
+          in: query
+          description: Filter messages by whether they have been replied to.
+          schema:
+            type: boolean
+        - name: startDate
+          in: query
+          description: Filter messages created on or after this date (ISO 8601 format).
+          schema:
+            type: string
+            format: date-time
+        - name: endDate
+          in: query
+          description: Filter messages created on or before this date (ISO 8601 format).
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: List of customer messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                    email:
+                      type: string
+                    message:
+                      type: string
+                    created:
+                      type: string
+                      format: date-time
+                    replied:
+                      type: boolean
+        '400':
+          description: Invalid query parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid startDate format
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Server error
+
+  /messages/{messageId}/reply:
+    post:
+      summary: Reply to a customer message
+      tags: [CustomerSupport]
+      description: Admin replies to a customer message and updates the message status to replied.
+      parameters:
+        - name: messageId
+          in: path
+          required: true
+          description: ID of the message to reply to
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                replyMessage:
+                  type: string
+                  example: Thank you for reaching out. Your issue has been addressed.
+              required:
+                - replyMessage
+      responses:
+        '200':
+          description: Reply sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Reply sent successfully
+        '404':
+          description: Message not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Message not found
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Server error
