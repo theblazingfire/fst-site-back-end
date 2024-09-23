@@ -13,6 +13,8 @@ const pingRoute = require("./routes/ping.route");
 const authRoute = require("./routes/auth.route");
 const profileRoutes = require('./routes/profile.route');
 const customerSupportRoute = require('./routes/customer_messages.route')
+const notificationRoute = require('./routes/notification.route')
+const chatRoute = require('./routes/chat.route')
 
 const YAML = require("yamljs");
 const path = require("path");
@@ -56,6 +58,8 @@ app.use("/", pingRoute);
 app.use("/auth", authRoute);
 app.use('/profile', profileRoutes);
 app.use('/',customerSupportRoute)
+app.use('/notifications',notificationRoute)
+app.use('/chats',chatRoute)
 //setup complete
 app.use(errorHandler);
 
@@ -63,7 +67,14 @@ app.use(errorHandler);
 const server = http.createServer(app);
 
 // Integrate Socket.IO
-const io = socketIo(server);
+const io = socketIo(server, {
+  cors: {
+    origin: "http://localhost:5173", // Replace with your frontend URL
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Authorization", "Content-Type"],
+    credentials: true, // Allow credentials (cookies, authorization headers)
+  },
+});
 io.on("connection", (socket) => {
   logger.infoLogger("A user connected - socket.io");
 

@@ -2515,3 +2515,369 @@ Server running on http://localhost:8080
 ## Info
 *2024-08-07T02:22:19.482Z*
 Success : connected to database
+## Info
+*2024-09-23T13:20:24.590Z*
+Success: connected to database
+## Info
+*2024-09-23T13:20:24.678Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T13:20:30.715Z*
+Success : connected to database
+## Info
+*2024-09-23T13:24:36.895Z*
+Success: connected to database
+## Info
+*2024-09-23T13:24:37.023Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T13:24:39.956Z*
+Success : connected to database
+## Info
+*2024-09-23T13:24:46.627Z*
+Success: connected to database
+## Info
+*2024-09-23T13:24:46.740Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T13:24:49.247Z*
+Success : connected to database
+## Info
+*2024-09-23T13:25:15.914Z*
+Success: connected to database
+## Info
+*2024-09-23T13:25:15.952Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T13:25:20.390Z*
+Success : connected to database
+## Info
+*2024-09-23T13:25:53.707Z*
+Success: connected to database
+## Info
+*2024-09-23T13:25:53.751Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T13:25:56.907Z*
+Success : connected to database
+## Info
+*2024-09-23T13:28:51.415Z*
+Success: connected to database
+## Info
+*2024-09-23T13:28:51.458Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T13:28:51.566Z*
+A user connected - socket.io
+## Info
+*2024-09-23T13:28:54.786Z*
+Success : connected to database
+## Info
+*2024-09-23T13:29:17.881Z*
+User Disconnected
+## Info
+*2024-09-23T13:29:20.376Z*
+A user connected - socket.io
+## Info
+*2024-09-23T13:29:55.649Z*
+Message Recieved
+## Info
+*2024-09-23T13:29:55.650Z*
+olami posi
+## Info
+*2024-09-23T13:30:06.482Z*
+Message Recieved
+## Info
+*2024-09-23T13:30:06.485Z*
+Abrakadadabra
+## Info
+*2024-09-23T13:35:43.403Z*
+Message Recieved
+## Info
+*2024-09-23T13:35:43.406Z*
+fefe
+## Info
+*2024-09-23T13:36:01.022Z*
+User Disconnected
+## Info
+*2024-09-23T13:40:30.746Z*
+A user connected - socket.io
+## Info
+*2024-09-23T13:41:15.731Z*
+User Disconnected
+## Info
+*2024-09-23T13:41:19.682Z*
+A user connected - socket.io
+## Info
+*2024-09-23T13:41:26.114Z*
+Message Recieved
+## Info
+*2024-09-23T13:41:26.117Z*
+eliazar
+## Info
+*2024-09-23T13:42:16.763Z*
+Success: connected to database
+## Info
+*2024-09-23T13:42:16.803Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-23T13:42:16.877Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-23T13:42:16.885Z*
+Error in connecting to database
+## Error
+*2024-09-23T13:42:16.887Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-23T13:42:20.859Z*
+A user connected - socket.io
+## Info
+*2024-09-23T13:42:40.424Z*
+Success: connected to database
+## Info
+*2024-09-23T13:42:40.452Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-23T13:42:40.478Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-23T13:42:40.485Z*
+Error in connecting to database
+## Error
+*2024-09-23T13:42:40.487Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-23T13:42:42.063Z*
+A user connected - socket.io
+## Info
+*2024-09-23T14:59:07.355Z*
+User Disconnected
+## Info
+*2024-09-23T15:47:08.335Z*
+A user connected - socket.io
+## Info
+*2024-09-23T15:50:00.864Z*
+User Disconnected
+## Info
+*2024-09-23T15:50:03.572Z*
+A user connected - socket.io
+## Info
+*2024-09-23T15:50:11.985Z*
+Message Recieved
+## Info
+*2024-09-23T15:50:11.990Z*
+deborah
+## Info
+*2024-09-23T15:55:19.852Z*
+Success: connected to database
+## Info
+*2024-09-23T15:55:19.894Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T15:55:23.291Z*
+Success : connected to database
+## Info
+*2024-09-23T15:55:23.483Z*
+A user connected - socket.io
+## Info
+*2024-09-23T15:55:32.285Z*
+Success: connected to database
+## Info
+*2024-09-23T15:55:32.339Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T15:55:32.793Z*
+A user connected - socket.io
+## Info
+*2024-09-23T15:55:35.076Z*
+Success : connected to database
+## Info
+*2024-09-23T15:56:15.423Z*
+Success: connected to database
+## Info
+*2024-09-23T15:56:15.471Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T15:56:20.433Z*
+Success: connected to database
+## Info
+*2024-09-23T15:56:20.522Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T15:56:20.874Z*
+A user connected - socket.io
+## Info
+*2024-09-23T15:56:23.444Z*
+Success : connected to database
+## Info
+*2024-09-23T15:56:27.007Z*
+Success: connected to database
+## Info
+*2024-09-23T15:56:27.027Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T15:56:27.269Z*
+A user connected - socket.io
+## Info
+*2024-09-23T15:56:30.537Z*
+Success: connected to database
+## Info
+*2024-09-23T15:56:30.605Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T15:56:30.855Z*
+A user connected - socket.io
+## Info
+*2024-09-23T15:56:33.179Z*
+Success : connected to database
+## Info
+*2024-09-23T15:56:37.894Z*
+Success: connected to database
+## Info
+*2024-09-23T15:56:37.965Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T15:56:38.184Z*
+A user connected - socket.io
+## Info
+*2024-09-23T15:56:40.523Z*
+Success : connected to database
+## Info
+*2024-09-23T15:56:56.069Z*
+Success: connected to database
+## Info
+*2024-09-23T15:56:56.118Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T15:56:56.479Z*
+A user connected - socket.io
+## Info
+*2024-09-23T15:56:58.766Z*
+Success : connected to database
+## Info
+*2024-09-23T16:04:12.503Z*
+Success: connected to database
+## Info
+*2024-09-23T16:04:12.595Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T16:04:13.099Z*
+A user connected - socket.io
+## Info
+*2024-09-23T16:04:17.520Z*
+Success : connected to database
+## Error
+*2024-09-23T16:04:20.994Z*
+undefined
+## Error
+*2024-09-23T16:04:48.101Z*
+undefined
+## Info
+*2024-09-23T16:05:47.403Z*
+Success: connected to database
+## Info
+*2024-09-23T16:05:47.457Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T16:05:47.647Z*
+A user connected - socket.io
+## Info
+*2024-09-23T16:05:53.191Z*
+Success : connected to database
+## Error
+*2024-09-23T16:05:58.257Z*
+undefined
+## Error
+*2024-09-23T16:07:06.920Z*
+undefined
+## Info
+*2024-09-23T16:07:53.307Z*
+Success: connected to database
+## Info
+*2024-09-23T16:07:53.357Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T16:07:56.950Z*
+Success: connected to database
+## Info
+*2024-09-23T16:07:56.982Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T16:07:59.491Z*
+A user connected - socket.io
+## Info
+*2024-09-23T16:07:59.750Z*
+Success : connected to database
+## Info
+*2024-09-23T16:08:23.102Z*
+Success: connected to database
+## Info
+*2024-09-23T16:08:23.155Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T16:08:23.304Z*
+A user connected - socket.io
+## Info
+*2024-09-23T16:08:27.904Z*
+Success : connected to database
+## Error
+*2024-09-23T16:08:35.063Z*
+undefined
+## Info
+*2024-09-23T16:09:27.081Z*
+Success: connected to database
+## Info
+*2024-09-23T16:09:27.175Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T16:09:27.467Z*
+A user connected - socket.io
+## Info
+*2024-09-23T16:09:32.891Z*
+Success : connected to database
+## Info
+*2024-09-23T16:19:33.472Z*
+User Disconnected
+## Info
+*2024-09-23T16:38:44.449Z*
+A user connected - socket.io
+## Info
+*2024-09-23T16:51:27.079Z*
+User Disconnected
+## Info
+*2024-09-23T16:51:30.279Z*
+A user connected - socket.io
+## Info
+*2024-09-23T17:02:22.502Z*
+User Disconnected
+## Info
+*2024-09-23T17:17:10.101Z*
+A user connected - socket.io
+## Info
+*2024-09-23T19:12:14.148Z*
+User Disconnected
