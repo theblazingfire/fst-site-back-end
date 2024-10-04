@@ -2881,3 +2881,2176 @@ A user connected - socket.io
 ## Info
 *2024-09-23T19:12:14.148Z*
 User Disconnected
+## Info
+*2024-09-23T22:20:00.524Z*
+Success: connected to database
+## Info
+*2024-09-23T22:20:00.590Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T22:20:03.858Z*
+Success : connected to database
+## Info
+*2024-09-23T22:21:04.226Z*
+Success: connected to database
+## Info
+*2024-09-23T22:21:04.310Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T22:21:07.520Z*
+Success : connected to database
+## Info
+*2024-09-23T22:22:10.685Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:26:57.745Z*
+User Disconnected
+## Info
+*2024-09-23T22:27:00.702Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:27:01.709Z*
+User Disconnected
+## Info
+*2024-09-23T22:27:03.673Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:29:11.962Z*
+User Disconnected
+## Info
+*2024-09-23T22:29:16.067Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:30:02.700Z*
+User Disconnected
+## Info
+*2024-09-23T22:30:17.731Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:31:27.665Z*
+User Disconnected
+## Info
+*2024-09-23T22:31:31.607Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:31:31.676Z*
+User Disconnected
+## Info
+*2024-09-23T22:31:34.307Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:31:35.709Z*
+User Disconnected
+## Info
+*2024-09-23T22:31:37.912Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:31:38.752Z*
+User Disconnected
+## Info
+*2024-09-23T22:31:40.442Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:31:56.370Z*
+User Disconnected
+## Info
+*2024-09-23T22:31:57.998Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:32:09.579Z*
+User Disconnected
+## Info
+*2024-09-23T22:32:11.946Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:35:50.936Z*
+User Disconnected
+## Info
+*2024-09-23T22:35:53.146Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:38:43.997Z*
+User Disconnected
+## Info
+*2024-09-23T22:38:47.660Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:48:24.785Z*
+User Disconnected
+## Info
+*2024-09-23T22:48:27.792Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:55:23.718Z*
+User Disconnected
+## Info
+*2024-09-23T22:55:42.847Z*
+A user connected - socket.io
+## Info
+*2024-09-23T22:56:22.644Z*
+User Disconnected
+## Info
+*2024-09-23T22:56:29.955Z*
+A user connected - socket.io
+## Info
+*2024-09-23T23:20:56.574Z*
+Success: connected to database
+## Info
+*2024-09-23T23:20:56.615Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T23:20:59.325Z*
+Success : connected to database
+## Info
+*2024-09-23T23:20:59.654Z*
+A user connected - socket.io
+## Info
+*2024-09-23T23:24:23.417Z*
+Message Recieved
+## Info
+*2024-09-23T23:24:23.420Z*
+baller
+## Info
+*2024-09-23T23:26:30.642Z*
+Message Recieved
+## Info
+*2024-09-23T23:26:30.644Z*
+ololade
+## Info
+*2024-09-23T23:26:40.933Z*
+Message Recieved
+## Info
+*2024-09-23T23:26:40.935Z*
+oroboto idi shan mana
+## Info
+*2024-09-23T23:27:52.091Z*
+Message Recieved
+## Info
+*2024-09-23T23:27:52.095Z*
+briad
+## Info
+*2024-09-23T23:53:03.664Z*
+User Disconnected
+## Info
+*2024-09-23T23:53:03.702Z*
+A user connected - socket.io
+## Info
+*2024-09-23T23:54:18.663Z*
+User Disconnected
+## Info
+*2024-09-23T23:54:18.694Z*
+A user connected - socket.io
+## Info
+*2024-09-23T23:57:31.053Z*
+Success: connected to database
+## Info
+*2024-09-23T23:57:31.103Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T23:57:31.203Z*
+A user connected - socket.io
+## Info
+*2024-09-23T23:57:33.787Z*
+Success : connected to database
+## Info
+*2024-09-23T23:57:43.501Z*
+Success: connected to database
+## Info
+*2024-09-23T23:57:43.543Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-23T23:57:43.699Z*
+A user connected - socket.io
+## Info
+*2024-09-23T23:57:46.038Z*
+Success : connected to database
+## Info
+*2024-09-24T00:00:00.659Z*
+User Disconnected
+## Info
+*2024-09-24T00:00:01.767Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:01:13.091Z*
+User Disconnected
+## Info
+*2024-09-24T00:01:15.946Z*
+A user connected - socket.io
+## Error
+*2024-09-24T00:01:43.440Z*
+undefined
+## Error
+*2024-09-24T00:01:43.466Z*
+undefined
+## Info
+*2024-09-24T00:03:01.385Z*
+Success: connected to database
+## Info
+*2024-09-24T00:03:01.428Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:03:01.773Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:03:04.419Z*
+Success : connected to database
+## Info
+*2024-09-24T00:03:37.363Z*
+Success: connected to database
+## Info
+*2024-09-24T00:03:37.406Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:03:37.677Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:03:39.859Z*
+Success : connected to database
+## Error
+*2024-09-24T00:03:45.969Z*
+undefined
+## Error
+*2024-09-24T00:03:46.024Z*
+undefined
+## Info
+*2024-09-24T00:06:12.449Z*
+User Disconnected
+## Info
+*2024-09-24T00:06:14.927Z*
+A user connected - socket.io
+## Error
+*2024-09-24T00:06:34.582Z*
+undefined
+## Error
+*2024-09-24T00:06:34.602Z*
+undefined
+## Info
+*2024-09-24T00:07:00.208Z*
+Success: connected to database
+## Info
+*2024-09-24T00:07:00.254Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:07:01.697Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:07:02.971Z*
+Success : connected to database
+## Error
+*2024-09-24T00:07:13.366Z*
+undefined
+## Error
+*2024-09-24T00:07:13.491Z*
+undefined
+## Info
+*2024-09-24T00:08:09.677Z*
+User Disconnected
+## Info
+*2024-09-24T00:08:11.328Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:08:42.846Z*
+User Disconnected
+## Info
+*2024-09-24T00:08:52.166Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:09:45.784Z*
+Success: connected to database
+## Info
+*2024-09-24T00:09:45.836Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:09:45.930Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:09:48.411Z*
+Success : connected to database
+## Info
+*2024-09-24T00:09:55.015Z*
+Success: connected to database
+## Info
+*2024-09-24T00:09:55.066Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:09:55.374Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:09:57.686Z*
+Success : connected to database
+## Info
+*2024-09-24T00:10:16.427Z*
+Success: connected to database
+## Info
+*2024-09-24T00:10:16.466Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:10:16.699Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:10:18.896Z*
+Success : connected to database
+## Info
+*2024-09-24T00:10:46.182Z*
+Success: connected to database
+## Info
+*2024-09-24T00:10:46.224Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:10:46.475Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:10:48.651Z*
+Success : connected to database
+## Info
+*2024-09-24T00:10:52.023Z*
+Success: connected to database
+## Info
+*2024-09-24T00:10:52.070Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:10:52.347Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:10:56.838Z*
+Success: connected to database
+## Info
+*2024-09-24T00:10:56.882Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:10:57.127Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:10:59.537Z*
+Success : connected to database
+## Info
+*2024-09-24T00:11:17.879Z*
+Success: connected to database
+## Info
+*2024-09-24T00:11:17.918Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:11:22.318Z*
+Success: connected to database
+## Info
+*2024-09-24T00:11:22.365Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:11:22.446Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:11:25.034Z*
+Success : connected to database
+## Info
+*2024-09-24T00:11:44.007Z*
+Success: connected to database
+## Info
+*2024-09-24T00:11:44.045Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T00:11:44.301Z*
+A user connected - socket.io
+## Info
+*2024-09-24T00:11:46.422Z*
+Success : connected to database
+## Info
+*2024-09-24T00:21:07.665Z*
+User Disconnected
+## Info
+*2024-09-24T00:21:11.715Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:48:43.769Z*
+Success: connected to database
+## Error
+*2024-09-24T11:48:43.792Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T11:48:43.819Z*
+Error in connecting to database
+## Error
+*2024-09-24T11:48:43.824Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T11:48:43.851Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T11:48:54.645Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:49:26.647Z*
+Success: connected to database
+## Error
+*2024-09-24T11:49:26.665Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T11:49:26.678Z*
+Error in connecting to database
+## Error
+*2024-09-24T11:49:26.682Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T11:49:26.707Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T11:49:27.434Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:52:02.111Z*
+User Disconnected
+## Info
+*2024-09-24T11:52:02.152Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:52:14.108Z*
+User Disconnected
+## Info
+*2024-09-24T11:52:14.142Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:52:15.127Z*
+User Disconnected
+## Info
+*2024-09-24T11:52:15.179Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:52:16.086Z*
+User Disconnected
+## Info
+*2024-09-24T11:52:16.120Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:52:29.114Z*
+User Disconnected
+## Info
+*2024-09-24T11:52:29.148Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:52:40.261Z*
+User Disconnected
+## Info
+*2024-09-24T11:52:40.289Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:52:57.102Z*
+User Disconnected
+## Info
+*2024-09-24T11:52:57.139Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:53:16.165Z*
+User Disconnected
+## Info
+*2024-09-24T11:53:16.206Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:53:30.291Z*
+User Disconnected
+## Info
+*2024-09-24T11:53:30.355Z*
+A user connected - socket.io
+## Info
+*2024-09-24T11:58:11.399Z*
+Success: connected to database
+## Info
+*2024-09-24T11:58:11.435Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T11:58:11.460Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T11:58:11.465Z*
+Error in connecting to database
+## Error
+*2024-09-24T11:58:11.467Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T11:58:25.632Z*
+Success: connected to database
+## Info
+*2024-09-24T11:58:25.681Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T11:58:30.889Z*
+Success: connected to database
+## Info
+*2024-09-24T11:58:30.927Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T11:58:33.611Z*
+Success : connected to database
+## Info
+*2024-09-24T11:58:41.699Z*
+Success: connected to database
+## Info
+*2024-09-24T11:58:41.748Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T11:58:41.751Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T11:58:41.755Z*
+Error in connecting to database
+## Error
+*2024-09-24T11:58:41.757Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T11:58:47.109Z*
+Success: connected to database
+## Info
+*2024-09-24T11:58:47.160Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T11:58:49.846Z*
+Success : connected to database
+## Info
+*2024-09-24T12:06:33.559Z*
+Success: connected to database
+## Info
+*2024-09-24T12:06:33.601Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T12:06:33.765Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T12:06:33.768Z*
+Error in connecting to database
+## Error
+*2024-09-24T12:06:33.769Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T12:06:48.532Z*
+Success: connected to database
+## Info
+*2024-09-24T12:06:48.620Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T12:06:48.830Z*
+A user connected - socket.io
+## Info
+*2024-09-24T12:06:51.531Z*
+Success : connected to database
+## Info
+*2024-09-24T12:06:58.642Z*
+A user connected - socket.io
+## Info
+*2024-09-24T12:07:33.826Z*
+User Disconnected
+## Error
+*2024-09-24T12:07:58.225Z*
+Invalid email or password
+## Error
+*2024-09-24T12:08:07.587Z*
+Invalid email or password
+## Error
+*2024-09-24T12:08:13.030Z*
+Invalid email or password
+## Error
+*2024-09-24T12:08:20.600Z*
+Invalid email or password
+## Info
+*2024-09-24T12:17:43.953Z*
+User Disconnected
+## Info
+*2024-09-24T12:17:44.154Z*
+A user connected - socket.io
+## Info
+*2024-09-24T12:46:23.031Z*
+User Disconnected
+## Info
+*2024-09-24T12:46:26.216Z*
+A user connected - socket.io
+## Info
+*2024-09-24T12:53:46.488Z*
+Success: connected to database
+## Info
+*2024-09-24T12:53:46.533Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T12:53:49.190Z*
+Success : connected to database
+## Info
+*2024-09-24T12:53:52.020Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:03:28.116Z*
+User Disconnected
+## Info
+*2024-09-24T13:03:28.231Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:12:30.365Z*
+Success: connected to database
+## Info
+*2024-09-24T13:12:30.426Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:12:31.040Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:12:34.723Z*
+Success: connected to database
+## Info
+*2024-09-24T13:12:34.765Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:12:38.593Z*
+Success: connected to database
+## Info
+*2024-09-24T13:12:38.633Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:12:44.335Z*
+Success: connected to database
+## Info
+*2024-09-24T13:12:44.373Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:12:44.637Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:12:47.492Z*
+Success : connected to database
+## Info
+*2024-09-24T13:13:06.674Z*
+Success: connected to database
+## Info
+*2024-09-24T13:13:06.715Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:13:06.866Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:13:11.968Z*
+Success: connected to database
+## Info
+*2024-09-24T13:13:12.016Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:13:12.281Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:13:15.479Z*
+Success: connected to database
+## Info
+*2024-09-24T13:13:15.521Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:13:15.774Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:13:19.444Z*
+Success: connected to database
+## Info
+*2024-09-24T13:13:19.484Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:13:19.532Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:13:24.007Z*
+Success: connected to database
+## Info
+*2024-09-24T13:13:24.038Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:13:24.333Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:13:26.625Z*
+Success : connected to database
+## Info
+*2024-09-24T13:13:38.247Z*
+Success: connected to database
+## Info
+*2024-09-24T13:13:38.314Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:13:38.432Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:13:41.013Z*
+Success : connected to database
+## Info
+*2024-09-24T13:13:46.278Z*
+Success: connected to database
+## Info
+*2024-09-24T13:13:46.321Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:13:46.443Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:13:51.142Z*
+Success : connected to database
+## Info
+*2024-09-24T13:13:59.704Z*
+Success: connected to database
+## Info
+*2024-09-24T13:13:59.746Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:14:00.063Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:14:02.529Z*
+Success: connected to database
+## Info
+*2024-09-24T13:14:02.572Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:14:02.865Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:14:05.260Z*
+Success : connected to database
+## Info
+*2024-09-24T13:14:20.535Z*
+Success: connected to database
+## Info
+*2024-09-24T13:14:20.569Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:14:20.799Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:14:22.926Z*
+Success : connected to database
+## Info
+*2024-09-24T13:14:32.207Z*
+Success: connected to database
+## Info
+*2024-09-24T13:14:32.253Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:14:32.393Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:14:35.103Z*
+Success: connected to database
+## Info
+*2024-09-24T13:14:35.139Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:14:35.383Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:14:38.362Z*
+Success: connected to database
+## Info
+*2024-09-24T13:14:38.402Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:14:38.595Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:14:40.925Z*
+Success : connected to database
+## Info
+*2024-09-24T13:14:58.227Z*
+Success: connected to database
+## Info
+*2024-09-24T13:14:58.280Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:14:58.520Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:15:01.085Z*
+Success : connected to database
+## Info
+*2024-09-24T13:15:28.885Z*
+User Disconnected
+## Info
+*2024-09-24T13:15:32.161Z*
+A user connected - socket.io
+## Error
+*2024-09-24T13:15:32.208Z*
+```javascript
+{
+  "stringValue": "\"\"",
+  "valueType": "string",
+  "kind": "ObjectId",
+  "value": "",
+  "path": "user",
+  "reason": {},
+  "name": "CastError",
+  "message": "Cast to ObjectId failed for value \"\" (type string) at path \"user\" for model \"Profile\""
+}
+```
+## Info
+*2024-09-24T13:18:50.228Z*
+Success: connected to database
+## Error
+*2024-09-24T13:18:50.259Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:18:50.271Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:18:50.289Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:18:50.314Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:18:50.804Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:18:56.605Z*
+Success: connected to database
+## Info
+*2024-09-24T13:18:56.656Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:18:56.830Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:18:56.836Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:18:56.838Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:18:56.989Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:19:38.905Z*
+Success: connected to database
+## Info
+*2024-09-24T13:19:38.952Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:19:38.955Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:19:38.966Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:19:38.972Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:19:39.067Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:20:42.508Z*
+Success: connected to database
+## Info
+*2024-09-24T13:20:42.546Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:20:42.837Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:20:45.408Z*
+Success : connected to database
+## Info
+*2024-09-24T13:20:57.661Z*
+Success: connected to database
+## Info
+*2024-09-24T13:20:57.706Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:21:00.062Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:21:00.553Z*
+Success : connected to database
+## Info
+*2024-09-24T13:21:15.410Z*
+Success: connected to database
+## Info
+*2024-09-24T13:21:15.457Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:21:15.756Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:21:18.135Z*
+Success : connected to database
+## Info
+*2024-09-24T13:22:18.156Z*
+User Online Event
+## Error
+*2024-09-24T13:22:18.172Z*
+```javascript
+{
+  "stringValue": "\"\"",
+  "valueType": "string",
+  "kind": "ObjectId",
+  "value": "",
+  "path": "user",
+  "reason": {},
+  "name": "CastError",
+  "message": "Cast to ObjectId failed for value \"\" (type string) at path \"user\" for model \"Profile\""
+}
+```
+## Info
+*2024-09-24T13:23:34.560Z*
+Success: connected to database
+## Info
+*2024-09-24T13:23:34.596Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:23:34.719Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:23:37.431Z*
+Success : connected to database
+## Info
+*2024-09-24T13:24:14.018Z*
+User Disconnected
+## Info
+*2024-09-24T13:24:16.605Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:24:16.650Z*
+User Online Event
+## Info
+*2024-09-24T13:25:29.525Z*
+Success: connected to database
+## Info
+*2024-09-24T13:25:29.562Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:25:29.822Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:25:32.612Z*
+Success : connected to database
+## Info
+*2024-09-24T13:26:23.118Z*
+User Online Event
+## Info
+*2024-09-24T13:26:28.043Z*
+User Online Event
+## Info
+*2024-09-24T13:26:31.064Z*
+User Online Event
+## Info
+*2024-09-24T13:26:44.045Z*
+User Online Event
+## Info
+*2024-09-24T13:27:02.083Z*
+User Online Event
+## Info
+*2024-09-24T13:27:28.045Z*
+User Online Event
+## Info
+*2024-09-24T13:27:33.064Z*
+User Online Event
+## Info
+*2024-09-24T13:30:20.971Z*
+Success: connected to database
+## Info
+*2024-09-24T13:30:21.017Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:30:23.056Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:30:23.722Z*
+Success : connected to database
+## Info
+*2024-09-24T13:30:42.031Z*
+User Disconnected
+## Info
+*2024-09-24T13:30:46.202Z*
+A user connected - socket.io
+## Error
+*2024-09-24T13:31:33.997Z*
+Invalid email or password
+## Info
+*2024-09-24T13:31:42.633Z*
+User Online Event
+## Info
+*2024-09-24T13:32:37.078Z*
+User Online Event
+## Info
+*2024-09-24T13:32:39.050Z*
+User Online Event
+## Info
+*2024-09-24T13:33:56.247Z*
+Success: connected to database
+## Info
+*2024-09-24T13:33:56.292Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:33:56.346Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:33:59.008Z*
+Success : connected to database
+## Info
+*2024-09-24T13:34:20.139Z*
+User Online Event - userId: 66f2ad0ff439289667199515, socketId: wh9dT7tzq835DC8lAAAB
+## Info
+*2024-09-24T13:34:20.443Z*
+No user found or socket ID already up-to-date for user 66f2ad0ff439289667199515
+## Info
+*2024-09-24T13:34:53.195Z*
+Success: connected to database
+## Info
+*2024-09-24T13:34:53.232Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:34:53.425Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:34:55.819Z*
+Success : connected to database
+## Info
+*2024-09-24T13:35:10.510Z*
+Success: connected to database
+## Info
+*2024-09-24T13:35:10.558Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:35:15.040Z*
+Success: connected to database
+## Info
+*2024-09-24T13:35:15.098Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:35:19.301Z*
+Success: connected to database
+## Info
+*2024-09-24T13:35:19.338Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:35:19.381Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:35:22.048Z*
+Success : connected to database
+## Info
+*2024-09-24T13:36:00.617Z*
+User Online Event - userId: 66f2ad0ff439289667199515, socketId: c55_PjcyCbAHdX4rAAAB
+## Error
+*2024-09-24T13:36:00.870Z*
+Failed to update socket ID for user 66f2ad0ff439289667199515: Cannot read properties of null (reading 'nModified')
+## Info
+*2024-09-24T13:36:31.546Z*
+Success: connected to database
+## Info
+*2024-09-24T13:36:31.582Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:36:31.587Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:36:31.594Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:36:31.596Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:36:31.782Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:36:39.923Z*
+Success: connected to database
+## Info
+*2024-09-24T13:36:39.978Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:36:40.066Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:36:42.765Z*
+Success : connected to database
+## Info
+*2024-09-24T13:36:50.370Z*
+Success: connected to database
+## Info
+*2024-09-24T13:36:50.436Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:36:50.550Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:36:57.347Z*
+Success: connected to database
+## Info
+*2024-09-24T13:36:57.396Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:36:57.573Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:37:01.055Z*
+Success: connected to database
+## Info
+*2024-09-24T13:37:01.094Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:37:01.114Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:37:01.118Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:37:01.119Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:37:01.290Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:37:04.131Z*
+Success: connected to database
+## Info
+*2024-09-24T13:37:04.172Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:37:04.289Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:37:04.304Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:37:04.306Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:37:04.359Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:37:07.033Z*
+Success: connected to database
+## Info
+*2024-09-24T13:37:07.106Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:37:07.534Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:37:11.701Z*
+Success: connected to database
+## Info
+*2024-09-24T13:37:11.738Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:37:11.779Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:37:14.233Z*
+Success : connected to database
+## Info
+*2024-09-24T13:37:26.590Z*
+Success: connected to database
+## Info
+*2024-09-24T13:37:26.629Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:37:26.700Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:37:26.703Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:37:26.705Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:37:30.053Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:37:35.801Z*
+Success: connected to database
+## Info
+*2024-09-24T13:37:35.848Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:37:36.012Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:37:38.280Z*
+Success : connected to database
+## Info
+*2024-09-24T13:37:42.363Z*
+Success: connected to database
+## Info
+*2024-09-24T13:37:42.408Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:37:42.605Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:37:44.935Z*
+Success : connected to database
+## Info
+*2024-09-24T13:38:36.087Z*
+Success: connected to database
+## Info
+*2024-09-24T13:38:36.160Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:38:36.236Z*
+A user connected - socket.io
+## Error
+*2024-09-24T13:38:36.338Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:38:36.343Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:38:36.344Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:38:47.731Z*
+Success: connected to database
+## Info
+*2024-09-24T13:38:47.798Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:38:47.878Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:38:47.881Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:38:47.883Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:38:48.079Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:39:04.929Z*
+Success: connected to database
+## Info
+*2024-09-24T13:39:04.970Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:39:05.018Z*
+A user connected - socket.io
+## Error
+*2024-09-24T13:39:05.059Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:39:05.062Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:39:05.064Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:39:17.382Z*
+Success: connected to database
+## Info
+*2024-09-24T13:39:17.427Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:39:17.519Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:39:17.522Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:39:17.523Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "queryTxt",
+  "hostname": "cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:39:18.025Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:39:49.180Z*
+Success: connected to database
+## Info
+*2024-09-24T13:39:49.233Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:39:49.236Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:39:49.246Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:39:49.248Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:39:49.318Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:40:09.684Z*
+Success: connected to database
+## Info
+*2024-09-24T13:40:09.721Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:40:13.344Z*
+Success : connected to database
+## Info
+*2024-09-24T13:40:13.395Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:42:02.058Z*
+User Disconnected
+## Info
+*2024-09-24T13:43:04.547Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:43:41.037Z*
+User Disconnected
+## Info
+*2024-09-24T13:43:45.070Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:43:46.026Z*
+User Disconnected
+## Info
+*2024-09-24T13:44:18.054Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:47:27.939Z*
+User Online Event - userId: 66f2ad0ff439289667199515, socketId: Dor59QODZs-qoBKLAAAK
+## Error
+*2024-09-24T13:47:27.941Z*
+Failed to update socket ID for user 66f2ad0ff439289667199515: Class constructor ObjectId cannot be invoked without 'new'
+## Info
+*2024-09-24T13:47:41.455Z*
+Success: connected to database
+## Info
+*2024-09-24T13:47:41.494Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:47:41.657Z*
+A user connected - socket.io
+## Error
+*2024-09-24T13:47:51.639Z*
+Error fetching profiles:
+## Error
+*2024-09-24T13:48:14.803Z*
+Operation `auths.findOne()` buffering timed out after 10000ms
+## Error
+*2024-09-24T13:48:14.811Z*
+```javascript
+{}
+```
+## Error
+*2024-09-24T13:48:15.264Z*
+```javascript
+{
+  "connectionGeneration": 0
+}
+```
+## Error
+*2024-09-24T13:48:15.266Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:48:15.268Z*
+```javascript
+{
+  "connectionGeneration": 0
+}
+```
+## Info
+*2024-09-24T13:48:43.392Z*
+Success: connected to database
+## Error
+*2024-09-24T13:48:43.408Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:48:43.425Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:48:43.426Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:48:43.453Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:48:44.025Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:50:52.750Z*
+Success: connected to database
+## Error
+*2024-09-24T13:50:52.821Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:50:52.840Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:50:52.843Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:50:52.887Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:50:55.020Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:51:38.784Z*
+Success: connected to database
+## Info
+*2024-09-24T13:51:38.832Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:51:38.852Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:51:38.856Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:51:38.858Z*
+```javascript
+{
+  "code": "ESERVFAIL",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:51:41.997Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:51:57.991Z*
+Success: connected to database
+## Info
+*2024-09-24T13:51:58.029Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:52:00.025Z*
+A user connected - socket.io
+## Error
+*2024-09-24T13:52:22.771Z*
+Operation `auths.findOne()` buffering timed out after 10000ms
+## Error
+*2024-09-24T13:52:22.773Z*
+```javascript
+{}
+```
+## Error
+*2024-09-24T13:52:25.196Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:52:25.201Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:52:25.203Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:52:58.164Z*
+Success: connected to database
+## Error
+*2024-09-24T13:52:58.178Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:52:58.197Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:52:58.201Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:52:58.224Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:52:58.297Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:53:05.876Z*
+Success: connected to database
+## Info
+*2024-09-24T13:53:05.915Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:53:05.934Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:53:05.939Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:53:05.947Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:53:06.016Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:53:12.405Z*
+Success: connected to database
+## Error
+*2024-09-24T13:53:12.418Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:53:12.433Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:53:12.436Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:53:12.453Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:53:12.514Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:54:04.951Z*
+Success: connected to database
+## Error
+*2024-09-24T13:54:04.965Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:54:04.979Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:54:04.986Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:54:05.010Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:54:05.061Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:54:36.743Z*
+Success: connected to database
+## Error
+*2024-09-24T13:54:36.759Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:54:36.772Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:54:36.774Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:54:36.803Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:54:38.048Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:55:03.863Z*
+Success: connected to database
+## Error
+*2024-09-24T13:55:03.879Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:55:03.893Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:55:03.895Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:55:03.919Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:55:04.033Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:55:36.149Z*
+Success: connected to database
+## Error
+*2024-09-24T13:55:36.168Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:55:36.181Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:55:36.185Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:55:36.205Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:55:36.310Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:55:42.007Z*
+Success: connected to database
+## Info
+*2024-09-24T13:55:42.044Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:55:42.053Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:55:42.058Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:55:42.060Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:55:42.325Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:56:42.754Z*
+Success: connected to database
+## Error
+*2024-09-24T13:56:42.768Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:56:42.781Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:56:42.782Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:56:42.802Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:56:43.020Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:57:58.029Z*
+Success: connected to database
+## Info
+*2024-09-24T13:57:58.136Z*
+Server running on http://localhost:8080
+## Error
+*2024-09-24T13:57:58.277Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T13:57:58.282Z*
+Error in connecting to database
+## Error
+*2024-09-24T13:57:58.301Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T13:57:58.330Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:59:03.512Z*
+Success: connected to database
+## Info
+*2024-09-24T13:59:03.561Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T13:59:03.745Z*
+A user connected - socket.io
+## Info
+*2024-09-24T13:59:06.042Z*
+Success : connected to database
+## Info
+*2024-09-24T14:26:27.274Z*
+Success: connected to database
+## Info
+*2024-09-24T14:26:27.321Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T14:26:30.095Z*
+A user connected - socket.io
+## Error
+*2024-09-24T14:26:41.526Z*
+Operation `auths.findOne()` buffering timed out after 10000ms
+## Error
+*2024-09-24T14:26:41.528Z*
+```javascript
+{}
+```
+## Error
+*2024-09-24T14:26:52.555Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Error
+*2024-09-24T14:26:52.565Z*
+Error in connecting to database
+## Error
+*2024-09-24T14:26:52.599Z*
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+## Info
+*2024-09-24T14:30:09.970Z*
+Success: connected to database
+## Info
+*2024-09-24T14:30:10.016Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T14:30:15.036Z*
+A user connected - socket.io
+## Error
+*2024-09-24T14:30:52.677Z*
+```javascript
+{
+  "message": "getaddrinfo EAI_AGAIN cluster0-shard-00-02.ppt7z.mongodb.net",
+  "reason": {
+    "type": "ReplicaSetNoPrimary",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": "atlas-11dge0-shard-0",
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": 30
+  }
+}
+```
+## Error
+*2024-09-24T14:30:52.691Z*
+Error in connecting to database
+## Error
+*2024-09-24T14:30:52.702Z*
+```javascript
+{
+  "message": "getaddrinfo EAI_AGAIN cluster0-shard-00-02.ppt7z.mongodb.net",
+  "reason": {
+    "type": "ReplicaSetNoPrimary",
+    "servers": {},
+    "stale": false,
+    "compatible": true,
+    "heartbeatFrequencyMS": 10000,
+    "localThresholdMS": 15,
+    "setName": "atlas-11dge0-shard-0",
+    "maxElectionId": null,
+    "maxSetVersion": null,
+    "commonWireVersion": 0,
+    "logicalSessionTimeoutMinutes": 30
+  }
+}
+```
+## Info
+*2024-09-24T14:36:12.476Z*
+Success: connected to database
+## Info
+*2024-09-24T14:36:12.515Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T14:36:15.061Z*
+A user connected - socket.io
+## Info
+*2024-09-24T14:36:23.538Z*
+Success : connected to database
+## Info
+*2024-09-24T15:12:42.996Z*
+User Online Event - userId: 66f2ad0ff439289667199515, socketId: lHhYduqyVxiKLNNLAAAB
+## Info
+*2024-09-24T15:12:43.322Z*
+No user found or socket ID already up-to-date for user 66f2ad0ff439289667199515
+## Info
+*2024-09-24T15:13:13.166Z*
+Success: connected to database
+## Info
+*2024-09-24T15:13:13.238Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T15:13:13.427Z*
+A user connected - socket.io
+## Info
+*2024-09-24T15:13:21.441Z*
+Success : connected to database
+## Info
+*2024-09-24T15:18:47.411Z*
+Success: connected to database
+## Info
+*2024-09-24T15:18:47.472Z*
+Server running on http://localhost:8080
+## Info
+*2024-09-24T15:18:47.666Z*
+A user connected - socket.io
+## Info
+*2024-09-24T15:18:52.129Z*
+Success : connected to database
+## Info
+*2024-09-24T15:29:34.755Z*
+User Disconnected
+## Info
+*2024-09-24T16:25:25.053Z*
+A user connected - socket.io
+## Info
+*2024-09-24T19:12:41.923Z*
+User Disconnected
+## Info
+*2024-09-24T19:14:20.775Z*
+A user connected - socket.io
+## Info
+*2024-09-24T20:54:32.719Z*
+User Disconnected
+## Info
+*2024-09-24T22:15:19.111Z*
+A user connected - socket.io
+## Info
+*2024-09-24T22:30:44.553Z*
+User Disconnected
+## Info
+*2024-09-24T22:31:03.579Z*
+A user connected - socket.io
+## Info
+*2024-09-25T01:00:27.823Z*
+User Disconnected
+## Info
+*2024-09-25T07:46:02.115Z*
+A user connected - socket.io
+## Info
+*2024-09-25T08:14:13.633Z*
+User Disconnected
+## Info
+*2024-09-25T08:55:07.153Z*
+A user connected - socket.io
+## Info
+*2024-09-25T09:45:27.953Z*
+User Disconnected

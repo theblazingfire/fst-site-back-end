@@ -15,6 +15,10 @@ router.patch('/:chatId/mute', verifyToken, chatController.muteChat);
 router.patch('/:chatId/unmute', verifyToken, chatController.unmuteChat);
 router.patch('/:chatId/leave', verifyToken, chatController.leaveChat);
 router.delete('/:chatId', verifyToken, chatController.deleteChat);
-router.get('/user/:userId', verifyToken, chatController.getUserChats);
+router.get('/user', verifyToken, chatController.getUserChats);
 
 module.exports = router;
+
+
+
+

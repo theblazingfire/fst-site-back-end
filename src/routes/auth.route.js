@@ -14,6 +14,7 @@ router.delete("/delete", verifyToken, authController.deleteAccount);
 router.put("/disable", verifyToken, authController.disableAccount);
 router.post("/forgot-password", authController.forgotPassword);
 router.post("/reset-password", authController.resetPassword);
+router.post('/reauthenticate',verifyToken, authController.reauthenticate);
 router.post('/resend-verification-email', authController.resendVerificationEmail);
 router.get('/is-valid', verifyToken, authController.tokenIsValid);
 

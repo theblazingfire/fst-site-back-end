@@ -56,6 +56,13 @@ const profileSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  socketId: {
+    type: String
+  },
+  online: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const Profile = mongoose.model("Profile", profileSchema);

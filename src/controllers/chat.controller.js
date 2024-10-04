@@ -1,12 +1,12 @@
 const { Chat, MessageChunk } = require('../models/chat.model');
-const User = require('../models/user.model');
+const User = require('../models/auth.model');
 
 const chatController = {
     // Create a new chat or group chat
     createChat: async (req, res) => {
         try {
             const { is_group_message, group_name, participants } = req.body;
-            const sender = req.user._id;
+            const sender = req.user.userId;
 
             const newChat = new Chat({
                 sender,
@@ -18,7 +18,7 @@ const chatController = {
             await newChat.save();
             res.status(201).json(newChat);
         } catch (error) {
-            res.status(500).json({ message: 'Error creating chat', error });
+            res.status(500).json({ message: 'Error creating chat', error })
         }
     },
 
@@ -27,7 +27,7 @@ const chatController = {
         try {
             const { chatId } = req.params;
             const { message } = req.body;
-            const sender = req.user._id;
+            const sender = req.user.userId;
 
             let lastChunk = await MessageChunk.findOne({ chat: chatId }).sort({ created_at: -1 });
             const MAX_MESSAGES_PER_CHUNK = 100;
@@ -63,7 +63,7 @@ const chatController = {
     markMessagesAsRead: async (req, res) => {
         try {
             const { chatId } = req.params;
-            const userId = req.user._id;
+            const userId = req.user.userId;
 
             await MessageChunk.updateMany(
                 { chat: chatId, 'messages.meta.user': userId },
@@ -96,7 +96,7 @@ const chatController = {
     archiveChat: async (req, res) => {
         try {
             const { chatId } = req.params;
-            const userId = req.user._id;
+            const userId = req.user.userId;
             await Chat.findByIdAndUpdate(chatId, { $addToSet: { archived: userId } });
             res.status(200).json({ message: 'Chat archived' });
         } catch (error) {
@@ -108,7 +108,7 @@ const chatController = {
     unarchiveChat: async (req, res) => {
         try {
             const { chatId } = req.params;
-            const userId = req.user._id;
+            const userId = req.user.userId;
             await Chat.findByIdAndUpdate(chatId, { $pull: { archived: userId } });
             res.status(200).json({ message: 'Chat unarchived' });
         } catch (error) {
@@ -120,7 +120,7 @@ const chatController = {
     muteChat: async (req, res) => {
         try {
             const { chatId } = req.params;
-            const userId = req.user._id;
+            const userId = req.user.userId;
             await Chat.findByIdAndUpdate(chatId, { $addToSet: { muted: userId } });
             res.status(200).json({ message: 'Chat muted' });
         } catch (error) {
@@ -132,7 +132,7 @@ const chatController = {
     unmuteChat: async (req, res) => {
         try {
             const { chatId } = req.params;
-            const userId = req.user._id;
+            const userId = req.user.userId;
             await Chat.findByIdAndUpdate(chatId, { $pull: { muted: userId } });
             res.status(200).json({ message: 'Chat unmuted' });
         } catch (error) {
@@ -167,7 +167,7 @@ const chatController = {
     // Get all chats for a user (paginated)
     getUserChats: async (req, res) => {
         try {
-            const { userId } = req.params;
+            const { userId } = req.user;
             const { page = 1, limit = 30 } = req.query;
             const chats = await Chat.find({ participants: { $elemMatch: { user: userId } } })
                 .sort({ updatedAt: -1 })

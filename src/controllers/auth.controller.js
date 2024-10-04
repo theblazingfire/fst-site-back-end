@@ -91,7 +91,7 @@ const signupWithEmailAndPassword = async (req, res) => {
     await transporter.sendMail(verifyEmailOptions);
 
     // Return the token
-    return res.status(201).json({ token });
+    return res.status(201).json({ token, id: newUser._id });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Server error" });
@@ -154,13 +154,41 @@ const login = async (req, res) => {
       config.JWT_SECRET,
       { expiresIn: "24h" }, // Token expires in 1 hour
     );
-    return res.status(200).json({ token });
+    return res.status(200).json({ token  ,id: authUser._id });
   } catch (error) {
     logger.errorLogger(error.message);
     logger.errorLogger(error);
     return res.status(500).json({ message: "Server error" });
   }
 }
+
+const reauthenticate = async (req, res) => {
+  console.log('in reauthentication')
+  try {
+      // Find the user by ID
+      const user = await Auth.findById(req.user.userId);
+      if (!user) {
+          return res.status(404).json({ message: "User not found" });
+      }
+
+      // Generate a new JWT token for the session
+      const expiresIn = "24h"; // Token expiration time
+      const newToken = jwt.sign(
+          { userId: user._id, email: user.email, role: user.role },
+          config.JWT_SECRET,
+          { expiresIn }
+      );
+
+      // Calculate token expiration time
+      const tokenExpiresAt = Date.now() + 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+      // Return the new token and expiration time
+      res.status(200).json({ token: newToken , verified: user.verified, tokenExpiresAt});
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Server error" });
+  }
+};
 
 const resendVerificationEmail = async (req, res) => {
   const { email } = req.body;
@@ -443,4 +471,5 @@ module.exports = {
   resetPassword,
   tokenIsValid,
   resendVerificationEmail,
+  reauthenticate
 };

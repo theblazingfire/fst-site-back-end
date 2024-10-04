@@ -152,7 +152,7 @@ const getProfiles = async (req, res) => {
       totalPages: Math.ceil(totalProfiles / limit),
     });
   } catch (error) {
-    logger.errorLogger.error("Error fetching profiles:", error);
+    logger.errorLogger("Error fetching profiles:", error);
     res.status(500).json({ error: "Error fetching profiles" });
   }
 }
@@ -179,7 +179,7 @@ const searchProfiles = async (req, res) => {
 
     res.status(200).json(profiles);
   } catch (error) {
-    logger.errorLogger.error("Error searching profiles:", error);
+    logger.errorLogger("Error searching profiles:", error);
     res.status(500).json({ error: "Error searching profiles" });
   }
 };
