@@ -35,12 +35,10 @@ const signupWithEmailAndPassword = async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ message: "Email already registered" });
     } else if (role == "admin" && !config.adminMails.includes(email)) {
-      return res
-        .status(403)
-        .json({
-          error: "Forbidden",
-          message: "You are not allowed to signup as an admin",
-        });
+      return res.status(403).json({
+        error: "Forbidden",
+        message: "You are not allowed to signup as an admin",
+      });
     }
 
     // Hash the password
@@ -133,12 +131,10 @@ const login = async (req, res) => {
 
     if (authUser.role !== role) {
       logger.errorLogger("Role Mismatch. Forbidden Login");
-      return res
-        .status(403)
-        .json({
-          message:
-            "Role Missmatch. You should sign up with the appropriate role.",
-        });
+      return res.status(403).json({
+        message:
+          "Role Missmatch. You should sign up with the appropriate role.",
+      });
     }
 
     // Verify the password
@@ -154,39 +150,41 @@ const login = async (req, res) => {
       config.JWT_SECRET,
       { expiresIn: "24h" }, // Token expires in 1 hour
     );
-    return res.status(200).json({ token  ,id: authUser._id });
+    return res.status(200).json({ token, id: authUser._id });
   } catch (error) {
     logger.errorLogger(error.message);
     logger.errorLogger(error);
     return res.status(500).json({ message: "Server error" });
   }
-}
+};
 
 const reauthenticate = async (req, res) => {
-  console.log('in reauthentication')
+  console.log("in reauthentication");
   try {
-      // Find the user by ID
-      const user = await Auth.findById(req.user.userId);
-      if (!user) {
-          return res.status(404).json({ message: "User not found" });
-      }
+    // Find the user by ID
+    const user = await Auth.findById(req.user.userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-      // Generate a new JWT token for the session
-      const expiresIn = "24h"; // Token expiration time
-      const newToken = jwt.sign(
-          { userId: user._id, email: user.email, role: user.role },
-          config.JWT_SECRET,
-          { expiresIn }
-      );
+    // Generate a new JWT token for the session
+    const expiresIn = "24h"; // Token expiration time
+    const newToken = jwt.sign(
+      { userId: user._id, email: user.email, role: user.role },
+      config.JWT_SECRET,
+      { expiresIn },
+    );
 
-      // Calculate token expiration time
-      const tokenExpiresAt = Date.now() + 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+    // Calculate token expiration time
+    const tokenExpiresAt = Date.now() + 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
-      // Return the new token and expiration time
-      res.status(200).json({ token: newToken , verified: user.verified, tokenExpiresAt});
+    // Return the new token and expiration time
+    res
+      .status(200)
+      .json({ token: newToken, verified: user.verified, tokenExpiresAt });
   } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Server error" });
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -284,8 +282,8 @@ const updateUserDetails = async (req, res) => {
 
     // Update email if provided
     if (email) {
-      if(!validator.isEmail(email)){
-        return res.status(400).json("Invalid email format")
+      if (!validator.isEmail(email)) {
+        return res.status(400).json("Invalid email format");
       }
       // Check if the new email is already registered
       const existingUser = await Auth.findOne({ email });
@@ -310,8 +308,8 @@ const updateUserDetails = async (req, res) => {
 
     // Update recovery email if provided
     if (recoveryEmail) {
-      if(!validator.isEmail(recoveryEmail)){
-        return res.status(400).json("Invalid email format")
+      if (!validator.isEmail(recoveryEmail)) {
+        return res.status(400).json("Invalid email format");
       }
       authUser.recoveryEmail = recoveryEmail;
     }
@@ -329,23 +327,25 @@ const updateUserDetails = async (req, res) => {
 };
 
 const deleteAccount = async (req, res) => {
-  let { email }= req.query
+  let { email } = req.query;
 
-  if(!(req.user.email == email || req.user.role == 'admin')){
-    return res.status(403).json({message: 'you are not permitted to delete this account.'})
+  if (!(req.user.email == email || req.user.role == "admin")) {
+    return res
+      .status(403)
+      .json({ message: "you are not permitted to delete this account." });
   }
 
   try {
     // Find and delete the user account
-    const deletedUser = await Auth.find({email});
-    
+    const deletedUser = await Auth.find({ email });
+
     if (!deletedUser) {
       logger.errorLogger("User not found");
       return res.status(404).json({ message: "User not found" });
     }
 
-    deletedUser.deleted = true
-    await deletedUser.save()
+    deletedUser.deleted = true;
+    await deletedUser.save();
 
     return res.status(200).json({ message: "Account deleted successfully" });
   } catch (error) {
@@ -356,23 +356,25 @@ const deleteAccount = async (req, res) => {
 
 // Disable user account
 const disableAccount = async (req, res) => {
-  let {email}=req.body
+  let { email } = req.body;
 
-  if(!(req.user.email == email || req.user.role == 'admin')){
-    return res.status(403).json({message: 'You are not permitted to disable this account.'})
+  if (!(req.user.email == email || req.user.role == "admin")) {
+    return res
+      .status(403)
+      .json({ message: "You are not permitted to disable this account." });
   }
 
   try {
     // Find the user account and update the disabled flag
-    let user = await Auth.find({email})
+    let user = await Auth.find({ email });
 
     if (!user) {
       logger.errorLogger("User not found");
       return res.status(404).json({ message: "User not found" });
     }
-    
+
     user.disabled = true;
-    await user.save()
+    await user.save();
     return res.status(200).json({ message: "Account disabled successfully" });
   } catch (error) {
     logger.errorLogger(error.message);
@@ -471,5 +473,5 @@ module.exports = {
   resetPassword,
   tokenIsValid,
   resendVerificationEmail,
-  reauthenticate
+  reauthenticate,
 };

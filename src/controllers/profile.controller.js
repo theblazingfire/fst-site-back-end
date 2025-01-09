@@ -4,7 +4,16 @@ const saveToCloudinary = require("../functions/saveToCloudinary");
 
 const createProfile = async (req, res) => {
   try {
-    const { firstName, lastName, gender, dateOfBirth, bio, location, website, username } = req.body;
+    const {
+      firstName,
+      lastName,
+      gender,
+      dateOfBirth,
+      bio,
+      location,
+      website,
+      username,
+    } = req.body;
 
     // Check if the profile already exists
     const existingProfile = await Profile.findOne({ user: req.user.userId });
@@ -12,11 +21,11 @@ const createProfile = async (req, res) => {
     if (existingProfile) {
       // Return 409 Conflict if the profile already exists
       return res.status(409).json({
-        message: 'Profile already exists for this user.',
+        message: "Profile already exists for this user.",
       });
     }
-    console.log(req.body)
-      const newProfile = new Profile({
+    console.log(req.body);
+    const newProfile = new Profile({
       user: req.user.userId,
       firstName,
       lastName,
@@ -24,9 +33,9 @@ const createProfile = async (req, res) => {
       dateOfBirth,
       bio,
       location,
-      website
+      website,
     });
-    if(username) newProfile.username = username
+    if (username) newProfile.username = username;
     const savedProfile = await newProfile.save();
     res.status(201).json(savedProfile);
   } catch (error) {
@@ -55,26 +64,28 @@ const getProfile = async (req, res) => {
 const updateProfile = async (req, res) => {
   const { userId } = req.params;
 
-  if(req.user.userId !== userId){
-    return res.status(403).json({message: 'You are not permitted to edit this profile'})
+  if (req.user.userId !== userId) {
+    return res
+      .status(403)
+      .json({ message: "You are not permitted to edit this profile" });
   }
-  
+
   try {
     // Find the profile by userId
-    const updatedProfile = await Profile.findOne({ user: userId })
+    const updatedProfile = await Profile.findOne({ user: userId });
 
     // Check if profile exists
     if (!updatedProfile) {
-      return res.status(404).json({ message: "Profile not found" })
+      return res.status(404).json({ message: "Profile not found" });
     }
 
     // Log the request body for debugging
-    console.log({ body: req.body })
+    console.log({ body: req.body });
 
     // Update the profile fields with the data from request body
     Object.keys(req.body).forEach((key) => {
-      if(req.body[key]){
-      updatedProfile[key] = req.body[key]
+      if (req.body[key]) {
+        updatedProfile[key] = req.body[key];
       }
     });
 
@@ -127,7 +138,7 @@ const deleteProfile = async (req, res) => {
       return res.status(404).json({ message: "Profile not found" });
     }
     deletedProfile.deleted = true;
-    await deletedProfile.save()
+    await deletedProfile.save();
     res.status(200).json({ message: "Profile deleted successfully" });
   } catch (error) {
     logger.errorLogger("Error deleting profile", true);
@@ -155,25 +166,34 @@ const getProfiles = async (req, res) => {
     logger.errorLogger("Error fetching profiles:", error);
     res.status(500).json({ error: "Error fetching profiles" });
   }
-}
+};
 
 const searchProfiles = async (req, res) => {
-    // Sanitize and process the query parameters
-    let query = {};
-    let { username, firstName, lastName, gender, dateOfBirth, bio, location, website } = req.query;
+  // Sanitize and process the query parameters
+  let query = {};
+  let {
+    username,
+    firstName,
+    lastName,
+    gender,
+    dateOfBirth,
+    bio,
+    location,
+    website,
+  } = req.query;
 
-    // Check if each property is present in the query and apply case-insensitive search where applicable
-    if (username) query.username = new RegExp(username, 'i');
-    if (firstName) query.firstName = new RegExp(firstName, 'i');
-    if (lastName) query.lastName = new RegExp(lastName, 'i');
-    if (gender) query.gender = new RegExp(gender, 'i');
-    if (dateOfBirth) query.dateOfBirth = dateOfBirth; // Assuming exact match for date
-    if (bio) query.bio = new RegExp(bio, 'i');
-    if (location) query.location = new RegExp(location, 'i');
-    if (website) query.website = new RegExp(website, 'i');
-  
-    console.log({ query });
-    try {
+  // Check if each property is present in the query and apply case-insensitive search where applicable
+  if (username) query.username = new RegExp(username, "i");
+  if (firstName) query.firstName = new RegExp(firstName, "i");
+  if (lastName) query.lastName = new RegExp(lastName, "i");
+  if (gender) query.gender = new RegExp(gender, "i");
+  if (dateOfBirth) query.dateOfBirth = dateOfBirth; // Assuming exact match for date
+  if (bio) query.bio = new RegExp(bio, "i");
+  if (location) query.location = new RegExp(location, "i");
+  if (website) query.website = new RegExp(website, "i");
+
+  console.log({ query });
+  try {
     // Find profiles based on the sanitized query
     const profiles = await Profile.find(query);
 

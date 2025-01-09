@@ -1,6 +1,5 @@
 const config = require("./config");
 
-
 function welcome(name) {
   return `
     <!DOCTYPE html>
@@ -118,15 +117,12 @@ function verify(name, userId, verifyToken) {
 
 function passwordReset(name, resetToken, role) {
   let frontEndAddr;
-  if(role == 'admin'){
-    frontEndAddr = "https://joegreen-admin.netlify.app"
+  if (role == "admin") {
+    frontEndAddr = "https://joegreen-admin.netlify.app";
+  } else {
+    frontEndAddr = "https://joegreencafe.com";
   }
-  else {
-    frontEndAddr = "https://joegreencafe.com"
-  }
-  const resetLink = `${
-    frontEndAddr
-  }/reset-password?resetToken=${resetToken}`;
+  const resetLink = `${frontEndAddr}/reset-password?resetToken=${resetToken}`;
   return `
   <!DOCTYPE html>
 <html lang="en">
@@ -200,5 +196,5 @@ module.exports = {
   welcome,
   verify,
   passwordReset,
-  reply
+  reply,
 };

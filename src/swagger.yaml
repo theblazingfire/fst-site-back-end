@@ -104,6 +104,7 @@ paths:
       tags:
         - Notifications
       summary: Create a new notification
+      name: createNotification
       requestBody:
         required: true
         content:
@@ -121,15 +122,15 @@ paths:
                   type: string
                   example: "60d21b4667d0d8992e610c85"
       responses:
-        '201':
+        "201":
           description: Notification created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Notification'
-        '400':
+                $ref: "#/components/schemas/Notification"
+        "400":
           description: Bad request
-        '500':
+        "500":
           description: Internal server error
 
     get:
@@ -144,7 +145,7 @@ paths:
             default: 1
           description: Page number for pagination (default is 1)
       responses:
-        '200':
+        "200":
           description: A paginated list of notifications
           content:
             application/json:
@@ -163,8 +164,8 @@ paths:
                   notifications:
                     type: array
                     items:
-                      $ref: '#/components/schemas/Notification'
-        '500':
+                      $ref: "#/components/schemas/Notification"
+        "500":
           description: Internal server error
 
   /notifications/{id}:
@@ -180,15 +181,15 @@ paths:
             type: string
           description: The ID of the notification
       responses:
-        '200':
+        "200":
           description: The requested notification
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Notification'
-        '404':
+                $ref: "#/components/schemas/Notification"
+        "404":
           description: Notification not found
-        '500':
+        "500":
           description: Internal server error
 
     patch:
@@ -203,11 +204,11 @@ paths:
             type: string
           description: The ID of the notification to be marked as read
       responses:
-        '200':
+        "200":
           description: Notification marked as read
-        '404':
+        "404":
           description: Notification not found
-        '500':
+        "500":
           description: Internal server error
 
     delete:
@@ -222,11 +223,11 @@ paths:
             type: string
           description: The ID of the notification
       responses:
-        '200':
+        "200":
           description: Notification deleted
-        '404':
+        "404":
           description: Notification not found
-        '500':
+        "500":
           description: Internal server error
   /profile:
     post:
@@ -806,7 +807,7 @@ paths:
                 - email
                 - message
       responses:
-        '201':
+        "201":
           description: Message received successfully
           content:
             application/json:
@@ -816,7 +817,7 @@ paths:
                   message:
                     type: string
                     example: Message received successfully
-        '400':
+        "400":
           description: Invalid input
           content:
             application/json:
@@ -826,7 +827,7 @@ paths:
                   message:
                     type: string
                     example: Invalid email format
-        '500':
+        "500":
           description: Server error
           content:
             application/json:
@@ -860,7 +861,7 @@ paths:
             type: string
             format: date-time
       responses:
-        '200':
+        "200":
           description: List of customer messages
           content:
             application/json:
@@ -880,7 +881,7 @@ paths:
                       format: date-time
                     replied:
                       type: boolean
-        '400':
+        "400":
           description: Invalid query parameters
           content:
             application/json:
@@ -890,7 +891,7 @@ paths:
                   message:
                     type: string
                     example: Invalid startDate format
-        '500':
+        "500":
           description: Server error
           content:
             application/json:
@@ -926,7 +927,7 @@ paths:
               required:
                 - replyMessage
       responses:
-        '200':
+        "200":
           description: Reply sent successfully
           content:
             application/json:
@@ -936,7 +937,7 @@ paths:
                   message:
                     type: string
                     example: Reply sent successfully
-        '404':
+        "404":
           description: Message not found
           content:
             application/json:
@@ -946,7 +947,7 @@ paths:
                   message:
                     type: string
                     example: Message not found
-        '500':
+        "500":
           description: Server error
           content:
             application/json:

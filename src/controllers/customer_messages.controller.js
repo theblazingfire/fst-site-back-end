@@ -1,7 +1,7 @@
 const CustomerMessage = require("../models/customer_messages.model");
 const { transporter, mailOptions } = require("../functions/nodemailer.config");
 const emailTemplates = require("../utils/emailTemplates");
-const validator = require('validator')
+const validator = require("validator");
 
 // Endpoint to handle incoming customer messages
 const postCustomerMessage = async (req, res) => {
@@ -17,7 +17,7 @@ const postCustomerMessage = async (req, res) => {
       email,
       message,
       created: new Date().toISOString(),
-      replied: false
+      replied: false,
     });
 
     await newMessage.save();
@@ -29,7 +29,6 @@ const postCustomerMessage = async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
-
 
 // Get all blog posts
 const getCustomerMessages = async (req, res) => {
@@ -48,7 +47,7 @@ const getCustomerMessages = async (req, res) => {
 
     if (replied !== undefined) {
       // Convert replied to boolean
-      const isReplied = replied === 'true';
+      const isReplied = replied === "true";
       query.replied = isReplied;
     }
 
@@ -78,7 +77,7 @@ const getCustomerMessages = async (req, res) => {
 const replyToCustomerMessage = async (req, res) => {
   const { messageId } = req.params;
   const { replyMessage } = req.body;
-  console.log('replying',replyMessage)
+  console.log("replying", replyMessage);
 
   try {
     // Find the customer message by ID
@@ -92,9 +91,9 @@ const replyToCustomerMessage = async (req, res) => {
       ...mailOptions,
       to: customerMessage.email,
       subject: "Your message has been replied",
-      html: emailTemplates.reply(customerMessage.email, replyMessage)
+      html: emailTemplates.reply(customerMessage.email, replyMessage),
     };
-    
+
     await transporter.sendMail(replyEmailOptions);
 
     // Update the message as replied
@@ -109,4 +108,8 @@ const replyToCustomerMessage = async (req, res) => {
   }
 };
 
-module.exports = { postCustomerMessage, replyToCustomerMessage, getCustomerMessages };
+module.exports = {
+  postCustomerMessage,
+  replyToCustomerMessage,
+  getCustomerMessages,
+};

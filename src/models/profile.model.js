@@ -57,12 +57,12 @@ const profileSchema = new mongoose.Schema({
     default: false,
   },
   socketId: {
-    type: String
+    type: String,
   },
   online: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const Profile = mongoose.model("Profile", profileSchema);

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Message schema (unchanged)
@@ -13,7 +13,7 @@ const MessageSchema = new Schema({
   },
   sender: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true,
   },
 });
@@ -22,7 +22,7 @@ const MessageSchema = new Schema({
 const MessageChunkSchema = new Schema({
   chat: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Chat',
+    ref: "Chat",
     required: true,
   },
   messages: [MessageSchema], // Array of messages in this chunk
@@ -32,36 +32,39 @@ const MessageChunkSchema = new Schema({
   },
 });
 
-const ChatSchema = new Schema({
-  sender: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-  is_group_message: {
-    type: Boolean,
-    default: false,
-  },
-  group_name: {
-    type: String,
-    required: function () {
-      return this.is_group_message;
+const ChatSchema = new Schema(
+  {
+    sender: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-  },
-  participants: [
-    {
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+    is_group_message: {
+      type: Boolean,
+      default: false,
+    },
+    group_name: {
+      type: String,
+      required: function () {
+        return this.is_group_message;
       },
-      delivered: Boolean,
-      read: Boolean,
-      last_seen: Date,
-    }
-  ],
-}, { timestamps: true });
+    },
+    participants: [
+      {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+        delivered: Boolean,
+        read: Boolean,
+        last_seen: Date,
+      },
+    ],
+  },
+  { timestamps: true },
+);
 
-const Chat = mongoose.model('Chat', ChatSchema);
-const MessageChunk = mongoose.model('MessageChunk', MessageChunkSchema);
+const Chat = mongoose.model("Chat", ChatSchema);
+const MessageChunk = mongoose.model("MessageChunk", MessageChunkSchema);
 
 module.exports = { Chat, MessageChunk };

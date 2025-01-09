@@ -15,9 +15,9 @@ const frontendProductionAddr = process.env.FRONTEND_PRODUCTION_ADDRESS;
 const cloudinaryName = process.env.CLOUDINARY_NAME;
 const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY;
 const cloudingaryApiSecret = process.env.CLOUDINARY_API_SECRET;
-const companyCallLine = ''
-const companySupportMail = ''
-const adminMails = process.env.ADMIN_MAILS.split(',')
+const companyCallLine = "";
+const companySupportMail = "";
+const adminMails = process.env.ADMIN_MAILS.split(",");
 
 module.exports = {
   port,
@@ -37,5 +37,5 @@ module.exports = {
   cloudinaryName,
   companyCallLine,
   companySupportMail,
-  adminMails
+  adminMails,
 };

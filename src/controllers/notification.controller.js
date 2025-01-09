@@ -1,16 +1,20 @@
 // notification.controller.js
-const Notification = require('../models/notification.model');
+const Notification = require("../models/notification.model");
 
 // Create a new notification
 exports.createNotification = async (req, res) => {
-    console.log({body: req.body})
+  console.log({ body: req.body });
   try {
     const { title, message, userId } = req.body;
     const notification = new Notification({ title, message, userId });
     await notification.save();
-    res.status(201).json({ message: 'Notification created successfully', notification });
+    res
+      .status(201)
+      .json({ message: "Notification created successfully", notification });
   } catch (err) {
-    res.status(500).json({ message: 'Error creating notification', error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error creating notification", error: err.message });
   }
 };
 
@@ -26,13 +30,15 @@ exports.getAllNotifications = async (req, res) => {
     const total = await Notification.countDocuments();
 
     res.status(200).json({
-      message: 'Notifications fetched successfully',
+      message: "Notifications fetched successfully",
       data: notifications,
       currentPage: page,
       totalPages: Math.ceil(total / limit),
     });
   } catch (err) {
-    res.status(500).json({ message: 'Error fetching notifications', error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error fetching notifications", error: err.message });
   }
 };
 
@@ -42,11 +48,15 @@ exports.getNotificationById = async (req, res) => {
     const { id } = req.params;
     const notification = await Notification.findById(id);
     if (!notification) {
-      return res.status(404).json({ message: 'Notification not found' });
+      return res.status(404).json({ message: "Notification not found" });
     }
-    res.status(200).json({ message: 'Notification fetched successfully', notification });
+    res
+      .status(200)
+      .json({ message: "Notification fetched successfully", notification });
   } catch (err) {
-    res.status(500).json({ message: 'Error fetching notification', error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error fetching notification", error: err.message });
   }
 };
 
@@ -54,13 +64,22 @@ exports.getNotificationById = async (req, res) => {
 exports.markAsRead = async (req, res) => {
   try {
     const { id } = req.params;
-    const notification = await Notification.findByIdAndUpdate(id, { isRead: true }, { new: true });
+    const notification = await Notification.findByIdAndUpdate(
+      id,
+      { isRead: true },
+      { new: true },
+    );
     if (!notification) {
-      return res.status(404).json({ message: 'Notification not found' });
+      return res.status(404).json({ message: "Notification not found" });
     }
-    res.status(200).json({ message: 'Notification marked as read', notification });
+    res
+      .status(200)
+      .json({ message: "Notification marked as read", notification });
   } catch (err) {
-    res.status(500).json({ message: 'Error marking notification as read', error: err.message });
+    res.status(500).json({
+      message: "Error marking notification as read",
+      error: err.message,
+    });
   }
 };
 
@@ -70,10 +89,12 @@ exports.deleteNotification = async (req, res) => {
     const { id } = req.params;
     const notification = await Notification.findByIdAndDelete(id);
     if (!notification) {
-      return res.status(404).json({ message: 'Notification not found' });
+      return res.status(404).json({ message: "Notification not found" });
     }
-    res.status(200).json({ message: 'Notification deleted successfully' });
+    res.status(200).json({ message: "Notification deleted successfully" });
   } catch (err) {
-    res.status(500).json({ message: 'Error deleting notification', error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error deleting notification", error: err.message });
   }
 };
