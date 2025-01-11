@@ -8,15 +8,29 @@ export const Notifications = {
    * Path: /notifications
    * Responses: 201, 400, 500
    */
+  createNotification: async (title, message, userId) => {
+    if (typeof title !== "string") {
+      throw new Error("Argument 'title' should be of type string ");
+    }
+    if (typeof message !== "string") {
+      throw new Error("Argument 'message' should be of type string ");
+    }
+    if (typeof userId !== "string") {
+      throw new Error("Argument 'userId' should be of type string ");
+    }
 
-  createNotification: async (data = {}) => {
+    let config = {
+      url: `/notifications`,
+      method: "post",
+      baseUrl: "https://example.com",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: { title: `${title}`, message: `${message}`, userId: `${userId}` },
+    };
+
     try {
-      const response = await axios({
-        method: "post",
-        url: `/api/notifications`,
-
-        data,
-      });
+      const response = await axios(config);
       return response.data;
     } catch (error) {
       console.error("Error in createNotification:", error);
@@ -31,14 +45,22 @@ export const Notifications = {
    * Path: /notifications
    * Responses: 200, 500
    */
+  getNotifications: async (page) => {
+    if (typeof page !== "integer") {
+      throw new Error("Argument 'page' should be of type integer ");
+    }
 
-  getNotifications: async (params = {}) => {
+    let config = {
+      url: `/notifications?page=${page}`,
+      method: "get",
+      baseUrl: "https://example.com",
+      headers: {
+        "Content-Type": "false",
+      },
+    };
+
     try {
-      const response = await axios({
-        method: "get",
-        url: `/api/notifications`,
-        params,
-      });
+      const response = await axios(config);
       return response.data;
     } catch (error) {
       console.error("Error in getNotifications:", error);
@@ -53,14 +75,22 @@ export const Notifications = {
    * Path: /notifications/{id}
    * Responses: 200, 404, 500
    */
+  getNotificationsById: async (id) => {
+    if (typeof id !== "string") {
+      throw new Error("Argument 'id' should be of type string ");
+    }
 
-  getNotificationsById: async (params = {}) => {
+    let config = {
+      url: `/notifications/${id}`,
+      method: "get",
+      baseUrl: "https://example.com",
+      headers: {
+        "Content-Type": "false",
+      },
+    };
+
     try {
-      const response = await axios({
-        method: "get",
-        url: `/api/notifications/{id}`,
-        params,
-      });
+      const response = await axios(config);
       return response.data;
     } catch (error) {
       console.error("Error in getNotificationsById:", error);
@@ -75,14 +105,22 @@ export const Notifications = {
    * Path: /notifications/{id}
    * Responses: 200, 404, 500
    */
+  patchNotificationsById: async (id) => {
+    if (typeof id !== "string") {
+      throw new Error("Argument 'id' should be of type string ");
+    }
 
-  patchNotificationsById: async (params = {}) => {
+    let config = {
+      url: `/notifications/${id}`,
+      method: "patch",
+      baseUrl: "https://example.com",
+      headers: {
+        "Content-Type": "false",
+      },
+    };
+
     try {
-      const response = await axios({
-        method: "patch",
-        url: `/api/notifications/{id}`,
-        params,
-      });
+      const response = await axios(config);
       return response.data;
     } catch (error) {
       console.error("Error in patchNotificationsById:", error);
@@ -97,14 +135,22 @@ export const Notifications = {
    * Path: /notifications/{id}
    * Responses: 200, 404, 500
    */
+  deleteNotificationsById: async (id) => {
+    if (typeof id !== "string") {
+      throw new Error("Argument 'id' should be of type string ");
+    }
 
-  deleteNotificationsById: async (params = {}) => {
+    let config = {
+      url: `/notifications/${id}`,
+      method: "delete",
+      baseUrl: "https://example.com",
+      headers: {
+        "Content-Type": "false",
+      },
+    };
+
     try {
-      const response = await axios({
-        method: "delete",
-        url: `/api/notifications/{id}`,
-        params,
-      });
+      const response = await axios(config);
       return response.data;
     } catch (error) {
       console.error("Error in deleteNotificationsById:", error);

@@ -99,6 +99,251 @@ components:
           example: "2023-07-18T12:34:56Z"
 
 paths:
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: User Login
+      description: Login a user with email and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                role:
+                  type: string
+              required:
+                - email
+                - password
+                - role
+      responses:
+        "200":
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        "400":
+          description: Invalid input
+        "401":
+          description: Unauthorized
+
+  /auth/forgot-password:
+    post:
+      tags:
+        - Auth
+      summary: Forgot Password
+      description: Request a password reset link
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+              required:
+                - email
+      responses:
+        "200":
+          description: Reset link sent
+        "400":
+          description: Invalid input
+        "404":
+          description: Email not found
+
+  /auth/reset-password:
+    post:
+      tags:
+        - Auth
+      summary: Reset Password
+      description: Reset the password using a reset token
+      parameters:
+        - name: resetToken
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newPassword:
+                  type: string
+              required:
+                - newPassword
+      responses:
+        "200":
+          description: Password reset successful
+        "400":
+          description: Invalid input
+        "401":
+          description: Invalid or expired reset token
+
+  /auth/update:
+    put:
+      tags:
+        - Auth
+      summary: Update User Details
+      description: Update email, password, and recovery email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                recoveryEmail:
+                  type: string
+                  format: email
+      responses:
+        "200":
+          description: User details updated
+        "400":
+          description: Invalid input
+        "401":
+          description: Unauthorized
+
+  /auth/disable:
+    put:
+      tags:
+        - Auth
+      summary: Disable Account
+      description: Disable a user account
+      responses:
+        "200":
+          description: Account disabled
+        "401":
+          description: Unauthorized
+
+  /auth/delete:
+    delete:
+      tags:
+        - Auth
+      summary: Delete Account
+      description: Delete a user account
+      responses:
+        "200":
+          description: Account deleted
+        "401":
+          description: Unauthorized
+
+  /auth/is-valid:
+    get:
+      tags:
+        - Auth
+      summary: Check if token is valid
+      description: Checks if the provided token is valid
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Bearer token
+      responses:
+        200:
+          description: Token verification status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isVerified:
+                    type: boolean
+        401:
+          description: Token is missing
+        403:
+          description: Token is not valid
+        404:
+          description: User not found
+        500:
+          description: Internal Server Error
+
+  /resend-verification-email:
+    post:
+      tags:
+        - Auth
+      summary: Resend verification email
+      description: Resends a verification email to a user if the user is found and has not been verified yet.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: user@example.com
+                  description: The email address of the user to whom the verification email will be sent.
+      responses:
+        "200":
+          description: Verification email sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Verification email sent
+                    description: Success message indicating the verification email was sent.
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid email format
+                    description: Error message for invalid email or already verified email.
+        "404":
+          description: User Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: User not found
+                    description: Error message when the user is not found in the database.
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Server error
+                    description: Error message indicating a server error occurred.
+
   /notifications:
     post:
       tags:
@@ -484,251 +729,6 @@ paths:
         "409":
           description: Email already registered
 
-  /auth/login:
-    post:
-      tags:
-        - Auth
-      summary: User Login
-      description: Login a user with email and password
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                password:
-                  type: string
-                role:
-                  type: string
-              required:
-                - email
-                - password
-                - role
-      responses:
-        "200":
-          description: Login successful
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-        "400":
-          description: Invalid input
-        "401":
-          description: Unauthorized
-
-  /auth/forgot-password:
-    post:
-      tags:
-        - Auth
-      summary: Forgot Password
-      description: Request a password reset link
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-              required:
-                - email
-      responses:
-        "200":
-          description: Reset link sent
-        "400":
-          description: Invalid input
-        "404":
-          description: Email not found
-
-  /auth/reset-password:
-    post:
-      tags:
-        - Auth
-      summary: Reset Password
-      description: Reset the password using a reset token
-      parameters:
-        - name: resetToken
-          in: query
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                newPassword:
-                  type: string
-              required:
-                - newPassword
-      responses:
-        "200":
-          description: Password reset successful
-        "400":
-          description: Invalid input
-        "401":
-          description: Invalid or expired reset token
-
-  /auth/update:
-    put:
-      tags:
-        - Auth
-      summary: Update User Details
-      description: Update email, password, and recovery email
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                password:
-                  type: string
-                recoveryEmail:
-                  type: string
-                  format: email
-      responses:
-        "200":
-          description: User details updated
-        "400":
-          description: Invalid input
-        "401":
-          description: Unauthorized
-
-  /auth/disable:
-    put:
-      tags:
-        - Auth
-      summary: Disable Account
-      description: Disable a user account
-      responses:
-        "200":
-          description: Account disabled
-        "401":
-          description: Unauthorized
-
-  /auth/delete:
-    delete:
-      tags:
-        - Auth
-      summary: Delete Account
-      description: Delete a user account
-      responses:
-        "200":
-          description: Account deleted
-        "401":
-          description: Unauthorized
-
-  /auth/is-valid:
-    get:
-      tags:
-        - Auth
-      summary: Check if token is valid
-      description: Checks if the provided token is valid
-      parameters:
-        - name: Authorization
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Bearer token
-      responses:
-        200:
-          description: Token verification status
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  isVerified:
-                    type: boolean
-        401:
-          description: Token is missing
-        403:
-          description: Token is not valid
-        404:
-          description: User not found
-        500:
-          description: Internal Server Error
-
-  /resend-verification-email:
-    post:
-      tags:
-        - Auth
-      summary: Resend verification email
-      description: Resends a verification email to a user if the user is found and has not been verified yet.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                  example: user@example.com
-                  description: The email address of the user to whom the verification email will be sent.
-      responses:
-        "200":
-          description: Verification email sent successfully
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Verification email sent
-                    description: Success message indicating the verification email was sent.
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Invalid email format
-                    description: Error message for invalid email or already verified email.
-        "404":
-          description: User Not Found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: User not found
-                    description: Error message when the user is not found in the database.
-        "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Server error
-                    description: Error message indicating a server error occurred.
-
   /:
     get:
       summary: Performs a ping request
@@ -906,6 +906,8 @@ paths:
     post:
       summary: Reply to a customer message
       tags: [CustomerSupport]
+      security:
+        - bearerAuth: []
       description: Admin replies to a customer message and updates the message status to replied.
       parameters:
         - name: messageId

@@ -8,15 +8,28 @@ export const CustomerSupport = {
    * Path: /messages
    * Responses: 201, 400, 500
    */
+  postMessages: async (email, message) => {
+    if (typeof email !== "string") {
+      throw new Error(
+        "Argument 'email' should be of type string in the email format",
+      );
+    }
+    if (typeof message !== "string") {
+      throw new Error("Argument 'message' should be of type string ");
+    }
 
-  postMessages: async (data = {}) => {
+    let config = {
+      url: `/messages`,
+      method: "post",
+      baseUrl: "https://example.com",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: { email: `${email}`, message: `${message}` },
+    };
+
     try {
-      const response = await axios({
-        method: "post",
-        url: `/api/messages`,
-
-        data,
-      });
+      const response = await axios(config);
       return response.data;
     } catch (error) {
       console.error("Error in postMessages:", error);
@@ -31,14 +44,32 @@ export const CustomerSupport = {
    * Path: /messages
    * Responses: 200, 400, 500
    */
+  getMessages: async (replied, startDate, endDate) => {
+    if (typeof replied !== "boolean") {
+      throw new Error("Argument 'replied' should be of type boolean ");
+    }
+    if (typeof startDate !== "string") {
+      throw new Error(
+        "Argument 'startDate' should be of type string in the date-time format",
+      );
+    }
+    if (typeof endDate !== "string") {
+      throw new Error(
+        "Argument 'endDate' should be of type string in the date-time format",
+      );
+    }
 
-  getMessages: async (params = {}) => {
+    let config = {
+      url: `/messages?replied=${replied}&startDate=${startDate}&endDate=${endDate}`,
+      method: "get",
+      baseUrl: "https://example.com",
+      headers: {
+        "Content-Type": "false",
+      },
+    };
+
     try {
-      const response = await axios({
-        method: "get",
-        url: `/api/messages`,
-        params,
-      });
+      const response = await axios(config);
       return response.data;
     } catch (error) {
       console.error("Error in getMessages:", error);
@@ -53,15 +84,30 @@ export const CustomerSupport = {
    * Path: /messages/{messageId}/reply
    * Responses: 200, 404, 500
    */
+  postMessagesByMessageIdReply: async (token, messageId, replyMessage) => {
+    if (typeof token !== "string") {
+      throw new Error("Argument 'token' should be of type string");
+    }
+    if (typeof messageId !== "string") {
+      throw new Error("Argument 'messageId' should be of type string ");
+    }
+    if (typeof replyMessage !== "string") {
+      throw new Error("Argument 'replyMessage' should be of type string ");
+    }
 
-  postMessagesByMessageIdReply: async (params = {}, data = {}) => {
+    let config = {
+      url: `/messages/${messageId}/reply`,
+      method: "post",
+      baseUrl: "https://example.com",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      data: { replyMessage: `${replyMessage}` },
+    };
+
     try {
-      const response = await axios({
-        method: "post",
-        url: `/api/messages/{messageId}/reply`,
-        params,
-        data,
-      });
+      const response = await axios(config);
       return response.data;
     } catch (error) {
       console.error("Error in postMessagesByMessageIdReply:", error);
