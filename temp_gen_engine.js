@@ -21,12 +21,10 @@ function generateApiFunctionTemplate(endpoint) {
   const requiresAuth = !!security;
   let processed_path = processPath(path, parameters);
   let parsedRequest = parseRequest(requestBody, method);
-  console.log(parsedRequest);
   let bodyObjTemp = generateBodyObjectTemplate(
     parsedRequest.contentType,
     parsedRequest.properties,
   );
-  console.log({...parsedRequest,...bodyObjTemp});
 
   let argTemp = generateFunctionArgsTemplate(
     processed_path,
@@ -34,18 +32,19 @@ function generateApiFunctionTemplate(endpoint) {
     requiresAuth,
   );
 
-  let contentTypeHeader = `'Content-Type': ${
-    "'" + parsedRequest?.contentType + "'" || "application/json"
-  }`;
+  let contentTypeHeader = "";
+  if (parsedRequest.contentType) {
+    contentTypeHeader = `'Content-Type': '${parsedRequest.contentType}'`;
+  }
+
   let authHeader = requiresAuth ? "'Authorization': `Bearer ${token}`" : "";
- 
+
   let configTemplate = `
   let config = {
-    url: \`${processed_path.processed_path}\`,
+    url: \`${baseUrl}${processed_path.processed_path}\`,
     method: '${method}',
-    baseUrl: '${baseUrl}',
     headers: {
-    ${contentTypeHeader} ${!!authHeader ? "," + authHeader : ""}
+    ${contentTypeHeader} ${contentTypeHeader ? "," : ""} ${authHeader}
     },
     ${bodyObjTemp.bodyTemp}
   };
@@ -59,6 +58,7 @@ function generateApiFunctionTemplate(endpoint) {
    * Path: ${path}
    * Responses: ${Object.keys(responses || {}).join(", ")}
    */
+
   ${name || "unnamedFunction"}: async (${argTemp.temp.join(", ")}) => {
     ${Object.keys(argTemp.warningTemp)
       .map((x) => {
@@ -80,7 +80,7 @@ function generateApiFunctionTemplate(endpoint) {
     }
   }
   `.trim();
-  return functionBody;
+  return { functionBody, args: argTemp.temp };
 }
 
 module.exports = generateApiFunctionTemplate;

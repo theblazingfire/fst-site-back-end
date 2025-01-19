@@ -1,1 +1,1005 @@
-[{"tags":["Auth"],"summary":"User Login","description":"Login a user with email and password","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"email":{"type":"string","format":"email"},"password":{"type":"string"},"role":{"type":"string"}},"required":["email","password","role"]}}}},"responses":{"200":{"description":"Login successful","content":{"application/json":{"schema":{"type":"object","properties":{"token":{"type":"string"}}}}}},"400":{"description":"Invalid input"},"401":{"description":"Unauthorized"}},"method":"post","path":"/auth/login","baseUrl":"https://example.com"},{"tags":["Auth"],"summary":"Forgot Password","description":"Request a password reset link","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"email":{"type":"string","format":"email"}},"required":["email"]}}}},"responses":{"200":{"description":"Reset link sent"},"400":{"description":"Invalid input"},"404":{"description":"Email not found"}},"method":"post","path":"/auth/forgot-password","baseUrl":"https://example.com"},{"tags":["Auth"],"summary":"Reset Password","description":"Reset the password using a reset token","parameters":[{"name":"resetToken","in":"query","required":true,"schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"newPassword":{"type":"string"}},"required":["newPassword"]}}}},"responses":{"200":{"description":"Password reset successful"},"400":{"description":"Invalid input"},"401":{"description":"Invalid or expired reset token"}},"method":"post","path":"/auth/reset-password","baseUrl":"https://example.com"},{"tags":["Auth"],"summary":"Update User Details","description":"Update email, password, and recovery email","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"email":{"type":"string","format":"email"},"password":{"type":"string"},"recoveryEmail":{"type":"string","format":"email"}}}}}},"responses":{"200":{"description":"User details updated"},"400":{"description":"Invalid input"},"401":{"description":"Unauthorized"}},"method":"put","path":"/auth/update","baseUrl":"https://example.com"},{"tags":["Auth"],"summary":"Disable Account","description":"Disable a user account","responses":{"200":{"description":"Account disabled"},"401":{"description":"Unauthorized"}},"method":"put","path":"/auth/disable","baseUrl":"https://example.com"},{"tags":["Auth"],"summary":"Delete Account","description":"Delete a user account","responses":{"200":{"description":"Account deleted"},"401":{"description":"Unauthorized"}},"method":"delete","path":"/auth/delete","baseUrl":"https://example.com"},{"tags":["Auth"],"summary":"Check if token is valid","description":"Checks if the provided token is valid","parameters":[{"name":"Authorization","in":"header","required":true,"schema":{"type":"string"},"description":"Bearer token"}],"responses":{"200":{"description":"Token verification status","content":{"application/json":{"schema":{"type":"object","properties":{"isVerified":{"type":"boolean"}}}}}},"401":{"description":"Token is missing"},"403":{"description":"Token is not valid"},"404":{"description":"User not found"},"500":{"description":"Internal Server Error"}},"method":"get","path":"/auth/is-valid","baseUrl":"https://example.com"},{"tags":["Auth"],"summary":"Resend verification email","description":"Resends a verification email to a user if the user is found and has not been verified yet.","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"email":{"type":"string","format":"email","example":"user@example.com","description":"The email address of the user to whom the verification email will be sent."}}}}}},"responses":{"200":{"description":"Verification email sent successfully","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Verification email sent","description":"Success message indicating the verification email was sent."}}}}}},"400":{"description":"Bad Request","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Invalid email format","description":"Error message for invalid email or already verified email."}}}}}},"404":{"description":"User Not Found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"User not found","description":"Error message when the user is not found in the database."}}}}}},"500":{"description":"Internal Server Error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Server error","description":"Error message indicating a server error occurred."}}}}}}},"method":"post","path":"/resend-verification-email","baseUrl":"https://example.com"},{"tags":["Notifications"],"summary":"Create a new notification","name":"createNotification","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"title":{"type":"string","example":"New Message"},"message":{"type":"string","example":"You have a new message."},"userId":{"type":"string","example":"60d21b4667d0d8992e610c85"}}}}}},"responses":{"201":{"description":"Notification created successfully","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Notification"}}}},"400":{"description":"Bad request"},"500":{"description":"Internal server error"}},"method":"post","path":"/notifications","baseUrl":"https://example.com"},{"tags":["Notifications"],"summary":"Get all notifications with pagination","parameters":[{"in":"query","name":"page","schema":{"type":"integer","default":1},"description":"Page number for pagination (default is 1)"}],"responses":{"200":{"description":"A paginated list of notifications","content":{"application/json":{"schema":{"type":"object","properties":{"totalItems":{"type":"integer","example":100},"currentPage":{"type":"integer","example":1},"totalPages":{"type":"integer","example":4},"notifications":{"type":"array","items":{"$ref":"#/components/schemas/Notification"}}}}}}},"500":{"description":"Internal server error"}},"method":"get","path":"/notifications","baseUrl":"https://example.com"},{"tags":["Notifications"],"summary":"Get a notification by ID","parameters":[{"in":"path","name":"id","required":true,"schema":{"type":"string"},"description":"The ID of the notification"}],"responses":{"200":{"description":"The requested notification","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Notification"}}}},"404":{"description":"Notification not found"},"500":{"description":"Internal server error"}},"method":"get","path":"/notifications/{id}","baseUrl":"https://example.com"},{"tags":["Notifications"],"summary":"Mark notification as read","parameters":[{"in":"path","name":"id","required":true,"schema":{"type":"string"},"description":"The ID of the notification to be marked as read"}],"responses":{"200":{"description":"Notification marked as read"},"404":{"description":"Notification not found"},"500":{"description":"Internal server error"}},"method":"patch","path":"/notifications/{id}","baseUrl":"https://example.com"},{"tags":["Notifications"],"summary":"Delete a notification by ID","parameters":[{"in":"path","name":"id","required":true,"schema":{"type":"string"},"description":"The ID of the notification"}],"responses":{"200":{"description":"Notification deleted"},"404":{"description":"Notification not found"},"500":{"description":"Internal server error"}},"method":"delete","path":"/notifications/{id}","baseUrl":"https://example.com"},{"tags":["Profile"],"summary":"Create a new profile","security":[{"bearerAuth":[]}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/Profile"}}}},"responses":{"201":{"description":"Profile created successfully","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Profile"}}}},"400":{"description":"Bad request"},"500":{"description":"Error creating profile"}},"method":"post","path":"/profile","baseUrl":"https://example.com"},{"tags":["Profile"],"summary":"Get profiles with pagination","security":[{"bearerAuth":[]}],"parameters":[{"in":"query","name":"page","required":false,"schema":{"type":"integer"},"description":"Page number for pagination"}],"responses":{"200":{"description":"Profiles fetched successfully","content":{"application/json":{"schema":{"type":"object","properties":{"profiles":{"type":"array","items":{"$ref":"#/components/schemas/Profile"}},"currentPage":{"type":"integer"},"totalPages":{"type":"integer"}}}}}},"500":{"description":"Error fetching profiles"}},"method":"get","path":"/profile","baseUrl":"https://example.com"},{"tags":["Profile"],"summary":"Search profiles based on queries","security":[{"bearerAuth":[]}],"parameters":[{"in":"query","name":"username","required":false,"schema":{"type":"string"},"description":"Username to search for"},{"in":"query","name":"email","required":false,"schema":{"type":"string"},"description":"Email to search for"}],"responses":{"200":{"description":"Profiles fetched successfully","content":{"application/json":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/Profile"}}}}},"500":{"description":"Error searching profiles"}},"method":"get","path":"/profile/search","baseUrl":"https://example.com"},{"tags":["Profile"],"summary":"Get profile by user ID","security":[{"bearerAuth":[]}],"parameters":[{"in":"path","name":"userId","required":true,"schema":{"type":"string"},"description":"User ID of the profile to fetch"}],"responses":{"200":{"description":"Profile fetched successfully","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Profile"}}}},"404":{"description":"Profile not found"},"500":{"description":"Error fetching profile"}},"method":"get","path":"/profile/{userId}","baseUrl":"https://example.com"},{"tags":["Profile"],"summary":"Update profile","security":[{"bearerAuth":[]}],"parameters":[{"in":"path","name":"userId","required":true,"schema":{"type":"string"},"description":"User ID of the profile to update"}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"username":{"type":"string"},"email":{"type":"string"},"profileImage":{"type":"string"}}}}}},"responses":{"200":{"description":"Profile updated successfully"},"400":{"description":"Bad request"},"404":{"description":"Profile not found"},"500":{"description":"Error updating profile"}},"method":"put","path":"/profile/{userId}","baseUrl":"https://example.com"},{"tags":["Profile"],"summary":"Delete profile","security":[{"bearerAuth":[]}],"parameters":[{"in":"path","name":"userId","required":true,"schema":{"type":"string"},"description":"User ID of the profile to delete"}],"responses":{"200":{"description":"Profile deleted successfully"},"404":{"description":"Profile not found"},"500":{"description":"Error deleting profile"}},"method":"delete","path":"/profile/{userId}","baseUrl":"https://example.com"},{"tags":["Profile"],"summary":"Upload profile image","security":[{"bearerAuth":[]}],"parameters":[{"in":"path","name":"userId","required":true,"schema":{"type":"string"},"description":"User ID of the profile to update"}],"requestBody":{"content":{"multipart/form-data":{"schema":{"type":"object","properties":{"files":{"type":"array","items":{"type":"string","format":"binary"}}}}}}},"responses":{"200":{"description":"Profile image uploaded successfully","content":{"application/json":{"schema":{"type":"object","properties":{"urls":{"type":"array","items":{"type":"string"}}}}}}},"400":{"description":"Bad request"},"500":{"description":"Error uploading profile image"}},"method":"post","path":"/profile/{userId}/upload","baseUrl":"https://example.com"},{"tags":["Auth"],"summary":"User Signup","description":"Signup a new user with email and password","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"email":{"type":"string","format":"email"},"password":{"type":"string"},"role":{"type":"string"}},"required":["email","password","role"]}}}},"responses":{"201":{"description":"User created successfully","content":{"application/json":{"schema":{"type":"object","properties":{"token":{"type":"string"}}}}}},"400":{"description":"Invalid input"},"409":{"description":"Email already registered"}},"method":"post","path":"/auth/signup/emailandpassword","baseUrl":"https://example.com"},{"summary":"Performs a ping request","tags":["Ping"],"responses":{"200":{"description":"Returns pong"}},"method":"get","path":"/","baseUrl":"https://example.com"},{"summary":"Get server status","tags":["Ping"],"responses":{"200":{"description":"Returns server status"}},"method":"get","path":"/status","baseUrl":"https://example.com"},{"summary":"Get request logs","tags":["Ping"],"responses":{"200":{"description":"Returns request logs"},"500":{"description":"Error reading request logs"}},"method":"get","path":"/request-logs","baseUrl":"https://example.com"},{"summary":"Get application logs","tags":["Ping"],"responses":{"200":{"description":"Returns application logs"},"500":{"description":"Error reading application logs"}},"method":"get","path":"/app-logs","baseUrl":"https://example.com"},{"summary":"Clear request logs","tags":["Ping"],"responses":{"200":{"description":"Request logs cleared"},"500":{"description":"Error clearing request logs"}},"method":"get","path":"/clear-request-logs","baseUrl":"https://example.com"},{"summary":"Clear application logs","tags":["Ping"],"responses":{"200":{"description":"Application logs cleared"},"500":{"description":"Error clearing application logs"}},"method":"get","path":"/clear-app-logs","baseUrl":"https://example.com"},{"summary":"Post a new customer message","tags":["CustomerSupport"],"description":"Receive a new message from a customer and save it to the database.","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"email":{"type":"string","format":"email","example":"customer@example.com"},"message":{"type":"string","example":"I have an issue with my order."}},"required":["email","message"]}}}},"responses":{"201":{"description":"Message received successfully","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Message received successfully"}}}}}},"400":{"description":"Invalid input","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Invalid email format"}}}}}},"500":{"description":"Server error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Server error"}}}}}}},"method":"post","path":"/messages","baseUrl":"https://example.com"},{"summary":"Retrieve customer messages","tags":["CustomerSupport"],"description":"Retrieve a list of customer messages with optional filtering.","parameters":[{"name":"replied","in":"query","description":"Filter messages by whether they have been replied to.","schema":{"type":"boolean"}},{"name":"startDate","in":"query","description":"Filter messages created on or after this date (ISO 8601 format).","schema":{"type":"string","format":"date-time"}},{"name":"endDate","in":"query","description":"Filter messages created on or before this date (ISO 8601 format).","schema":{"type":"string","format":"date-time"}}],"responses":{"200":{"description":"List of customer messages","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"_id":{"type":"string"},"email":{"type":"string"},"message":{"type":"string"},"created":{"type":"string","format":"date-time"},"replied":{"type":"boolean"}}}}}}},"400":{"description":"Invalid query parameters","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Invalid startDate format"}}}}}},"500":{"description":"Server error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Server error"}}}}}}},"method":"get","path":"/messages","baseUrl":"https://example.com"},{"summary":"Reply to a customer message","tags":["CustomerSupport"],"security":[{"bearerAuth":[]}],"description":"Admin replies to a customer message and updates the message status to replied.","parameters":[{"name":"messageId","in":"path","required":true,"description":"ID of the message to reply to","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"replyMessage":{"type":"string","example":"Thank you for reaching out. Your issue has been addressed."}},"required":["replyMessage"]}}}},"responses":{"200":{"description":"Reply sent successfully","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Reply sent successfully"}}}}}},"404":{"description":"Message not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Message not found"}}}}}},"500":{"description":"Server error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Server error"}}}}}}},"method":"post","path":"/messages/{messageId}/reply","baseUrl":"https://example.com"}]
+[
+  {
+    "tags": ["Auth"],
+    "summary": "User Login",
+    "description": "Login a user with email and password",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": { "type": "string", "format": "email" },
+              "password": { "type": "string" },
+              "role": { "type": "string" }
+            },
+            "required": ["email", "password", "role"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Login successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": { "token": { "type": "string" } }
+            }
+          }
+        }
+      },
+      "400": { "description": "Invalid input" },
+      "401": { "description": "Unauthorized" }
+    },
+    "method": "post",
+    "path": "/auth/login",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Auth"],
+    "summary": "Forgot Password",
+    "description": "Request a password reset link",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": { "email": { "type": "string", "format": "email" } },
+            "required": ["email"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": { "description": "Reset link sent" },
+      "400": { "description": "Invalid input" },
+      "404": { "description": "Email not found" }
+    },
+    "method": "post",
+    "path": "/auth/forgot-password",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Auth"],
+    "summary": "Reset Password",
+    "description": "Reset the password using a reset token",
+    "parameters": [
+      {
+        "name": "resetToken",
+        "in": "query",
+        "required": true,
+        "schema": { "type": "string" }
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": { "newPassword": { "type": "string" } },
+            "required": ["newPassword"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": { "description": "Password reset successful" },
+      "400": { "description": "Invalid input" },
+      "401": { "description": "Invalid or expired reset token" }
+    },
+    "method": "post",
+    "path": "/auth/reset-password",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Auth"],
+    "summary": "Update User Details",
+    "description": "Update email, password, and recovery email",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": { "type": "string", "format": "email" },
+              "password": { "type": "string" },
+              "recoveryEmail": { "type": "string", "format": "email" }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": { "description": "User details updated" },
+      "400": { "description": "Invalid input" },
+      "401": { "description": "Unauthorized" }
+    },
+    "method": "put",
+    "path": "/auth/update",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Auth"],
+    "summary": "Disable Account",
+    "description": "Disable a user account",
+    "responses": {
+      "200": { "description": "Account disabled" },
+      "401": { "description": "Unauthorized" }
+    },
+    "method": "put",
+    "path": "/auth/disable",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Auth"],
+    "summary": "Delete Account",
+    "description": "Delete a user account",
+    "responses": {
+      "200": { "description": "Account deleted" },
+      "401": { "description": "Unauthorized" }
+    },
+    "method": "delete",
+    "path": "/auth/delete",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Auth"],
+    "summary": "Check if token is valid",
+    "description": "Checks if the provided token is valid",
+    "parameters": [
+      {
+        "name": "Authorization",
+        "in": "header",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "Bearer token"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Token verification status",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": { "isVerified": { "type": "boolean" } }
+            }
+          }
+        }
+      },
+      "401": { "description": "Token is missing" },
+      "403": { "description": "Token is not valid" },
+      "404": { "description": "User not found" },
+      "500": { "description": "Internal Server Error" }
+    },
+    "method": "get",
+    "path": "/auth/is-valid",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Auth"],
+    "summary": "Resend verification email",
+    "description": "Resends a verification email to a user if the user is found and has not been verified yet.",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string",
+                "format": "email",
+                "example": "user@example.com",
+                "description": "The email address of the user to whom the verification email will be sent."
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Verification email sent successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Verification email sent",
+                  "description": "Success message indicating the verification email was sent."
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Bad Request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Invalid email format",
+                  "description": "Error message for invalid email or already verified email."
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "User Not Found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "User not found",
+                  "description": "Error message when the user is not found in the database."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Server error",
+                  "description": "Error message indicating a server error occurred."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "method": "post",
+    "path": "/resend-verification-email",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Notifications"],
+    "summary": "Create a new notification",
+    "name": "createNotification",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string", "example": "New Message" },
+              "message": {
+                "type": "string",
+                "example": "You have a new message."
+              },
+              "userId": {
+                "type": "string",
+                "example": "60d21b4667d0d8992e610c85"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Notification created successfully",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Notification" }
+          }
+        }
+      },
+      "400": { "description": "Bad request" },
+      "500": { "description": "Internal server error" }
+    },
+    "method": "post",
+    "path": "/notifications",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Notifications"],
+    "summary": "Get all notifications with pagination",
+    "parameters": [
+      {
+        "in": "query",
+        "name": "page",
+        "schema": { "type": "integer", "default": 1 },
+        "description": "Page number for pagination (default is 1)"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "A paginated list of notifications",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "totalItems": { "type": "integer", "example": 100 },
+                "currentPage": { "type": "integer", "example": 1 },
+                "totalPages": { "type": "integer", "example": 4 },
+                "notifications": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Notification" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": { "description": "Internal server error" }
+    },
+    "method": "get",
+    "path": "/notifications",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Notifications"],
+    "summary": "Get a notification by ID",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "The ID of the notification"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "The requested notification",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Notification" }
+          }
+        }
+      },
+      "404": { "description": "Notification not found" },
+      "500": { "description": "Internal server error" }
+    },
+    "method": "get",
+    "path": "/notifications/{id}",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Notifications"],
+    "summary": "Mark notification as read",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "The ID of the notification to be marked as read"
+      }
+    ],
+    "responses": {
+      "200": { "description": "Notification marked as read" },
+      "404": { "description": "Notification not found" },
+      "500": { "description": "Internal server error" }
+    },
+    "method": "patch",
+    "path": "/notifications/{id}",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Notifications"],
+    "summary": "Delete a notification by ID",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "The ID of the notification"
+      }
+    ],
+    "responses": {
+      "200": { "description": "Notification deleted" },
+      "404": { "description": "Notification not found" },
+      "500": { "description": "Internal server error" }
+    },
+    "method": "delete",
+    "path": "/notifications/{id}",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Profile"],
+    "summary": "Create a new profile",
+    "security": [{ "bearerAuth": [] }],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": { "$ref": "#/components/schemas/Profile" }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Profile created successfully",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Profile" }
+          }
+        }
+      },
+      "400": { "description": "Bad request" },
+      "500": { "description": "Error creating profile" }
+    },
+    "method": "post",
+    "path": "/profile",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Profile"],
+    "summary": "Get profiles with pagination",
+    "security": [{ "bearerAuth": [] }],
+    "parameters": [
+      {
+        "in": "query",
+        "name": "page",
+        "required": false,
+        "schema": { "type": "integer" },
+        "description": "Page number for pagination"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Profiles fetched successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "profiles": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Profile" }
+                },
+                "currentPage": { "type": "integer" },
+                "totalPages": { "type": "integer" }
+              }
+            }
+          }
+        }
+      },
+      "500": { "description": "Error fetching profiles" }
+    },
+    "method": "get",
+    "path": "/profile",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Profile"],
+    "summary": "Search profiles based on queries",
+    "security": [{ "bearerAuth": [] }],
+    "parameters": [
+      {
+        "in": "query",
+        "name": "username",
+        "required": false,
+        "schema": { "type": "string" },
+        "description": "Username to search for"
+      },
+      {
+        "in": "query",
+        "name": "email",
+        "required": false,
+        "schema": { "type": "string" },
+        "description": "Email to search for"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Profiles fetched successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/components/schemas/Profile" }
+            }
+          }
+        }
+      },
+      "500": { "description": "Error searching profiles" }
+    },
+    "method": "get",
+    "path": "/profile/search",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Profile"],
+    "summary": "Get profile by user ID",
+    "security": [{ "bearerAuth": [] }],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "userId",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "User ID of the profile to fetch"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Profile fetched successfully",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Profile" }
+          }
+        }
+      },
+      "404": { "description": "Profile not found" },
+      "500": { "description": "Error fetching profile" }
+    },
+    "method": "get",
+    "path": "/profile/{userId}",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Profile"],
+    "summary": "Update profile",
+    "security": [{ "bearerAuth": [] }],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "userId",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "User ID of the profile to update"
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "username": { "type": "string" },
+              "email": { "type": "string" },
+              "profileImage": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": { "description": "Profile updated successfully" },
+      "400": { "description": "Bad request" },
+      "404": { "description": "Profile not found" },
+      "500": { "description": "Error updating profile" }
+    },
+    "method": "put",
+    "path": "/profile/{userId}",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Profile"],
+    "summary": "Delete profile",
+    "security": [{ "bearerAuth": [] }],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "userId",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "User ID of the profile to delete"
+      }
+    ],
+    "responses": {
+      "200": { "description": "Profile deleted successfully" },
+      "404": { "description": "Profile not found" },
+      "500": { "description": "Error deleting profile" }
+    },
+    "method": "delete",
+    "path": "/profile/{userId}",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Profile"],
+    "summary": "Upload profile image",
+    "security": [{ "bearerAuth": [] }],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "userId",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "User ID of the profile to update"
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "multipart/form-data": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "files": {
+                "type": "array",
+                "items": { "type": "string", "format": "binary" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Profile image uploaded successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "urls": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      },
+      "400": { "description": "Bad request" },
+      "500": { "description": "Error uploading profile image" }
+    },
+    "method": "post",
+    "path": "/profile/{userId}/upload",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "tags": ["Auth"],
+    "summary": "User Signup",
+    "description": "Signup a new user with email and password",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": { "type": "string", "format": "email" },
+              "password": { "type": "string" },
+              "role": { "type": "string" }
+            },
+            "required": ["email", "password", "role"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "User created successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": { "token": { "type": "string" } }
+            }
+          }
+        }
+      },
+      "400": { "description": "Invalid input" },
+      "409": { "description": "Email already registered" }
+    },
+    "method": "post",
+    "path": "/auth/signup/emailandpassword",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "summary": "Performs a ping request",
+    "tags": ["Ping"],
+    "responses": { "200": { "description": "Returns pong" } },
+    "method": "get",
+    "path": "/",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "summary": "Get server status",
+    "tags": ["Ping"],
+    "responses": { "200": { "description": "Returns server status" } },
+    "method": "get",
+    "path": "/status",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "summary": "Get request logs",
+    "tags": ["Ping"],
+    "responses": {
+      "200": { "description": "Returns request logs" },
+      "500": { "description": "Error reading request logs" }
+    },
+    "method": "get",
+    "path": "/request-logs",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "summary": "Get application logs",
+    "tags": ["Ping"],
+    "responses": {
+      "200": { "description": "Returns application logs" },
+      "500": { "description": "Error reading application logs" }
+    },
+    "method": "get",
+    "path": "/app-logs",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "summary": "Clear request logs",
+    "tags": ["Ping"],
+    "responses": {
+      "200": { "description": "Request logs cleared" },
+      "500": { "description": "Error clearing request logs" }
+    },
+    "method": "get",
+    "path": "/clear-request-logs",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "summary": "Clear application logs",
+    "tags": ["Ping"],
+    "responses": {
+      "200": { "description": "Application logs cleared" },
+      "500": { "description": "Error clearing application logs" }
+    },
+    "method": "get",
+    "path": "/clear-app-logs",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "summary": "Post a new customer message",
+    "tags": ["CustomerSupport"],
+    "description": "Receive a new message from a customer and save it to the database.",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string",
+                "format": "email",
+                "example": "customer@example.com"
+              },
+              "message": {
+                "type": "string",
+                "example": "I have an issue with my order."
+              }
+            },
+            "required": ["email", "message"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Message received successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Message received successfully"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Invalid input",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Invalid email format"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "type": "string", "example": "Server error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "method": "post",
+    "path": "/messages",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "summary": "Retrieve customer messages",
+    "tags": ["CustomerSupport"],
+    "description": "Retrieve a list of customer messages with optional filtering.",
+    "parameters": [
+      {
+        "name": "replied",
+        "in": "query",
+        "description": "Filter messages by whether they have been replied to.",
+        "schema": { "type": "boolean" }
+      },
+      {
+        "name": "startDate",
+        "in": "query",
+        "description": "Filter messages created on or after this date (ISO 8601 format).",
+        "schema": { "type": "string", "format": "date-time" }
+      },
+      {
+        "name": "endDate",
+        "in": "query",
+        "description": "Filter messages created on or before this date (ISO 8601 format).",
+        "schema": { "type": "string", "format": "date-time" }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "List of customer messages",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "_id": { "type": "string" },
+                  "email": { "type": "string" },
+                  "message": { "type": "string" },
+                  "created": { "type": "string", "format": "date-time" },
+                  "replied": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Invalid query parameters",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Invalid startDate format"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "type": "string", "example": "Server error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "method": "get",
+    "path": "/messages",
+    "baseUrl": "https://fstbackend.com"
+  },
+  {
+    "summary": "Reply to a customer message",
+    "tags": ["CustomerSupport"],
+    "security": [{ "bearerAuth": [] }],
+    "description": "Admin replies to a customer message and updates the message status to replied.",
+    "parameters": [
+      {
+        "name": "messageId",
+        "in": "path",
+        "required": true,
+        "description": "ID of the message to reply to",
+        "schema": { "type": "string" }
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "replyMessage": {
+                "type": "string",
+                "example": "Thank you for reaching out. Your issue has been addressed."
+              }
+            },
+            "required": ["replyMessage"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Reply sent successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Reply sent successfully"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Message not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "type": "string", "example": "Message not found" }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "type": "string", "example": "Server error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "method": "post",
+    "path": "/messages/{messageId}/reply",
+    "baseUrl": "https://fstbackend.com"
+  }
+]

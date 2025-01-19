@@ -1,49 +1,4 @@
-const fs = require("fs");
-const prettier = require("prettier");
-// get input and output and figure out the way to optimize this solution.
-function generateAxiosInstanceFile(
-  baseURL,
-  outputPath = "./axiosInstance.js",
-  headers = { "Content-Type": "application/json" },
-) {
-  const axiosInstanceCode = `
-    import axios from 'axios';
-
-    const axiosInstance = axios.create({
-      baseURL: '${baseURL}',
-      headers: ${JSON.stringify(headers, null, 2)}
-    });
-
-    export default axiosInstance;
-  `;
-
-  prettier
-    .format(axiosInstanceCode, { parser: "babel" })
-    .then((formattedCode) => {
-      fs.writeFileSync(outputPath, formattedCode, "utf8");
-      console.log(`Axios instance file generated at ${outputPath}`);
-    })
-    .catch((error) => {
-      console.error("Error formatting or writing code:", error);
-    });
-}
-
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-
-const getParamDefault = (type) => {
-  if (type == "string") {
-    return `""`;
-  }
-  if (type == "number" || type == "integer") {
-    return `0`;
-  }
-  if (type == "object") {
-    return `{}`;
-  }
-  if (type == "boolean") {
-    return `true`;
-  } else return undefined;
-};
 
 const generateNameFromPath = (path, method) => {
   const segments = path.split("/").filter((segment) => segment); // Remove empty segments
@@ -55,210 +10,9 @@ const generateNameFromPath = (path, method) => {
   return method.toLowerCase() + formattedSegments.join("");
 };
 
-function generateApiFunctionTemplate(endpoint) {
-  const {
-    name,
-    method,
-    summary,
-    tags,
-    security,
-    parameters,
-    requestBody,
-    responses,
-    path,
-  } = endpoint;
-
-  const requiresAuth = security ? true : false;
-  const tokenParam = requiresAuth ? `token = ""` : "";
-  const requestBodySchema = requestBody?.content;
-  let requestBodySchemaExtracted = Object.entries(requestBodySchema || {})[0];
-  requestBodySchemaExtracted
-    ? (requestBodySchemaExtracted = requestBodySchemaExtracted[1].schema)
-    : undefined;
-
-  // Parse parameters
-  const pathParams = parameters?.filter((p) => p.in === "path");
-  const queryParams = parameters?.filter((p) => p.in === "query");
-
-  const pathParamString = pathParams
-    ?.map((p) => `${p.name} = ${getParamDefault(p.schema?.type)}`)
-    .join(", ");
-  const queryParamString = queryParams
-    ?.map((q) => `${q.name} = ${getParamDefault(q.schema?.type)}`)
-    .join(", ");
-
-  console.log({
-    path: path.replaceAll("{", "${"),
-    requiresAuth,
-    tokenParam,
-    allParams: pathParamString?.toString() + queryParamString?.toString(),
-    requestBodySchema: requestBodySchemaExtracted,
-  });
-
-  // Generate a comment for the function
-  const comment = `
-  /**
-   * ${summary || "No description provided."}
-   * Tags: ${tags ? tags.join(", ") : "None"}
-   * Method: ${method.toUpperCase()}
-   * Path: ${path}
-   * Responses: ${Object.keys(responses || {}).join(", ")}
-   */
-  `;
-  function generateQueryString(paramsArray) {
-    if (!Array.isArray(paramsArray)) {
-      throw new Error(
-        "Input must be an array of strings in the format 'name=value'.",
-      );
-    }
-
-    // Parse and join valid query parameters
-    const queryString = paramsArray
-      .map((param) => {
-        const [key, value] = param.split("=");
-        if (!key || value === undefined) {
-          throw new Error(
-            `Invalid format for parameter: "${param}". Expected "name=value".`,
-          );
-        }
-        return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
-      })
-      .join("&");
-
-    return `?${queryString}`;
-  }
-
-  let combineParams = pathParamString || "" + queryParamString || "";
-
-  console.log({ generateQueryString });
-  // generateQuery
-  if (method == "get") {
-    const functionBody = `
-    ${name || "unnamedFunction"}: async (${""}) =>{
-      try {
-        const response = await axiosInstance.get(${path.replaceAll("{", "${")})
-      }
-    
-      }
- `;
-  }
-
-  // Generate the function body
-  const functionBody = `
-  ${comment}
-  ${name || "unnamedFunction"}: async (${"" || ""}) => {
-    try {
-      const response = await axios({
-        method: "${method}",
-        url: \`/api${path}\`,
-        ${parameters ? "params," : ""}
-        ${requestBody ? "data," : ""}
-      });
-      return response.data;
-    } catch (error) {
-      console.error("Error in ${name || "unnamedFunction"}:", error);
-      throw error;
-    }
-  }
-  `;
-
-  return functionBody.trim();
-}
-function generateApiFunctionTemplate1(endpoint) {
-  const {
-    name,
-    method,
-    summary,
-    tags,
-    parameters = [],
-    requestBody,
-    responses,
-    path,
-    security,
-  } = endpoint;
-  const requiresAuth = !!security;
-  const tokenParam = requiresAuth ? `token = ""` : "";
-
-  // Parse parameters
-  const pathParams = parameters.filter((p) => p.in === "path");
-  const queryParams = parameters.filter((p) => p.in === "query");
-
-  const pathParamString = pathParams.map((p) => `${p.name}`).join(", ");
-  const queryParamString = queryParams
-    .map((q) => `${q.name} = ${getParamDefault(q.schema?.type)}`)
-    .join(", ");
-
-  const updatedParams = [tokenParam, pathParamString, queryParamString]
-    .filter(Boolean)
-    .join(", ");
-
-  // Parse request body
-  const requestBodySchema = requestBody?.content;
-  const contentType = requestBodySchema
-    ? Object.keys(requestBodySchema)[0]
-    : null;
-
-  const bodyParam = requestBody
-    ? `data = ${contentType === "multipart/form-data" ? "{}" : "{}"}`
-    : "";
-
-  const allParams = [updatedParams, bodyParam].filter(Boolean).join(", ");
-
-  // Generate headers
-  const headers = [];
-  if (requiresAuth) headers.push(`Authorization: \`Bearer \${token}\``);
-  if (contentType) headers.push(`"Content-Type": "${contentType}"`);
-
-  const headersString =
-    headers.length > 0 ? `headers: { ${headers.join(", ")} },` : "";
-
-  // Generate URL with path params
-  const urlWithParams =
-    pathParams.length > 0
-      ? `\`${path.replace(
-          /{([^}]+)}/g,
-          (_, paramName) => `\${${paramName}}`,
-        )}\``
-      : `"${path}"`;
-
-  // Generate function body
-  const functionBody = `
-  /**
-   * ${summary || "No description provided."}
-   * Tags: ${tags ? tags.join(", ") : "None"}
-   * Method: ${method.toUpperCase()}
-   * Path: ${path}
-   * Responses: ${Object.keys(responses || {}).join(", ")}
-   */
-  ${name || "unnamedFunction"}: async (${allParams}) => {
-    try {
-      const response = await axios({
-        method: "${method}",
-        url: /api/${urlWithParams},
-        ${
-          queryParams.length > 0
-            ? "params: { " +
-              queryParams.map((q) => `${q.name}`).join(", ") +
-              " }, "
-            : ""
-        }
-        ${bodyParam ? "data," : ""}
-        ${headersString}
-      });
-      return response.data;
-    } catch (error) {
-      console.error("Error in ${name || "unnamedFunction"}:", error);
-      throw error;
-    }
-  },
-  `.trim();
-  return functionBody;
-}
-
 function extractAllEndpoints(parsedYaml, baseUrl) {
   let result = [];
   const endpointsGroup = Object.keys(parsedYaml.paths);
-  console.log({ endpointsGroup });
   for (let path of endpointsGroup) {
     let data = parsedYaml.paths[path];
     let methods = Object.keys(data);
@@ -273,7 +27,7 @@ function extractAllEndpoints(parsedYaml, baseUrl) {
   return result;
 }
 
-function getQueryTemplate(queryArray) {
+function getQueryTemplate1(queryArray) {
   if (!Array.isArray(queryArray)) {
     throw new Error(
       "Input must be an array of strings in the format 'queryValue'.",
@@ -281,8 +35,30 @@ function getQueryTemplate(queryArray) {
   }
   let output = [];
   for (let each of queryArray) {
-    output.push(each + "=${" + each + "}");
+    output.push(each + "=${encodeURIComponent(" + each + ")}");
   }
+  return output;
+}
+
+function getQueryTemplate(queryArray) {
+  // Validate input
+  if (!Array.isArray(queryArray)) {
+    throw new Error(
+      "Input must be an array of strings representing query keys.",
+    );
+  }
+
+  // Generate templates
+  const output = queryArray.map((key) => {
+    if (typeof key !== "string" || !key.trim()) {
+      throw new Error(
+        `Invalid query key: "${key}". Query keys must be non-empty strings.`,
+      );
+    }
+    // Create a template for each query key
+    return `${key}=\${encodeURIComponent(${key})}`;
+  });
+
   return output;
 }
 
@@ -345,15 +121,20 @@ function generateBodyObjectTemplate(contentType, properties) {
       formDataTemplate: "",
     };
   } else if (contentType === "multipart/form-data") {
-    properties.forEach((x) => {
-      let name = x[0];
-      formDataTemplate +=
-        `\n
+    properties.forEach(([name, details]) => {
+      if (details?.type === "array") {
+        formDataTemplate += `${name}.forEach((x) => {
+  formData.append("${name}", x); // Add each file to the "${name}" key
+});`;
+      } else {
+        formDataTemplate +=
+          `\n
         formData.append("` +
-        name +
-        `",` +
-        name +
-        ");";
+          name +
+          `",` +
+          name +
+          ");";
+      }
     });
     return { formDataTemplate, bodyTemp: "data: formData " };
   } else {
@@ -398,7 +179,9 @@ function generateFunctionArgsTemplate(
             }`;
         warningTemp[x.name] = warningTypeGuardTemp;
       } else {
-        let warningTypeGuardTemp = `if(typeof ${x.name} !== '${x.schema.type}'){
+        let warningTypeGuardTemp = `if(typeof ${x.name} !== '${
+          x.schema.type == "integer" ? "number" : x.schema.type
+        }'){
             throw new Error("Argument \'${x.name}\' should be of type ${
               x.schema.type
             } ${
@@ -426,7 +209,9 @@ function generateFunctionArgsTemplate(
               }`;
         warningTemp[x.name] = warningTypeGuardTemp;
       } else {
-        let warningTypeGuardTemp = `if(typeof ${x.name} !== '${x.schema.type}'){
+        let warningTypeGuardTemp = `if(typeof ${x.name} !== '${
+          x.schema.type == "integer" ? "number" : x.schema.type
+        }'){
               throw new Error("Argument \'${x.name}\' should be of type ${
                 x.schema.type
               } ${
@@ -438,7 +223,6 @@ function generateFunctionArgsTemplate(
     });
   }
   if (reqBodyProps.contentType) {
-    console.log({ reqBodyProps });
     let reqBodyPropsLean = reqBodyProps.properties.map((x) => {
       let [name, value] = x;
       return name;
@@ -447,8 +231,12 @@ function generateFunctionArgsTemplate(
     reqBodyProps.properties.forEach((x) => {
       let [name, value] = x;
       if (value.type === "array") {
-        let warningTypeGuardTemp = `if(!Array.isArray(${name})){
-                throw new Error("Argument \'${x.name}\' should be of type ${
+        let warningTypeGuardTemp = `if(!Array.isArray(${name}) ${
+          reqBodyProps.contentType === "multipart/form-data"
+            ? "&& !" + name + ".every(item => item instanceof File)"
+            : ""
+        }){
+                throw new Error("Argument \'${name}\' should be of type ${
                   value.type
                 } and the items should be of the type ${
                   value?.items
@@ -472,12 +260,11 @@ function generateFunctionArgsTemplate(
   return { temp, warningTemp };
 }
 
+
 module.exports = {
   capitalize,
   extractAllEndpoints,
-  generateApiFunctionTemplate,
   generateNameFromPath,
-  generateAxiosInstanceFile,
   processPath,
   parseRequest,
   generateFunctionArgsTemplate,

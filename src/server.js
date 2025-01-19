@@ -29,7 +29,7 @@ let database;
 if (config.NODE_ENV == "production") {
   database = config.PROD_DB;
 } else if (config.NODE_ENV == "development") {
-  database = config.PROD_DB;
+  database = config.DEV_DB;
 } else {
   database = "mongodb://localhost:27017/test";
 }

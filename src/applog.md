@@ -7103,3 +7103,396 @@ Server running on http://localhost:8080
 
 _2025-01-06T23:43:12.839Z_
 Success : connected to database
+
+## Info
+
+_2025-01-14T16:21:40.776Z_
+Success: connected to database
+
+## Info
+
+_2025-01-14T16:21:40.809Z_
+Server running on http://localhost:8080
+
+## Info
+
+_2025-01-14T16:21:44.656Z_
+Success : connected to database
+
+## Info
+
+_2025-01-14T16:21:54.875Z_
+Request logs cleared
+
+## Info
+
+_2025-01-14T16:21:59.728Z_
+Request logs cleared
+
+## Info
+
+_2025-01-14T16:22:04.576Z_
+App logs cleared
+
+## Info
+
+_2025-01-14T16:29:35.628Z_
+Success: connected to database
+
+## Info
+
+_2025-01-14T16:29:35.670Z_
+Server running on http://localhost:8080
+
+## Info
+
+_2025-01-14T16:29:39.274Z_
+Success : connected to database
+
+## Info
+
+_2025-01-14T16:39:13.196Z_
+Success: connected to database
+
+## Error
+
+_2025-01-14T16:39:13.244Z_
+
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+
+## Error
+
+_2025-01-14T16:39:13.249Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:39:13.251Z_
+
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+
+## Info
+
+_2025-01-14T16:39:13.309Z_
+Server running on http://localhost:8080
+
+## Info
+
+_2025-01-14T16:41:30.530Z_
+Success: connected to database
+
+## Error
+
+_2025-01-14T16:41:30.545Z_
+
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+
+## Error
+
+_2025-01-14T16:41:30.568Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:41:30.570Z_
+
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+
+## Info
+
+_2025-01-14T16:41:30.594Z_
+Server running on http://localhost:8080
+
+## Info
+
+_2025-01-14T16:44:27.965Z_
+Success: connected to database
+
+## Info
+
+_2025-01-14T16:44:28.014Z_
+Server running on http://localhost:8080
+
+## Error
+
+_2025-01-14T16:44:28.017Z_
+
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+
+## Error
+
+_2025-01-14T16:44:28.021Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:44:28.026Z_
+
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+
+## Info
+
+_2025-01-14T16:45:04.180Z_
+Success: connected to database
+
+## Info
+
+_2025-01-14T16:45:04.215Z_
+Server running on http://localhost:8080
+
+## Error
+
+_2025-01-14T16:45:04.228Z_
+
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+
+## Error
+
+_2025-01-14T16:45:04.233Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:45:04.238Z_
+
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+
+## Error
+
+_2025-01-14T16:45:52.246Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:45:52.258Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:45:52.287Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:45:52.299Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:45:52.314Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:45:52.320Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:45:57.037Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:45:57.046Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:45:57.048Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:45:57.077Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:45:57.087Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:45:57.102Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:46:38.146Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:46:38.217Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:46:38.224Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:46:38.227Z_
+
+```javascript
+{
+}
+```
+
+## Error
+
+_2025-01-14T16:46:38.230Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:46:38.232Z_
+
+```javascript
+{
+}
+```
+
+## Info
+
+_2025-01-14T16:46:47.499Z_
+Success: connected to database
+
+## Info
+
+_2025-01-14T16:46:47.546Z_
+Server running on http://localhost:8080
+
+## Error
+
+_2025-01-14T16:46:47.549Z_
+
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+
+## Error
+
+_2025-01-14T16:46:47.554Z_
+Error in connecting to database
+
+## Error
+
+_2025-01-14T16:46:47.563Z_
+
+```javascript
+{
+  "code": "ETIMEOUT",
+  "syscall": "querySrv",
+  "hostname": "_mongodb._tcp.cluster0.ppt7z.mongodb.net"
+}
+```
+
+## Info
+
+_2025-01-14T16:47:13.450Z_
+Success: connected to database
+
+## Info
+
+_2025-01-14T16:47:13.495Z_
+Server running on http://localhost:8080
+
+## Info
+
+_2025-01-14T16:47:14.274Z_
+Success : connected to database

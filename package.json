@@ -9,7 +9,8 @@
     "test": "cross-env NODE_ENV=test && jest --verbose",
     "lint": "eslint .",
     "format": "prettier . --write",
-    "build": "vite build"
+    "build": "vite build",
+    "outputSdk": "node sdts.js https://fstbackend.com && npm run format"
   },
   "author": "Adefuye Abayomi",
   "license": "MIT",

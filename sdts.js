@@ -10,7 +10,11 @@ const engine = require("./temp_gen_engine.js");
 const pathToYaml = "./src/swagger.yaml";
 const sdkOutputDir = "./sdkoutput";
 
-const baseUrl = "https://example.com";
+const baseUrl = process.argv[2];
+
+if (!baseUrl) {
+  throw new Error("'baseUrl' command line argument required. process.argv[2]");
+}
 
 let outputObject = {};
 
@@ -50,17 +54,24 @@ try {
   // Write each API group to its own file
 
   Object.entries(outputObject).forEach(async ([tag, functions]) => {
-    const tagFilePath = path.join(sdkOutputDir, `${tag}.js`);
+    const tagFilePath = path.join(sdkOutputDir, `${tag}.ts`);
     const functionsStr = Object.entries(functions)
-      .map(([name, functionCode]) => `${functionCode},`)
+      .map(([name, functionObj]) => `${functionObj.functionBody},`)
       .join("\n\n");
-    const fileContent = `// ${tag}\n\nexport const ${tag} = {\n${functionsStr}\n};`;
+    const interfaceString = Object.entries(functions)
+      .map(([name, functionObj]) => {
+        return `${name}: (${functionObj.args.join(",")}) => Promise<any>`;
+      })
+      .join("\n");
+    const fileContent = `// ${tag}\n\n import axios from "axios"; \ninterface ${tag}Api {\n${interfaceString}}; \n export const ${tag}: ${tag}Api = {\n${functionsStr}\n};`;
 
     try {
+      /*
       const formattedContent = await prettier.format(fileContent, {
         parser: "babel",
       });
-      fs.writeFileSync(tagFilePath, formattedContent, "utf8");
+      */
+      fs.writeFileSync(tagFilePath, fileContent, "utf8");
       console.log(`API group '${tag}' file written to ${tagFilePath}`);
     } catch (error) {
       console.error(
