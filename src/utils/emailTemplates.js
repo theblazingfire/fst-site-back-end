@@ -47,11 +47,12 @@ function welcome(name) {
       <div class="email-container m-2">
         <div class="py-2"></div>
         <h1>Hi ${name},Welcome to ${config.companyName}!</h1>
-        <p>We're thrilled to have you on board. Let's serve you with the best inclass cullinary artistry in Nigeria.</p>
+        <p>We're thrilled to have you on board. .</p>
         <p>A Verification email would be sent to you shortly. Kindly verify your email so that you can be able to continue using the site.</p>
         <div class="p-space"></div>
         <small><i>For support, contact us via</i> <br>Company Mail: ${config.companySupportMail} <br> Call: ${config.companyCallLine} </small>
-      </div>
+        <small>${config.productionAddress}</small>
+        </div>
     </body>
     </html>`;
 }

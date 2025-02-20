@@ -15,9 +15,33 @@
       "name": "Profile",
       "description": "Endpoints for User Profile Management"
     },
-    { "name": "Notifications", "description": "Notification management" }
+    { "name": "Notifications", "description": "Notification management" },
+    {
+      "name": "Transactions",
+      "description": "Transactions Endpoints for managing CRUD operations and paystack integration"
+    },
+    {
+      "name": "Bootcamp",
+      "description": "Endpoint for managing student enrollment in our bootcamp"
+    },
+    {
+      "name": "ServiceOrder",
+      "description": "Manage and track user orders for our services"
+    },
+    {
+      "name": "CustomerSupport",
+      "description": "Manage Customer Feedback and Complaints"
+    },
+    { "name": "Chat", "description": "Manage Chat and Inbox Functions" }
   ],
   "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
     "schemas": {
       "Notification": {
         "type": "object",
@@ -97,6 +121,195 @@
             "example": "2023-07-18T12:34:56Z"
           }
         }
+      },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "transactionId": { "type": "string" },
+          "paymentID": { "type": "string", "default": "" },
+          "for": { "type": "string" },
+          "payer": { "type": "string", "format": "ObjectId" },
+          "userEmail": { "type": "string" },
+          "paid": { "type": "string", "enum": ["unpaid", "pending", "paid"] },
+          "amount": { "type": "number" },
+          "paymentMethod": {
+            "type": "string",
+            "enum": ["card", "bank_transfer", "ussd", "wallet"]
+          }
+        },
+        "required": [
+          "transactionId",
+          "for",
+          "payer",
+          "userEmail",
+          "paid",
+          "amount",
+          "paymentMethod"
+        ]
+      },
+      "Bootcamp": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string", "example": "64aef123abcd987654321" },
+          "name": { "type": "string", "example": "Frontend Bootcamp" },
+          "start": {
+            "type": "string",
+            "format": "date",
+            "example": "2024-08-15"
+          },
+          "end": {
+            "type": "string",
+            "format": "date",
+            "example": "2024-09-15"
+          },
+          "student": {
+            "type": "object",
+            "properties": {
+              "_id": { "type": "string", "example": "64aef456abcd987654322" },
+              "name": { "type": "string", "example": "John Doe" },
+              "email": { "type": "string", "example": "john@example.com" }
+            }
+          },
+          "transactionId": { "type": "string", "example": "TXN98765ABC" },
+          "paymentId": { "type": "string", "example": "PAY12345XYZ" },
+          "paymentStatus": {
+            "type": "string",
+            "enum": ["unpaid", "pending", "paid"],
+            "example": "paid"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-07-28T12:34:56.789Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-07-29T14:22:30.123Z"
+          }
+        }
+      },
+      "ServiceOrder": {
+        "type": "object",
+        "required": [
+          "user",
+          "service",
+          "packageType",
+          "amount",
+          "transactionId",
+          "paymentStatus"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique identifier for the service order"
+          },
+          "user": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Reference to the user who placed the order"
+          },
+          "service": {
+            "type": "string",
+            "description": "Name of the service requested",
+            "example": "webDevelopment"
+          },
+          "packageType": {
+            "type": "string",
+            "enum": ["regular", "standard", "premium"],
+            "description": "Selected package type for the service",
+            "example": "premium"
+          },
+          "amount": {
+            "type": "number",
+            "format": "float",
+            "description": "Price of the selected package",
+            "example": 110000
+          },
+          "transactionId": {
+            "type": "string",
+            "description": "Unique transaction identifier for the order",
+            "example": "abc123xyz456"
+          },
+          "paymentStatus": {
+            "type": "string",
+            "enum": ["unpaid", "pending", "paid"],
+            "description": "Current payment status of the service order",
+            "example": "unpaid"
+          },
+          "paymentMethod": {
+            "type": "string",
+            "description": "Payment method used (if available)",
+            "example": "credit_card"
+          },
+          "preferredCommunicationChannel": {
+            "type": "string",
+            "description": "Preferred method of communication",
+            "example": "email"
+          },
+          "projectDetails": {
+            "type": "object",
+            "description": "Additional project-specific details",
+            "properties": {
+              "projectName": {
+                "type": "string",
+                "description": "Name of the project",
+                "example": "E-commerce Website Redesign"
+              },
+              "description": {
+                "type": "string",
+                "description": "Brief project description",
+                "example": "A complete redesign of an online store to improve UX"
+              },
+              "specialNotes": {
+                "type": "string",
+                "description": "Additional notes from the client",
+                "example": "Ensure SEO optimization"
+              },
+              "estimatedDeliveryDate": {
+                "type": "string",
+                "format": "date",
+                "description": "Expected delivery date",
+                "example": "2024-09-30"
+              },
+              "duration": {
+                "type": "string",
+                "description": "Estimated duration of the project",
+                "example": "4 weeks"
+              },
+              "style": {
+                "type": "string",
+                "description": "Preferred style for the project",
+                "example": "Minimalist"
+              },
+              "referenceLinks": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "List of reference links for inspiration",
+                "example": [
+                  "https://example.com/design1",
+                  "https://example.com/design2"
+                ]
+              }
+            }
+          },
+          "setUpStop": {
+            "type": "boolean",
+            "description": "Indicates whether the service setup should be stopped",
+            "example": false
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the order was created"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the order was last updated"
+          }
+        }
       }
     }
   },
@@ -115,7 +328,7 @@
                 "properties": {
                   "email": { "type": "string", "format": "email" },
                   "password": { "type": "string" },
-                  "role": { "type": "string" }
+                  "role": { "type": "string", "enum": ["user", "admin"] }
                 },
                 "required": ["email", "password", "role"]
               }
@@ -1062,6 +1275,630 @@
               }
             }
           }
+        }
+      }
+    },
+    "/service-order": {
+      "post": {
+        "summary": "Create a new service order",
+        "tags": ["ServiceOrder"],
+        "description": "Create a new service order. Requires authentication.",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "packageType"],
+                "properties": {
+                  "name": { "type": "string", "example": "webDevelopment" },
+                  "packageType": {
+                    "type": "string",
+                    "enum": ["regular", "standard", "premium"],
+                    "example": "standard"
+                  },
+                  "client": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "64a1fbb3c28d4f0012b8e1f2"
+                  },
+                  "userEmail": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "user@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Service order created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Service order created successfully"
+                    },
+                    "serviceOrder": { "type": "object" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "description": "Unauthorized - Missing or invalid token" },
+          "500": { "description": "Server error" }
+        }
+      },
+      "get": {
+        "summary": "Get all service orders with filtering and pagination",
+        "tags": ["ServiceOrder"],
+        "description": "Retrieve a list of service orders with optional query filters.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": { "type": "integer", "example": 1 }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": { "type": "integer", "example": 10 }
+          },
+          {
+            "in": "query",
+            "name": "client",
+            "schema": { "type": "string", "format": "uuid" },
+            "example": "64a1fbb3c28d4f0012b8e1f2"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved service orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "totalPages": { "type": "integer", "example": 5 },
+                    "currentPage": { "type": "integer", "example": 1 },
+                    "serviceOrders": {
+                      "type": "array",
+                      "items": { "type": "object" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Server error" }
+        }
+      }
+    },
+    "/service-order/{id}": {
+      "get": {
+        "summary": "Get a specific service order by ID",
+        "tags": ["ServiceOrder"],
+        "description": "Retrieve a service order by its ID.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" },
+            "example": "64a1fbb3c28d4f0012b8e1f2"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved service order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "serviceOrder": { "type": "object" } }
+                }
+              }
+            }
+          },
+          "404": { "description": "Service order not found" },
+          "500": { "description": "Server error" }
+        }
+      },
+      "put": {
+        "summary": "Update a specific service order by ID",
+        "tags": ["ServiceOrder"],
+        "description": "Update details of an existing service order. Requires authentication.",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" },
+            "example": "64a1fbb3c28d4f0012b8e1f2"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "paymentMethod": {
+                    "type": "string",
+                    "example": "credit_card"
+                  },
+                  "preferredCommunicationChannel": {
+                    "type": "string",
+                    "enum": ["email", "phone", "whatsapp"],
+                    "example": "email"
+                  },
+                  "projectName": {
+                    "type": "string",
+                    "example": "New Website Development"
+                  },
+                  "estimatedDeliveryDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2024-08-15"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Successfully updated service order" },
+          "400": { "description": "Bad request - Invalid input" },
+          "401": { "description": "Unauthorized" },
+          "500": { "description": "Server error" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a specific service order by ID",
+        "tags": ["ServiceOrder"],
+        "description": "Delete a service order. Requires authentication.",
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" },
+            "example": "64a1fbb3c28d4f0012b8e1f2"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Successfully deleted service order" },
+          "401": { "description": "Unauthorized" },
+          "404": { "description": "Service order not found" },
+          "500": { "description": "Server error" }
+        }
+      }
+    },
+    "/bootcamp": {
+      "post": {
+        "summary": "Register for a Bootcamp",
+        "description": "Creates a new bootcamp registration.",
+        "tags": ["Bootcamp"],
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "start", "end"],
+                "properties": {
+                  "name": { "type": "string", "example": "Frontend Bootcamp" },
+                  "start": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2024-08-15"
+                  },
+                  "end": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2024-09-15"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Bootcamp registration successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Bootcamp registration successful"
+                    },
+                    "registration": { "$ref": "#/components/schemas/Bootcamp" }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Error registering for bootcamp" }
+        }
+      },
+      "get": {
+        "summary": "Get all Bootcamp Registrations",
+        "description": "Fetches a paginated list of bootcamp registrations with optional filters.",
+        "tags": ["Bootcamp"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": { "type": "integer", "example": 1 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": { "type": "integer", "example": 30 }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter by bootcamp name (case-insensitive)",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "student",
+            "in": "query",
+            "description": "Filter by student ID",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "paymentStatus",
+            "in": "query",
+            "description": "Filter by payment status (unpaid, pending, paid)",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of bootcamp registrations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "registrations": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Bootcamp" }
+                    },
+                    "currentPage": { "type": "integer" },
+                    "totalPages": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Error fetching registrations" }
+        }
+      }
+    },
+    "/bootcamp/{id}": {
+      "get": {
+        "summary": "Get Bootcamp Registration by ID",
+        "description": "Fetches details of a specific bootcamp registration.",
+        "tags": ["Bootcamp"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the bootcamp registration",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Bootcamp registration found",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Bootcamp" }
+              }
+            }
+          },
+          "404": { "description": "Registration not found" },
+          "500": { "description": "Error fetching registration" }
+        }
+      },
+      "put": {
+        "summary": "Update Bootcamp Registration",
+        "description": "Updates payment details for a bootcamp registration.",
+        "tags": ["Bootcamp"],
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the bootcamp registration",
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "paymentId": { "type": "string", "example": "PAY12345XYZ" },
+                  "paymentStatus": {
+                    "type": "string",
+                    "enum": ["unpaid", "pending", "paid"],
+                    "example": "paid"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Registration updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Registration updated"
+                    },
+                    "updatedRegistration": {
+                      "$ref": "#/components/schemas/Bootcamp"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": { "description": "Registration not found" },
+          "500": { "description": "Error updating registration" }
+        }
+      },
+      "delete": {
+        "summary": "Delete Bootcamp Registration",
+        "description": "Deletes a specific bootcamp registration.",
+        "tags": ["Bootcamp"],
+        "security": [{ "BearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the bootcamp registration",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Registration deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Registration deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": { "description": "Registration not found" },
+          "500": { "description": "Error deleting registration" }
+        }
+      }
+    },
+    "/transactions": {
+      "post": {
+        "summary": "Create a new transaction",
+        "security": [{ "bearerAuth": [] }],
+        "tags": ["Transactions"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Transaction" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Transaction created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "transaction": {
+                      "$ref": "#/components/schemas/Transaction"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Missing required fields" },
+          "500": { "description": "Internal server error" }
+        }
+      },
+      "get": {
+        "summary": "Get all transactions",
+        "security": [{ "bearerAuth": [] }],
+        "tags": ["Transactions"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": { "type": "integer" },
+            "description": "Page number for pagination"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": { "type": "integer" },
+            "description": "Number of transactions per page"
+          },
+          {
+            "in": "query",
+            "name": "userEmail",
+            "schema": { "type": "string" },
+            "description": "Filter by user email"
+          },
+          {
+            "in": "query",
+            "name": "paymentMethod",
+            "schema": { "type": "string" },
+            "description": "Filter by payment method"
+          },
+          {
+            "in": "query",
+            "name": "paid",
+            "schema": {
+              "type": "string",
+              "enum": ["unpaid", "pending", "paid"]
+            },
+            "description": "Filter by payment status"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of transactions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transactions": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Transaction" }
+                    },
+                    "currentPage": { "type": "integer" },
+                    "totalPages": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          },
+          "500": { "description": "Internal server error" }
+        }
+      }
+    },
+    "/transactions/{id}": {
+      "get": {
+        "summary": "Get a transaction by ID",
+        "security": [{ "bearerAuth": [] }],
+        "tags": ["Transactions"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Transaction ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction details",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Transaction" }
+              }
+            }
+          },
+          "404": { "description": "Transaction not found" },
+          "500": { "description": "Internal server error" }
+        }
+      },
+      "put": {
+        "summary": "Update a transaction",
+        "security": [{ "bearerAuth": [] }],
+        "tags": ["Transactions"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Transaction ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Transaction" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "updatedTransaction": {
+                      "$ref": "#/components/schemas/Transaction"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": { "description": "Transaction not found" },
+          "500": { "description": "Internal server error" }
+        }
+      },
+      "delete": {
+        "summary": "Delete a transaction",
+        "security": [{ "bearerAuth": [] }],
+        "tags": ["Transactions"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Transaction ID"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Transaction deleted successfully" },
+          "404": { "description": "Transaction not found" },
+          "500": { "description": "Internal server error" }
         }
       }
     }

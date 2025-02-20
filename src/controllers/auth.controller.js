@@ -70,6 +70,8 @@ const signupWithEmailAndPassword = async (req, res) => {
       { expiresIn: "24h" },
     );
 
+    const tokenExpiresAt = Date.now() + 24 * 60 * 60 * 1000;
+
     // Send welcome email
     const welcomeEmailOptions = {
       ...mailOptions,
@@ -77,7 +79,7 @@ const signupWithEmailAndPassword = async (req, res) => {
       subject: "Welcome to " + config.companyName,
       html: emailTemplates.welcome(email),
     };
-    await transporter.sendMail(welcomeEmailOptions);
+    //await transporter.sendMail(welcomeEmailOptions);
 
     // Send verification email
     const verifyEmailOptions = {
@@ -86,10 +88,10 @@ const signupWithEmailAndPassword = async (req, res) => {
       subject: "Verify your email",
       html: emailTemplates.verify(email, newUser._id, verifyToken),
     };
-    await transporter.sendMail(verifyEmailOptions);
+    //await transporter.sendMail(verifyEmailOptions);
 
     // Return the token
-    return res.status(201).json({ token, id: newUser._id });
+    return res.status(201).json({ token, id: newUser._id, tokenExpiresAt });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Server error" });
@@ -150,7 +152,8 @@ const login = async (req, res) => {
       config.JWT_SECRET,
       { expiresIn: "24h" }, // Token expires in 1 hour
     );
-    return res.status(200).json({ token, id: authUser._id });
+    const tokenExpiresAt = Date.now() + 24 * 60 * 60 * 1000;
+    return res.status(200).json({ token, id: authUser._id, tokenExpiresAt });
   } catch (error) {
     logger.errorLogger(error.message);
     logger.errorLogger(error);
@@ -179,9 +182,12 @@ const reauthenticate = async (req, res) => {
     const tokenExpiresAt = Date.now() + 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
     // Return the new token and expiration time
-    res
-      .status(200)
-      .json({ token: newToken, verified: user.verified, tokenExpiresAt });
+    res.status(200).json({
+      token: newToken,
+      id: authUser._id,
+      verified: user.verified,
+      tokenExpiresAt,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });

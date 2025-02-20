@@ -12,7 +12,7 @@
             "properties": {
               "email": { "type": "string", "format": "email" },
               "password": { "type": "string" },
-              "role": { "type": "string" }
+              "role": { "type": "string", "enum": ["user", "admin"] }
             },
             "required": ["email", "password", "role"]
           }
@@ -36,7 +36,7 @@
     },
     "method": "post",
     "path": "/auth/login",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Auth"],
@@ -61,7 +61,7 @@
     },
     "method": "post",
     "path": "/auth/forgot-password",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Auth"],
@@ -94,7 +94,7 @@
     },
     "method": "post",
     "path": "/auth/reset-password",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Auth"],
@@ -122,7 +122,7 @@
     },
     "method": "put",
     "path": "/auth/update",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Auth"],
@@ -134,7 +134,7 @@
     },
     "method": "put",
     "path": "/auth/disable",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Auth"],
@@ -146,7 +146,7 @@
     },
     "method": "delete",
     "path": "/auth/delete",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Auth"],
@@ -180,7 +180,7 @@
     },
     "method": "get",
     "path": "/auth/is-valid",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Auth"],
@@ -276,7 +276,7 @@
     },
     "method": "post",
     "path": "/resend-verification-email",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Notifications"],
@@ -317,7 +317,7 @@
     },
     "method": "post",
     "path": "/notifications",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Notifications"],
@@ -354,7 +354,7 @@
     },
     "method": "get",
     "path": "/notifications",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Notifications"],
@@ -382,7 +382,7 @@
     },
     "method": "get",
     "path": "/notifications/{id}",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Notifications"],
@@ -403,7 +403,7 @@
     },
     "method": "patch",
     "path": "/notifications/{id}",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Notifications"],
@@ -424,7 +424,7 @@
     },
     "method": "delete",
     "path": "/notifications/{id}",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Profile"],
@@ -452,7 +452,7 @@
     },
     "method": "post",
     "path": "/profile",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Profile"],
@@ -490,7 +490,7 @@
     },
     "method": "get",
     "path": "/profile",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Profile"],
@@ -528,7 +528,7 @@
     },
     "method": "get",
     "path": "/profile/search",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Profile"],
@@ -557,7 +557,7 @@
     },
     "method": "get",
     "path": "/profile/{userId}",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Profile"],
@@ -595,7 +595,7 @@
     },
     "method": "put",
     "path": "/profile/{userId}",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Profile"],
@@ -617,7 +617,7 @@
     },
     "method": "delete",
     "path": "/profile/{userId}",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Profile"],
@@ -666,7 +666,7 @@
     },
     "method": "post",
     "path": "/profile/{userId}/upload",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "tags": ["Auth"],
@@ -705,7 +705,7 @@
     },
     "method": "post",
     "path": "/auth/signup/emailandpassword",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "summary": "Performs a ping request",
@@ -713,7 +713,7 @@
     "responses": { "200": { "description": "Returns pong" } },
     "method": "get",
     "path": "/",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "summary": "Get server status",
@@ -721,7 +721,7 @@
     "responses": { "200": { "description": "Returns server status" } },
     "method": "get",
     "path": "/status",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "summary": "Get request logs",
@@ -732,7 +732,7 @@
     },
     "method": "get",
     "path": "/request-logs",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "summary": "Get application logs",
@@ -743,7 +743,7 @@
     },
     "method": "get",
     "path": "/app-logs",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "summary": "Clear request logs",
@@ -754,7 +754,7 @@
     },
     "method": "get",
     "path": "/clear-request-logs",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "summary": "Clear application logs",
@@ -765,7 +765,7 @@
     },
     "method": "get",
     "path": "/clear-app-logs",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "summary": "Post a new customer message",
@@ -842,7 +842,7 @@
     },
     "method": "post",
     "path": "/messages",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "summary": "Retrieve customer messages",
@@ -921,7 +921,7 @@
     },
     "method": "get",
     "path": "/messages",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
   },
   {
     "summary": "Reply to a customer message",
@@ -1000,6 +1000,655 @@
     },
     "method": "post",
     "path": "/messages/{messageId}/reply",
-    "baseUrl": "https://fstbackend.com"
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Create a new service order",
+    "tags": ["ServiceOrder"],
+    "description": "Create a new service order. Requires authentication.",
+    "security": [{ "bearerAuth": [] }],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "required": ["name", "packageType"],
+            "properties": {
+              "name": { "type": "string", "example": "webDevelopment" },
+              "packageType": {
+                "type": "string",
+                "enum": ["regular", "standard", "premium"],
+                "example": "standard"
+              },
+              "client": {
+                "type": "string",
+                "format": "uuid",
+                "example": "64a1fbb3c28d4f0012b8e1f2"
+              },
+              "userEmail": {
+                "type": "string",
+                "format": "email",
+                "example": "user@example.com"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Service order created successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Service order created successfully"
+                },
+                "serviceOrder": { "type": "object" }
+              }
+            }
+          }
+        }
+      },
+      "401": { "description": "Unauthorized - Missing or invalid token" },
+      "500": { "description": "Server error" }
+    },
+    "method": "post",
+    "path": "/service-order",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Get all service orders with filtering and pagination",
+    "tags": ["ServiceOrder"],
+    "description": "Retrieve a list of service orders with optional query filters.",
+    "parameters": [
+      {
+        "in": "query",
+        "name": "page",
+        "schema": { "type": "integer", "example": 1 }
+      },
+      {
+        "in": "query",
+        "name": "limit",
+        "schema": { "type": "integer", "example": 10 }
+      },
+      {
+        "in": "query",
+        "name": "client",
+        "schema": { "type": "string", "format": "uuid" },
+        "example": "64a1fbb3c28d4f0012b8e1f2"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successfully retrieved service orders",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "totalPages": { "type": "integer", "example": 5 },
+                "currentPage": { "type": "integer", "example": 1 },
+                "serviceOrders": {
+                  "type": "array",
+                  "items": { "type": "object" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": { "description": "Server error" }
+    },
+    "method": "get",
+    "path": "/service-order",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Get a specific service order by ID",
+    "tags": ["ServiceOrder"],
+    "description": "Retrieve a service order by its ID.",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": { "type": "string", "format": "uuid" },
+        "example": "64a1fbb3c28d4f0012b8e1f2"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Successfully retrieved service order",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": { "serviceOrder": { "type": "object" } }
+            }
+          }
+        }
+      },
+      "404": { "description": "Service order not found" },
+      "500": { "description": "Server error" }
+    },
+    "method": "get",
+    "path": "/service-order/{id}",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Update a specific service order by ID",
+    "tags": ["ServiceOrder"],
+    "description": "Update details of an existing service order. Requires authentication.",
+    "security": [{ "bearerAuth": [] }],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": { "type": "string", "format": "uuid" },
+        "example": "64a1fbb3c28d4f0012b8e1f2"
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "paymentMethod": { "type": "string", "example": "credit_card" },
+              "preferredCommunicationChannel": {
+                "type": "string",
+                "enum": ["email", "phone", "whatsapp"],
+                "example": "email"
+              },
+              "projectName": {
+                "type": "string",
+                "example": "New Website Development"
+              },
+              "estimatedDeliveryDate": {
+                "type": "string",
+                "format": "date",
+                "example": "2024-08-15"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": { "description": "Successfully updated service order" },
+      "400": { "description": "Bad request - Invalid input" },
+      "401": { "description": "Unauthorized" },
+      "500": { "description": "Server error" }
+    },
+    "method": "put",
+    "path": "/service-order/{id}",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Delete a specific service order by ID",
+    "tags": ["ServiceOrder"],
+    "description": "Delete a service order. Requires authentication.",
+    "security": [{ "bearerAuth": [] }],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": { "type": "string", "format": "uuid" },
+        "example": "64a1fbb3c28d4f0012b8e1f2"
+      }
+    ],
+    "responses": {
+      "200": { "description": "Successfully deleted service order" },
+      "401": { "description": "Unauthorized" },
+      "404": { "description": "Service order not found" },
+      "500": { "description": "Server error" }
+    },
+    "method": "delete",
+    "path": "/service-order/{id}",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Register for a Bootcamp",
+    "description": "Creates a new bootcamp registration.",
+    "tags": ["Bootcamp"],
+    "security": [{ "BearerAuth": [] }],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "required": ["name", "start", "end"],
+            "properties": {
+              "name": { "type": "string", "example": "Frontend Bootcamp" },
+              "start": {
+                "type": "string",
+                "format": "date",
+                "example": "2024-08-15"
+              },
+              "end": {
+                "type": "string",
+                "format": "date",
+                "example": "2024-09-15"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Bootcamp registration successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Bootcamp registration successful"
+                },
+                "registration": { "$ref": "#/components/schemas/Bootcamp" }
+              }
+            }
+          }
+        }
+      },
+      "500": { "description": "Error registering for bootcamp" }
+    },
+    "method": "post",
+    "path": "/bootcamp",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Get all Bootcamp Registrations",
+    "description": "Fetches a paginated list of bootcamp registrations with optional filters.",
+    "tags": ["Bootcamp"],
+    "parameters": [
+      {
+        "name": "page",
+        "in": "query",
+        "description": "Page number for pagination",
+        "required": false,
+        "schema": { "type": "integer", "example": 1 }
+      },
+      {
+        "name": "limit",
+        "in": "query",
+        "description": "Number of items per page",
+        "required": false,
+        "schema": { "type": "integer", "example": 30 }
+      },
+      {
+        "name": "name",
+        "in": "query",
+        "description": "Filter by bootcamp name (case-insensitive)",
+        "required": false,
+        "schema": { "type": "string" }
+      },
+      {
+        "name": "student",
+        "in": "query",
+        "description": "Filter by student ID",
+        "required": false,
+        "schema": { "type": "string" }
+      },
+      {
+        "name": "paymentStatus",
+        "in": "query",
+        "description": "Filter by payment status (unpaid, pending, paid)",
+        "required": false,
+        "schema": { "type": "string" }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "List of bootcamp registrations",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "registrations": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Bootcamp" }
+                },
+                "currentPage": { "type": "integer" },
+                "totalPages": { "type": "integer" }
+              }
+            }
+          }
+        }
+      },
+      "500": { "description": "Error fetching registrations" }
+    },
+    "method": "get",
+    "path": "/bootcamp",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Get Bootcamp Registration by ID",
+    "description": "Fetches details of a specific bootcamp registration.",
+    "tags": ["Bootcamp"],
+    "parameters": [
+      {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "ID of the bootcamp registration",
+        "schema": { "type": "string" }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Bootcamp registration found",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Bootcamp" }
+          }
+        }
+      },
+      "404": { "description": "Registration not found" },
+      "500": { "description": "Error fetching registration" }
+    },
+    "method": "get",
+    "path": "/bootcamp/{id}",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Update Bootcamp Registration",
+    "description": "Updates payment details for a bootcamp registration.",
+    "tags": ["Bootcamp"],
+    "security": [{ "BearerAuth": [] }],
+    "parameters": [
+      {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "ID of the bootcamp registration",
+        "schema": { "type": "string" }
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "paymentId": { "type": "string", "example": "PAY12345XYZ" },
+              "paymentStatus": {
+                "type": "string",
+                "enum": ["unpaid", "pending", "paid"],
+                "example": "paid"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Registration updated",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Registration updated"
+                },
+                "updatedRegistration": {
+                  "$ref": "#/components/schemas/Bootcamp"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": { "description": "Registration not found" },
+      "500": { "description": "Error updating registration" }
+    },
+    "method": "put",
+    "path": "/bootcamp/{id}",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Delete Bootcamp Registration",
+    "description": "Deletes a specific bootcamp registration.",
+    "tags": ["Bootcamp"],
+    "security": [{ "BearerAuth": [] }],
+    "parameters": [
+      {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "ID of the bootcamp registration",
+        "schema": { "type": "string" }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Registration deleted successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Registration deleted successfully"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": { "description": "Registration not found" },
+      "500": { "description": "Error deleting registration" }
+    },
+    "method": "delete",
+    "path": "/bootcamp/{id}",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Create a new transaction",
+    "security": [{ "bearerAuth": [] }],
+    "tags": ["Transactions"],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": { "$ref": "#/components/schemas/Transaction" }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Transaction created successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "type": "string" },
+                "transaction": { "$ref": "#/components/schemas/Transaction" }
+              }
+            }
+          }
+        }
+      },
+      "400": { "description": "Missing required fields" },
+      "500": { "description": "Internal server error" }
+    },
+    "method": "post",
+    "path": "/transactions",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Get all transactions",
+    "security": [{ "bearerAuth": [] }],
+    "tags": ["Transactions"],
+    "parameters": [
+      {
+        "in": "query",
+        "name": "page",
+        "schema": { "type": "integer" },
+        "description": "Page number for pagination"
+      },
+      {
+        "in": "query",
+        "name": "limit",
+        "schema": { "type": "integer" },
+        "description": "Number of transactions per page"
+      },
+      {
+        "in": "query",
+        "name": "userEmail",
+        "schema": { "type": "string" },
+        "description": "Filter by user email"
+      },
+      {
+        "in": "query",
+        "name": "paymentMethod",
+        "schema": { "type": "string" },
+        "description": "Filter by payment method"
+      },
+      {
+        "in": "query",
+        "name": "paid",
+        "schema": { "type": "string", "enum": ["unpaid", "pending", "paid"] },
+        "description": "Filter by payment status"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "List of transactions",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Transaction" }
+                },
+                "currentPage": { "type": "integer" },
+                "totalPages": { "type": "integer" }
+              }
+            }
+          }
+        }
+      },
+      "500": { "description": "Internal server error" }
+    },
+    "method": "get",
+    "path": "/transactions",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Get a transaction by ID",
+    "security": [{ "bearerAuth": [] }],
+    "tags": ["Transactions"],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "Transaction ID"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Transaction details",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Transaction" }
+          }
+        }
+      },
+      "404": { "description": "Transaction not found" },
+      "500": { "description": "Internal server error" }
+    },
+    "method": "get",
+    "path": "/transactions/{id}",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Update a transaction",
+    "security": [{ "bearerAuth": [] }],
+    "tags": ["Transactions"],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "Transaction ID"
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": { "$ref": "#/components/schemas/Transaction" }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Transaction updated successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "type": "string" },
+                "updatedTransaction": {
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": { "description": "Transaction not found" },
+      "500": { "description": "Internal server error" }
+    },
+    "method": "put",
+    "path": "/transactions/{id}",
+    "baseUrl": "http://localhost:8080"
+  },
+  {
+    "summary": "Delete a transaction",
+    "security": [{ "bearerAuth": [] }],
+    "tags": ["Transactions"],
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": { "type": "string" },
+        "description": "Transaction ID"
+      }
+    ],
+    "responses": {
+      "200": { "description": "Transaction deleted successfully" },
+      "404": { "description": "Transaction not found" },
+      "500": { "description": "Internal server error" }
+    },
+    "method": "delete",
+    "path": "/transactions/{id}",
+    "baseUrl": "http://localhost:8080"
   }
 ]

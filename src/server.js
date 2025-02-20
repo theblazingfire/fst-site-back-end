@@ -15,7 +15,10 @@ const authRoute = require("./routes/auth.route");
 const profileRoutes = require("./routes/profile.route");
 const customerSupportRoute = require("./routes/customer_messages.route");
 const notificationRoute = require("./routes/notification.route");
+const transactionsRoute = require("./routes/transactions.route");
 const chatRoute = require("./routes/chat.route");
+const serviceOrderRoute = require("./routes/service_orders.route");
+const bootcampRoute = require("./routes/bootcamp.route");
 const YAML = require("yamljs");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -61,12 +64,15 @@ app.use("/profile", profileRoutes);
 app.use("/", customerSupportRoute);
 app.use("/notifications", notificationRoute);
 app.use("/chats", chatRoute);
+app.use("/transactions", transactionsRoute);
+app.use("/bootcamp", bootcampRoute);
+app.use("/service-order", serviceOrderRoute);
+
 //setup complete
 app.use(errorHandler);
 
 // Create HTTP server
 const server = http.createServer(app);
-
 // Integrate Socket.IO
 const io = socketIo(server, {
   cors: {

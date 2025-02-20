@@ -1,0 +1,412 @@
+project: express backend
+folder-structure: 
+  base-folder: 
+    - [node_modules]
+    - [sdkOutput]
+      // output folder where my template engine creates request sdk
+    - [src]
+      - [controllers]
+        auth.controller.js
+        chat.controller.js
+        notification.controller.js      
+        ping.controller.js     
+        service_orders.controller.js
+        bootcamps.controller.js  
+        customer_messages.controller.js  
+        paystack.payment.controller.js  
+        profile.controller.js
+      
+      - [functions]
+        error.middleware.js
+        fileupload.middleware.js  
+        nodemailer.config.js  
+        saveToCloudinary.js  
+        verifyRole.middleware.js  
+        verifyToken.middleware.js
+
+      - [models]
+        auth.model.js  
+        bootcamp.model.js  
+        chat.model.js  
+        customer_messages.model.js  
+        notification.model.js  
+        profile.model.js  
+        service_orders.model.js  
+        transaction.model.js
+
+      - [routes]
+        auth.route.js  
+        bootcamp.route.js  
+        chat.route.js  
+        customer_messages.route.js  
+        notification.route.js  
+        paystack.payment.route.js  
+        ping.route.js  
+        profile.route.js  
+        service_orders.route.js
+
+      - [tests]
+
+      - [uploadAssets]
+
+      - [utils]
+        apiLimiter.js  
+        config.js  
+        dbConnect.js  
+        emailTemplates.js  
+        logger.js  
+        pricing.js  
+        randomString.js  
+        swaggerConfig.js
+      .env
+        // .env file
+      applog.md
+        // applog file a custom logger function logs informations and error informations that occured while the app is running in this file
+      index.js 
+        // calls the function startServer imported from the server.js file
+      request.log
+        // all request logs are stored here using morgan i think
+      server.js
+        // import all the server utilities and routes. implements express app and exports the function startServer and app
+      swagger.yaml
+        // documentation of the endpoints present in the application
+    .eslintrc.js
+    .gitignore
+    .prettierrc.json
+    LISCENSE
+    package.json
+    Readme.md
+    spec.md
+    sdts.js
+    temp_gen_engine.js
+    sdts-utils.js
+    
+
+Creating the Endpoints
+- model
+- controller
+- route
+
+Description of the Functions Folders and Files
+  error.middleware.js:
+    (This middleware is used globally in the Express app to catch unhandled errors and prevent application crashes.
+    Typically added in server.js using app.use(errorHandler); after all routes)
+  fileupload.middleware.js:
+    (This function is a Multer middleware used to handle image uploads in the Express app. It processes multiple image files at once and stores them in the uploadAssets/ directory.)
+    (usage.
+    const uploadImages = require("../functions/fileupload.middleware");
+    router.post("/:userId/upload", verifyToken, uploadImages, controllerFunction);
+    // it exposes the request.files in the controllerFunction.
+    )
+  saveToCloudinary.js:
+    (this function takes an array of files (request.files) and uploads them to the cloudinary storage. it is an async function.)
+    (usage - 
+      const Profile = require("../models/profile.model");
+      const logger = require("../utils/logger");
+      const saveToCloudinary = require("../functions/saveToCloudinary");
+      const uploadProfileImage = async (req, res) => {
+      try {
+        const { userId } = req.params;
+        const files = req.files;
+        if (!files || files.length === 0) {
+          return res.status(400).json({ message: "No files uploaded" });
+        }
+        const uploadedImageUrls = await saveToCloudinary(files, "profile_images");
+        const profile = await Profile.findOneAndUpdate(
+          { user: userId },
+          { profileImage: uploadedImageUrls[0] },
+          { new: true },
+        );
+        if (!profile) {
+          return res.status(404).json({ message: "Profile not found" });
+        }
+        res.status(200).json(profile);
+      } catch (error) {
+        logger.errorLogger("Error uploading profile image", true);
+        logger.errorLogger(error, true);
+        res.status(500).json({ message: "Error uploading profile image", error });
+      }
+    };
+    )
+  nodemailer.config.js:
+    (Purpose - This file sets up Nodemailer, an email-sending library, to handle outgoing emails using the Mailbit SMTP server. It provides a preconfigured transporter and default mail options, making it easy to send emails within the application.)
+    (usage
+    const config = require("../utils/config");
+    const { transporter, mailOptions } = require("../functions/nodemailer.config");
+    const emailTemplates = require("../utils/emailTemplates");
+    // Send welcome email
+    const welcomeEmailOptions = {
+      ...mailOptions,
+      to: email,
+      subject: "Welcome to " + config.companyName,
+      html: emailTemplates.welcome(email),
+    };
+    await transporter.sendMail(welcomeEmailOptions);
+    )
+  verifyToken.middleware.js:
+    (the verify token adds the user property to the request after verifying the token. the user property is an object that has the following structure {})
+    (usage - router.post("/", verifyToken, createBootcamp);)
+  verifyRole.middleware.js:
+    (usage - router.post("/reply/:messageId", verifyRole("admin"), replyToCustomerMessage);
+)
+
+Description of the Utils Folders and Files
+  emailTemplates.js:
+    (this file exports an object. module.exports = {welcome, ...} where welcome is a function that returns the company welcome email template. welcome can take an argument and fix it in the position in the template. emailtemplate file exports several of such types of functions.)
+  randomString: 
+    (this file exports a function randomString that takes a length arg and generates a random string)
+  logger: 
+    (this file handles logging in the app. it exports an object that has two methods. errorLogger and infoLogger)
+  swaggerConfig:
+    (basic swagger configurations)
+  
+
+Specs of Crud operations.
+  post: 
+    - these endpoints have a request bodies
+    - to create the mongoose document (if necessary), the required properties at the point of creation are desctuctured and then used to initialized the document 
+    - the endpoint returns 201 and {message, doc}
+    - (example 
+      const createProfile = async (req, res) => {
+        try {
+          const {
+            firstName,
+            lastName,
+            gender,
+            dateOfBirth,
+            bio,
+            location,
+            website,
+            username,
+          } = req.body;
+
+          // Check if the profile already exists
+          const existingProfile = await Profile.findOne({ user: req.user.userId });
+
+          if (existingProfile) {
+            // Return 409 Conflict if the profile already exists
+            return res.status(409).json({
+              message: "Profile already exists for this user.",
+            });
+          }
+          console.log(req.body);
+          const newProfile = new Profile({
+            user: req.user.userId,
+            firstName,
+            lastName,
+            gender,
+            dateOfBirth,
+            bio,
+            location,
+            website,
+          });
+          if (username) newProfile.username = username;
+          const savedProfile = await newProfile.save();
+          res.status(201).json(savedProfile);
+        } catch (error) {
+          logger.errorLogger("Error creating profile", true);
+          logger.errorLogger(error, true);
+          res.status(500).json({ message: "Error creating profile", error });
+        }
+      };
+    )
+  put: 
+    - these endpoints have a request body
+    - to update the mongoose document. the properties in the body are destructured, then we check to meke sure only the properties that actually have a value gets passed into the update object
+    - the endpoint returns 200 {message, updatedDoc}
+    - (example
+        const updateProfile = async (req, res) => {
+        const { userId } = req.params;
+
+        if (req.user.userId !== userId) {
+          return res
+            .status(403)
+            .json({ message: "You are not permitted to edit this profile" });
+        }
+
+        try {
+          // Find the profile by userId
+          const updatedProfile = await Profile.findOne({ user: userId });
+
+          // Check if profile exists
+          if (!updatedProfile) {
+            return res.status(404).json({ message: "Profile not found" });
+          }
+
+          // Log the request body for debugging
+          console.log({ body: req.body });
+
+          // Update the profile fields with the data from request body
+          Object.keys(req.body).forEach((key) => {
+            if (req.body[key]) {
+              updatedProfile[key] = req.body[key];
+            }
+          });
+
+          // Save the updated profile
+          await updatedProfile.save();
+
+          // Return the updated profile
+          res.status(200).json(updatedProfile);
+        } catch (error) {
+          // Log the error for debugging
+          logger.errorLogger("Error updating profile", true);
+          logger.errorLogger(error, true);
+
+          // Return a 500 status code with an error message
+          res.status(500).json({ message: "Error updating profile", error });
+        }
+      };
+    )
+  get: 
+    - these endpoints retrieve document either by id or in group
+    - for getByID, an id is part of the req.params
+    - for endpoints that get multiple, there are query params present. these are also desctuctured. 
+    - (example - for getByID
+      const getProfile = async (req, res) => {
+        try {
+          const { userId } = req.params;
+          const profile = await Profile.findOne({ user: userId });
+          if (!profile) {
+            return res.status(404).json({ message: "Profile not found" });
+          }
+          res.status(200).json(profile);
+        } catch (error) {
+          logger.errorLogger("Error getting profile", true);
+          logger.errorLogger(error, true);
+          res.status(500).json({ message: "Error getting profile", error });
+        }
+      };
+    )
+    - (example - for getAll
+      // Get profiles with pagination
+      const getProfiles = async (req, res) => {
+        try {
+          const { page = 1 } = req.query;
+          const limit = 30;
+          const skip = (page - 1) * limit;
+
+          const profiles = await Profile.find().skip(skip).limit(limit);
+          const totalProfiles = await Profile.countDocuments();
+
+          res.status(200).json({
+            profiles,
+            currentPage: page,
+            totalPages: Math.ceil(totalProfiles / limit),
+          });
+        } catch (error) {
+          logger.errorLogger("Error fetching profiles:", error);
+          res.status(500).json({ error: "Error fetching profiles" });
+        }
+      };
+    )
+    - (example - get implementation in a search
+        const searchProfiles = async (req, res) => {
+        // Sanitize and process the query parameters
+        let query = {};
+        let {
+          username,
+          firstName,
+          lastName,
+          gender,
+          dateOfBirth,
+          bio,
+          location,
+          website,
+        } = req.query;
+
+        // Check if each property is present in the query and apply case-insensitive search where applicable
+        if (username) query.username = new RegExp(username, "i");
+        if (firstName) query.firstName = new RegExp(firstName, "i");
+        if (lastName) query.lastName = new RegExp(lastName, "i");
+        if (gender) query.gender = new RegExp(gender, "i");
+        if (dateOfBirth) query.dateOfBirth = dateOfBirth; // Assuming exact match for date
+        if (bio) query.bio = new RegExp(bio, "i");
+        if (location) query.location = new RegExp(location, "i");
+        if (website) query.website = new RegExp(website, "i");
+
+        console.log({ query });
+        try {
+          // Find profiles based on the sanitized query
+          const profiles = await Profile.find(query);
+
+          res.status(200).json(profiles);
+        } catch (error) {
+          logger.errorLogger("Error searching profiles:", error);
+          res.status(500).json({ error: "Error searching profiles" });
+        }
+      };
+    )
+  delete: 
+    - these endpoints are meant to delete a resource
+    - they probably would check to verify if the user is an admin or it is the user that created the resource who wants to delete it.
+    - (example            
+        // Delete notification by ID
+        exports.deleteNotification = async (req, res) => {
+          try {
+            const { id } = req.params;
+            const notification = await Notification.findByIdAndDelete(id);
+            if (!notification) {
+              return res.status(404).json({ message: "Notification not found" });
+            }
+            res.status(200).json({ message: "Notification deleted successfully" });
+          } catch (err) {
+            res
+              .status(500)
+              .json({ message: "Error deleting notification", error: err.message });
+          }
+        };    
+    )
+
+Specs of upload endpoints.
+  - For an endpoint where file uploads occur, the controller function would import the saveToCloudinary function and pass the req.files to the saveToCloudinary function. 
+  - The route definition would import the fileupload middleware
+  - (example - for the route  
+    const uploadImages = require("../functions/fileupload.middleware");
+    // Upload profile image
+    router.post("/:userId/upload", verifyToken, uploadImages, uploadProfileImage);
+  )
+  - (example - for the controller function
+      const Profile = require("../models/profile.model");
+      const logger = require("../utils/logger");
+      const saveToCloudinary = require("../functions/saveToCloudinary");
+      // Upload and update profile image
+      const uploadProfileImage = async (req, res) => {
+      try {
+        const { userId } = req.params;
+        const files = req.files;
+        if (!files || files.length === 0) {
+          return res.status(400).json({ message: "No files uploaded" });
+        }
+        const uploadedImageUrls = await saveToCloudinary(files, "profile_images");
+        const profile = await Profile.findOneAndUpdate(
+          { user: userId },
+          { profileImage: uploadedImageUrls[0] },
+          { new: true },
+        );
+        if (!profile) {
+          return res.status(404).json({ message: "Profile not found" });
+        }
+        res.status(200).json(profile);
+      } catch (error) {
+        logger.errorLogger("Error uploading profile image", true);
+        logger.errorLogger(error, true);
+        res.status(500).json({ message: "Error uploading profile image", error });
+      }
+    };
+  )
+  
+Specs for YAML Generation. 
+
+  - The yaml generated for a group of endpoints should account for the following
+    - the reference tag
+    - the summary of the endpoint
+    - the method
+    - for authorization header if required or not.
+    - request body and body properties (if present)
+    - request params  (if present)
+    - request queries (if present)
+    - responses
+
+  - The yaml schema generated for a model should account for the following.
+

@@ -1,0 +1,118 @@
+TaskDefinition1:
+    name: ModelName
+    description: Create or Update a Mongoose Model
+    instruction: 
+    functionality: Mongoose Model
+    tasks_notes: 
+        - the model is a model to do this.
+        - i want it to have a this and that
+        - this and that should be this and that
+        - you can add other properties you think are necessary. and the props that have predefined strings, add enum
+    properties_init: 
+        name: 
+            type: string
+        prop1: 
+            type: number
+    
+TaskDefinition2:
+    name: getBootCamps
+    description: Creating a controller function
+    format: const getBootCamps = async (req, res) => {}
+    availableProps: 
+        req.files: 
+        req.user: 
+            format: {}
+
+    functionality: Controller Function
+    tasks_notes: 
+        - the model is a model to do this.
+        - i want it to have a this and that
+        - this and that should be this and that
+        - you can add other properties you think are necessary. and the props that have predefined strings, add enum
+    output: 
+        201: 
+            schema: 
+                message: 
+                updateDoc: the 
+        500: schema
+
+    
+TaskDefinition3:
+    name: getBootCamps
+    description: Creating a route declaration
+    example: router.method(path,...required_middlewares,controllerFunction)
+    required_middleware_functions:
+        - verifyToken
+        - fileupload
+        - verifyRole : admin
+
+    functionality: route declaration
+    tasks_notes: 
+        - the model is a model to do this.
+        - i want it to have a this and that
+        - this and that should be this and that
+        - you can add other properties you think are necessary. and the props that have predefined strings, add enum
+
+
+TaskDefinition3:
+    name: createServiceOrder
+    description: Creating a controller function
+    example: 
+    required_middleware_functions:
+        - verifyToken
+
+    functionality: route declaration
+    tasks_notes: 
+        - using the project notes above import the necessary functions and models.
+        - note the instruction below.
+           - these endpoints have a request bodies
+    - to create the mongoose document (if necessary), the required properties at the point of creation are desctuctured and then used to initialized the document 
+    - the endpoint returns 201 and {message, doc}
+    - (example 
+      const createProfile = async (req, res) => {
+        try {
+          const {
+            firstName,
+            lastName,
+            gender,
+            dateOfBirth,
+            bio,
+            location,
+            website,
+            username,
+          } = req.body;
+
+          // Check if the profile already exists
+          const existingProfile = await Profile.findOne({ user: req.user.userId });
+
+          if (existingProfile) {
+            // Return 409 Conflict if the profile already exists
+            return res.status(409).json({
+              message: "Profile already exists for this user.",
+            });
+          }
+          console.log(req.body);
+          const newProfile = new Profile({
+            user: req.user.userId,
+            firstName,
+            lastName,
+            gender,
+            dateOfBirth,
+            bio,
+            location,
+            website,
+          });
+          if (username) newProfile.username = username;
+          const savedProfile = await newProfile.save();
+          res.status(201).json(savedProfile);
+        } catch (error) {
+          logger.errorLogger("Error creating profile", true);
+          logger.errorLogger(error, true);
+          res.status(500).json({ message: "Error creating profile", error });
+        }
+      };
+    )
+
+
+
+    

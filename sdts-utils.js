@@ -123,7 +123,7 @@ function generateBodyObjectTemplate(contentType, properties) {
   } else if (contentType === "multipart/form-data") {
     properties.forEach(([name, details]) => {
       if (details?.type === "array") {
-        formDataTemplate += `${name}.forEach((x) => {
+        formDataTemplate += `${name}.forEach((x: any) => {
   formData.append("${name}", x); // Add each file to the "${name}" key
 });`;
       } else {
@@ -233,7 +233,7 @@ function generateFunctionArgsTemplate(
       if (value.type === "array") {
         let warningTypeGuardTemp = `if(!Array.isArray(${name}) ${
           reqBodyProps.contentType === "multipart/form-data"
-            ? "&& !" + name + ".every(item => item instanceof File)"
+            ? "&& !" + name + ".every((item: any) => item instanceof File)"
             : ""
         }){
                 throw new Error("Argument \'${name}\' should be of type ${
@@ -259,7 +259,6 @@ function generateFunctionArgsTemplate(
   }
   return { temp, warningTemp };
 }
-
 
 module.exports = {
   capitalize,

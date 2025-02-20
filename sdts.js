@@ -60,6 +60,7 @@ try {
       .join("\n\n");
     const interfaceString = Object.entries(functions)
       .map(([name, functionObj]) => {
+        functionObj.args = functionObj.args.map((x) => x + ":any");
         return `${name}: (${functionObj.args.join(",")}) => Promise<any>`;
       })
       .join("\n");

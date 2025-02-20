@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "format": "prettier . --write",
     "build": "vite build",
-    "outputSdk": "node sdts.js https://fstbackend.com && npm run format"
+    "outputSdk": "node sdts.js http://localhost:8080 && npm run format"
   },
   "author": "Adefuye Abayomi",
   "license": "MIT",

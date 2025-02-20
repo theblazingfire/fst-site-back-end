@@ -2,6 +2,7 @@
 const multer = require("multer");
 const path = require("path");
 
+// image upload middleware
 const uploadImages = multer({
   dest: "uploadAssets/",
   limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB file size limit
@@ -18,4 +19,5 @@ const uploadImages = multer({
     }
   },
 }).array("files", 10);
+
 module.exports = uploadImages;
