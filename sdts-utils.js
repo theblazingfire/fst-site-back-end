@@ -113,7 +113,7 @@ function generateBodyObjectTemplate(contentType, properties) {
   } else if (contentType === "application/json") {
     properties.forEach((x) => {
       let name = x[0];
-      let template = `${name}:` + "`${" + name + "}`";
+      let template = `${name}`;
       output.push(template);
     });
     return {
